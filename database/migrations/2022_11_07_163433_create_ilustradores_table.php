@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ilustradors', function (Blueprint $table) {
-            $table->id();
+        Schema::create('ilustradores', function (Blueprint $table) {
+            $table->id();            
+            $table->string('name');
+            $table->string('img')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ilustradors');
+        Schema::dropIfExists('ilustradores');
     }
 };

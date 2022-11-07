@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('idiomas', function (Blueprint $table) {
-            $table->id();
+            $table->id();            
+            $table->string('name');
+            $table->string('img')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
