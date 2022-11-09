@@ -96,11 +96,14 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
 Route::middleware(['auth', 'can:solo-superadmin'])->group(function () {
     
+    Route::prefix('admin')->group(function () {
+
+        Route::get('prueba',[RolController::class, 'index'] )->name('prueba');
+
     
-    //Route::get('prueba',[RolController::class, 'index'] )->name('prueba');
 
 
-
+    });
     
 
 });

@@ -9,7 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+                   
+                    
+
+                    <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        Botón
+                    </font></font></button> 
+
+                    
                 </div>
             </div>
         </div>
