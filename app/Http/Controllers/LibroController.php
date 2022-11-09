@@ -18,7 +18,7 @@ class LibroController extends Controller
         $libros = Libro::all();
 
         return view('user.libros.index',compact('libros'));
-        
+
     }
 
     /**
@@ -28,7 +28,11 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+        
+        $libro = new Libro();
+
+        return view('admin.libros.create', compact('libro'));
+
     }
 
     /**

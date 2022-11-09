@@ -12,9 +12,6 @@
                    
                     
 
-                    <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                        Botón
-                    </font></font></button> 
 
                     
                 </div>
