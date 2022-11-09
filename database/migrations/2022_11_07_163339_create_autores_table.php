@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('autores', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('descripcion')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('img')->nullable();
             $table->softDeletes();
             $table->timestamps();
