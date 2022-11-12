@@ -6,6 +6,8 @@ use App\Http\Requests\StoreRolRequest;
 use App\Http\Requests\UpdateRolRequest;
 use App\Models\Rol;
 
+use function Ramsey\Uuid\v1;
+
 class RolController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.admin');
     }
 
     /**

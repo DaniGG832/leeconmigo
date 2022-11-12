@@ -5,6 +5,7 @@ use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\RolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +59,9 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
+        Route::get('', [RolController::class, 'index'])->name('admin');
+
+        Route::get('lista/libros', [LibroController::class, 'librosAdmin'])->name('libros.admin');
 
         Route::resource('libros', LibroController::class);
 

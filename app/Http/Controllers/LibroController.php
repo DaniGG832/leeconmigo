@@ -5,9 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLibroRequest;
 use App\Http\Requests\UpdateLibroRequest;
 use App\Models\Libro;
+use App\Models\User;
 
 class LibroController extends Controller
 {
+
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function librosAdmin()
+    {
+        $libros = Libro::all();
+        $totalUsuarios = User::all()->count();
+
+        return view('admin.libros.index',compact(['libros','totalUsuarios']));
+
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *

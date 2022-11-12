@@ -49,6 +49,18 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                    
+                       @if (Auth::user()->rol_id!=1)
+                           
+                       <x-dropdown-link :href="route('admin')">
+                      
+                                            
+                                {{ __('admin') }}
+                            </x-dropdown-link>
+                            
+                      @endif
+                        
+
                     </x-slot>
                 </x-dropdown>
             </div>
