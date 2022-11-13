@@ -62,25 +62,30 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
         Route::get('', [RolController::class, 'index'])->name('admin');
 
         Route::get('lista/libros', [LibroController::class, 'librosAdmin'])->name('libros.admin');
-
         Route::resource('libros', LibroController::class);
 
+        Route::get('lista/autores', [LibroController::class, 'librosAdmin'])->name('autores.admin');
         Route::resource('autores', AutorController::class)->parameters([
             'autores' => 'autor'
         ]);
 
+        Route::get('lista/ilustradores', [LibroController::class, 'librosAdmin'])->name('ilustradores.admin');
         Route::resource('ilustradores', IlustradorController::class)->parameters([
             'ilustradores' => 'ilustrador'
         ]);
 
+        Route::get('lista/editoriales', [LibroController::class, 'librosAdmin'])->name('editoriales.admin');
         Route::resource('editoriales', EditorialController::class)->parameters([
             'editoriales' => 'editorial'
         ]);
 
+        Route::get('lista/idiomas', [LibroController::class, 'librosAdmin'])->name('idiomas.admin');
         Route::resource('idiomas', IdiomaController::class);
 
+        Route::get('lista/temas', [LibroController::class, 'librosAdmin'])->name('temas.admin');
         Route::resource('temas', IdiomaController::class);
 
+        Route::get('lista/temas', [LibroController::class, 'librosAdmin'])->name('temas.admin');
         Route::resource('edades', EditorialController::class)->parameters([
             'edades' => 'edad'
         ]);
