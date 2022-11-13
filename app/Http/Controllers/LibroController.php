@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLibroRequest;
 use App\Http\Requests\UpdateLibroRequest;
+use App\Models\Autor;
+use App\Models\Edad;
+use App\Models\Editorial;
+use App\Models\Encuadernacion;
+use App\Models\Idioma;
+use App\Models\Ilustrador;
 use App\Models\Libro;
 use App\Models\Tema;
 use App\Models\User;
@@ -11,7 +17,7 @@ use App\Models\User;
 class LibroController extends Controller
 {
 
-/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,8 +27,7 @@ class LibroController extends Controller
         $libros = Libro::all();
         $totalUsuarios = User::all()->count();
 
-        return view('admin.libros.index',compact(['libros','totalUsuarios']));
-
+        return view('admin.libros.index', compact(['libros', 'totalUsuarios']));
     }
 
 
@@ -36,8 +41,7 @@ class LibroController extends Controller
     {
         $libros = Libro::all();
 
-        return view('user.libros.index',compact('libros'));
-
+        return view('user.libros.index', compact('libros'));
     }
 
     /**
@@ -47,12 +51,29 @@ class LibroController extends Controller
      */
     public function create()
     {
-        
+
         $libro = new Libro();
         $temas = Tema::all();
+        $autores = Autor::all();
+        $ilustradores = Ilustrador::all();
+        $editoriales = Editorial::all();
+        $edades = Edad::all();
+        $idiomas = Idioma::all();
+        $encuadernaciones = Encuadernacion::all();
 
-        return view('admin.libros.create', compact('libro','temas'));
-
+        return view(
+            'admin.libros.create',
+            compact(
+                'libro',
+                'temas',
+                'autores',
+                'ilustradores',
+                'editoriales',
+                'edades',
+                'idiomas',
+                'encuadernaciones'
+            )
+        );
     }
 
     /**
@@ -63,7 +84,17 @@ class LibroController extends Controller
      */
     public function store(StoreLibroRequest $request)
     {
-        //
+        //return $request->validated();
+
+        $libro = new Libro($request->validated());
+
+        //return $libro;
+
+        $libro->save();
+
+        $libro->temas()->sync($request->validated()['temas']);
+
+        return back()->with('success', "Ficha de $libro->titulo creada correctamente");
     }
 
     /**

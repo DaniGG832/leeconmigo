@@ -13,7 +13,7 @@ class StoreLibroRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class StoreLibroRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo'=> '',
+            'titulo_original'=> '',
+            'ISBN10'=> '', 
+            'ISBN13'=> '',
+            'year'=> '',
+            'n_pag'=> '',
+            'img'=> '',
+            'descripcion'=> '',
+            'sinopsis'=> '',
+            'editorial_id'=> '',
+            'ilustrador_id'=> '',
+            'edad_id'=> '', 
+            'idioma_id'=> '', 
+            'autor_id'=> '',
+            'encuadernacion_id'=> '',
+            'temas'=>'',
         ];
     }
 }

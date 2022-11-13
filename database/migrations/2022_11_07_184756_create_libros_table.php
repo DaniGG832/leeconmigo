@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('n_pag');
             $table->string('img')->nullable();
             $table->text('descripcion')->nullable();
-            $table->text('signosis');
+            $table->text('sinopsis');
             //$table->string('encuadernacion')->nullable();
             //$table->string('idioma')->nullable();
             $table->foreignId('editorial_id')->constrained('editoriales');

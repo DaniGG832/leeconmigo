@@ -11,6 +11,23 @@ class Libro extends Model
 
     protected $table = 'libros';
 
+    protected $fillable = [
+        'titulo',
+        'titulo_original',
+        'ISBN10', 'ISBN13',
+        'year',
+        'n_pag',
+        'img',
+        'sinopsis',
+        'descripcion',
+        'editorial_id',
+        'ilustrador_id',
+        'edad_id', 
+        'idioma_id', 
+        'autor_id',
+        'encuadernacion_id'
+    ];
+
 
     /**
      * The temas that belong to the Libro
@@ -65,6 +82,4 @@ class Libro extends Model
     {
         return $this->belongsTo(Idioma::class, 'idioma_id', 'id');
     }
-
-    
 }
