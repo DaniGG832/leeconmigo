@@ -5,9 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEditorialRequest;
 use App\Http\Requests\UpdateEditorialRequest;
 use App\Models\Editorial;
+use App\Models\Libro;
+use App\Models\User;
 
 class EditorialController extends Controller
 {
+
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editorialesAdmin()
+    {
+        $editoriales = Editorial::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.editoriales.index', compact('editoriales', 'totalUsuarios','totalLibros'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +43,9 @@ class EditorialController extends Controller
      */
     public function create()
     {
-        //
+        $editorial = new Editorial();
+
+       return view('admin.editoriales.create',compact('editorial'));
     }
 
     /**
@@ -36,7 +56,13 @@ class EditorialController extends Controller
      */
     public function store(StoreEditorialRequest $request)
     {
-        //
+        //return $request->validated();
+
+        $editorial = new Editorial($request->validated());
+
+        $editorial->save();
+
+        return back()->with('success', "Editorial $editorial->name registrado correctamente");
     }
 
     /**

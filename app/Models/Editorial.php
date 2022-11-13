@@ -12,6 +12,10 @@ class Editorial extends Model
 
     protected $table = 'editoriales';
 
+    protected $fillable = [
+        'name',
+        'descripcion'];
+
     /**
     * Get all of the libros for the Ilustrador
     *
