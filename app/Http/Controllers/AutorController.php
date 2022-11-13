@@ -5,9 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAutorRequest;
 use App\Http\Requests\UpdateAutorRequest;
 use App\Models\Autor;
+use App\Models\Libro;
+use App\Models\User;
 
 class AutorController extends Controller
 {
+   
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function autoresAdmin()
+    {
+        
+        $autores = Autor::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.autores.index', compact('autores', 'totalUsuarios','totalLibros'));
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +45,9 @@ class AutorController extends Controller
      */
     public function create()
     {
-        //
+       $autor = new Autor();
+
+       return view('admin.autores.create',compact('autor'));
     }
 
     /**
@@ -36,7 +58,14 @@ class AutorController extends Controller
      */
     public function store(StoreAutorRequest $request)
     {
-        //
+        //return $request->validated();
+
+        $autor = new Autor($request->validated());
+
+        $autor->save();
+
+        return back()->with('success', "Autor $autor->name registrado correctamente");
+
     }
 
     /**

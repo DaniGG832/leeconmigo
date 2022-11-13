@@ -24,7 +24,8 @@ class StoreAutorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'',
+            'descripcion'=>'',
         ];
     }
 }

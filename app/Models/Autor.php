@@ -10,6 +10,9 @@ class Autor extends Model
     use HasFactory;
 
     protected $table = 'autores';
+    protected $fillable = [
+        'name',
+        'descripcion'];
 
     /**
     * Get all of the libros for the Ilustrador
