@@ -27,8 +27,8 @@
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('libros.admin')" :active="request()->routeIs('libros.admin')">
-        {{ __('libros') }}
+      <x-link-admin :href="route('users.admin')" :active="request()->routeIs('users.admin')">
+        {{ __('Usuarios') }}
       </x-link-admin>
     </div>
     <div class="">

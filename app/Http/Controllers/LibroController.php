@@ -26,8 +26,9 @@ class LibroController extends Controller
     {
         $libros = Libro::all();
         $totalUsuarios = User::all()->count();
+        $totalLibros = Libro::all()->count();
 
-        return view('admin.libros.index', compact(['libros', 'totalUsuarios']));
+        return view('admin.libros.index', compact(['libros', 'totalUsuarios','totalLibros']));
     }
 
 

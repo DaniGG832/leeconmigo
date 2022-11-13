@@ -29,7 +29,7 @@
                     <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
                       <div class="p-3 bg-green-600 bg-opacity-75 rounded-full w-12 h-12"></div>
                       <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{$libros->count()}}</h4>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalLibros}}</h4>
                         <div class="text-gray-500">Total Libros</div>
                       </div>
                     </div>
@@ -73,7 +73,7 @@
                             <div class="text-sm leading-5 text-gray-900">{{$libro->ISBN13}}</div>
                             <div class="text-sm leading-5 text-gray-500">{{$libro->ISBN10}}</div>
                           </td>
-                          <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$libro->autor->name}}</span></td>
+                          <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$libro->autor->name}}</td>
                           <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">{{$libro->year}}</td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-green-600 hover:text-green-900">Editar</a></td>
