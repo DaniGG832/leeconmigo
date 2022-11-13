@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLibroRequest;
 use App\Http\Requests\UpdateLibroRequest;
 use App\Models\Libro;
+use App\Models\Tema;
 use App\Models\User;
 
 class LibroController extends Controller
@@ -48,8 +49,9 @@ class LibroController extends Controller
     {
         
         $libro = new Libro();
+        $temas = Tema::all();
 
-        return view('admin.libros.create', compact('libro'));
+        return view('admin.libros.create', compact('libro','temas'));
 
     }
 

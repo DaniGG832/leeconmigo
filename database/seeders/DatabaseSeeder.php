@@ -23,7 +23,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $this->call(TemaSeeder::class);
         $this->call(RolSeeder::class);
+        $this->call(EdadSeeder::class);
+        $this->call(IdiomaSeeder::class);
 
         User::truncate(); 
 
