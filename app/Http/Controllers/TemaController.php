@@ -80,7 +80,8 @@ class TemaController extends Controller
      */
     public function show(Tema $tema)
     {
-        //
+        return view('admin.temas.show', compact('tema'));
+
     }
 
     /**
@@ -91,7 +92,7 @@ class TemaController extends Controller
      */
     public function edit(Tema $tema)
     {
-        //
+        return view('admin.temas.edit', compact('tema'));
     }
 
     /**
@@ -103,7 +104,13 @@ class TemaController extends Controller
      */
     public function update(UpdateTemaRequest $request, Tema $tema)
     {
-        //
+        //return $request->validated();
+
+        $tema->fill($request->validated());
+
+        $tema->save();
+
+        return redirect()->route('temas.admin')->with('success', "Temas $tema->name editado correctamente");
     }
 
     /**
