@@ -76,8 +76,8 @@
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$tema->created_at}}</td>
 
 
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-green-600 hover:text-green-900">Editar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('temas.show',$tema)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('temas.edit',$tema)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
                             <form action="{{route('temas.destroy', $tema, true )}}" method="post">
                               @csrf
