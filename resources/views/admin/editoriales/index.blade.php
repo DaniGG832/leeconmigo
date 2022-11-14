@@ -72,9 +72,16 @@
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$editorial->created_at}}</td>
 
 
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-green-600 hover:text-green-900">Editar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-red-600 hover:text-red-900">Borrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('editoriales.show',$editorial)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('editoriales.edit',$editorial)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
+                            <form action="{{route('editoriales.destroy', $editorial, true )}}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la editorial')">Borrar</button>
+
+                            </form>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>
