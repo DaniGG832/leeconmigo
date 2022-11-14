@@ -16,6 +16,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('libros')" :active="request()->routeIs('libros')">
+                        {{ __('libros ') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -44,6 +49,18 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                    
+                       @if (Auth::user()->rol_id!=1)
+                           
+                       <x-dropdown-link :href="route('admin')">
+                      
+                                            
+                                {{ __('admin') }}
+                            </x-dropdown-link>
+                            
+                      @endif
+                        
+
                     </x-slot>
                 </x-dropdown>
             </div>
