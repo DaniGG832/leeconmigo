@@ -13,6 +13,7 @@ class Editorial extends Model
     protected $table = 'editoriales';
 
     protected $fillable = [
+        'img',
         'name',
         'descripcion'];
 

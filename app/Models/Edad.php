@@ -11,6 +11,11 @@ class Edad extends Model
 
     protected $table = 'edades';
 
+    protected $fillable = [
+        'img',
+        'name',
+        'descripcion'];
+
     /**
     * Get all of the libros for the Ilustrador
     *

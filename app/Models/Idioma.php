@@ -11,6 +11,10 @@ class Idioma extends Model
 
     protected $table = 'idiomas';
 
+    protected $fillable = [
+        'img',
+        'name',
+        'descripcion'];
     /**
     * Get all of the libros for the Ilustrador
     *

@@ -6,6 +6,7 @@ use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,8 +87,8 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
         Route::get('lista/idiomas', [IdiomaController::class, 'idiomasAdmin'])->name('idiomas.admin');
         Route::resource('idiomas', IdiomaController::class);
 
-        Route::get('lista/temas', [IdiomaController::class, 'temasAdmin'])->name('temas.admin');
-        Route::resource('temas', IdiomaController::class);
+        Route::get('lista/temas', [TemaController::class, 'temasAdmin'])->name('temas.admin');
+        Route::resource('temas', TemaController::class);
 
         Route::get('lista/edades', [EditorialController::class, 'edadesAdmin'])->name('edades.admin');
         Route::resource('edades', EditorialController::class)->parameters([
