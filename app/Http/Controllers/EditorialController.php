@@ -102,7 +102,7 @@ class EditorialController extends Controller
 
         $editorial->save();
 
-        return redirect()->route('editoriales.admin')->with('success', "Temas $editorial->name editado correctamente");
+        return redirect()->route('editoriales.admin')->with('success', "Editorial $editorial->name editado correctamente");
     }
 
     /**
@@ -114,13 +114,17 @@ class EditorialController extends Controller
     public function destroy(Editorial $editorial)
     {
 
-        return $editorial;
+        //return $editorial->libros->count();
         
         if ($editorial->libros->count()) {
+
+            
             //dd($editorial->libros);
             return redirect()->route('editoriales.admin')->with('error', 'No se puede borrar un editorial con libros asociadas');
             
         }else{
+            
+
             $editorial->delete();
             return redirect()->route('editoriales.admin')->with('success', 'editorial borrado correctamente');
         }

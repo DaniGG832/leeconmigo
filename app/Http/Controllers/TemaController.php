@@ -69,7 +69,7 @@ class TemaController extends Controller
 
         $tema->save();
 
-        return back()->with('success', "Temas $tema->name añadido correctamente");
+        return back()->with('success', "Tema $tema->name añadido correctamente");
     }
 
     /**
@@ -110,7 +110,7 @@ class TemaController extends Controller
 
         $tema->save();
 
-        return redirect()->route('temas.admin')->with('success', "Temas $tema->name editado correctamente");
+        return redirect()->route('temas.admin')->with('success', "Tema $tema->name editado correctamente");
     }
 
     /**

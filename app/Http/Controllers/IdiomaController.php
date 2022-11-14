@@ -8,6 +8,17 @@ use App\Models\Idioma;
 
 class IdiomaController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function idiomasAdmin()
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
