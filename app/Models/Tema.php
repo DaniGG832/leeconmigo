@@ -11,6 +11,10 @@ class Tema extends Model
 
     protected $table ='temas';
 
+    protected $fillable = [
+        'img',
+        'name',
+        'descripcion'];
 
     /**
      * The libros that belong to the Temas

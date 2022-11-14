@@ -24,6 +24,7 @@ class StoreEdadRequest extends FormRequest
     public function rules()
     {
         return [
+            'img'=>'',
             'name'=>'',
             'descripcion'=>'',
         ];

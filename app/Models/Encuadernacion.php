@@ -12,6 +12,10 @@ class Encuadernacion extends Model
 
     protected $table = 'encuadernaciones';
 
+    protected $fillable = [
+        'img',
+        'name',
+        'descripcion'];
     /**
     * Get all of the libros for the Ilustrador
     *

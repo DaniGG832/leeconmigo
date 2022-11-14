@@ -11,6 +11,11 @@ class Ilustrador extends Model
 
     protected $table = 'ilustradores';
 
+    protected $fillable = [
+        'img',
+        'name',
+        'descripcion'];
+
     /**
     * Get all of the libros for the Ilustrador
     *

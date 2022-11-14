@@ -4,10 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTemaRequest;
 use App\Http\Requests\UpdateTemaRequest;
+use App\Models\Ilustrador;
+use App\Models\Libro;
 use App\Models\Tema;
+use App\Models\User;
 
 class TemaController extends Controller
 {
+    
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function temasAdmin()
+    {
+        $temas = Tema::paginate(12);
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.temas.index', compact('temas', 'totalUsuarios','totalLibros'));
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +47,9 @@ class TemaController extends Controller
      */
     public function create()
     {
-        //
+        $tema = new Tema();
+
+       return view('admin.temas.create',compact('tema'));
     }
 
     /**
@@ -36,7 +60,16 @@ class TemaController extends Controller
      */
     public function store(StoreTemaRequest $request)
     {
-        //
+
+        //dd($request->validated()['img']);
+
+        //return $request->validated()['img'];
+
+        $tema = new Tema($request->validated());
+
+        $tema->save();
+
+        return back()->with('success', "Temas $tema->name añadido correctamente");
     }
 
     /**
@@ -81,6 +114,17 @@ class TemaController extends Controller
      */
     public function destroy(Tema $tema)
     {
-        //
+
+        if ($tema->libros->count()) {
+            //dd($tema->libros);
+            return redirect()->route('temas.admin')->with('error', 'No se puede borrar un tema con libros asociadas');
+            
+        }else{
+            $tema->delete();
+            return redirect()->route('temas.admin')->with('success', 'tema borrado correctamente');
+        }
+
+        
+
     }
 }

@@ -16,7 +16,7 @@
               <h3 class="text-3xl font-medium text-gray-700">Usuarios</h3>
               <div class="mt-4">
                 <div class="flex flex-wrap -mx-6">
-                  <div class="w-full px-6  xl:w-1/2 mt-1">
+                  <div class="w-full px-6 mt-2 xl:w-1/2 mt-1">
                     <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
                       <div class="p-3 bg-blue-600 bg-opacity-75 rounded-full w-12 h-12"></div>
                       <div class="mx-5">
@@ -25,7 +25,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="w-full px-6 mt-6 xl:w-1/2 mt-1">
+                  <div class="w-full px-6 mt-2 xl:w-1/2 mt-1">
                     <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
                       <div class="p-3 bg-green-600 bg-opacity-75 rounded-full w-12 h-12"></div>
                       <div class="mx-5">
