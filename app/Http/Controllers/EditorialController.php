@@ -73,7 +73,7 @@ class EditorialController extends Controller
      */
     public function show(Editorial $editorial)
     {
-        //
+        return view('admin.editoriales.show', compact('editorial'));
     }
 
     /**
@@ -84,7 +84,7 @@ class EditorialController extends Controller
      */
     public function edit(Editorial $editorial)
     {
-        //
+        return view('admin.editoriales.edit', compact('editorial'));
     }
 
     /**
@@ -96,7 +96,13 @@ class EditorialController extends Controller
      */
     public function update(UpdateEditorialRequest $request, Editorial $editorial)
     {
-        //
+        //return $request->validated();
+
+        $editorial->fill($request->validated());
+
+        $editorial->save();
+
+        return redirect()->route('editoriales.admin')->with('success', "Editorial $editorial->name editado correctamente");
     }
 
     /**
@@ -107,6 +113,20 @@ class EditorialController extends Controller
      */
     public function destroy(Editorial $editorial)
     {
-        //
+
+        //return $editorial->libros->count();
+        
+        if ($editorial->libros->count()) {
+
+            
+            //dd($editorial->libros);
+            return redirect()->route('editoriales.admin')->with('error', 'No se puede borrar un editorial con libros asociadas');
+            
+        }else{
+            
+
+            $editorial->delete();
+            return redirect()->route('editoriales.admin')->with('success', 'editorial borrado correctamente');
+        }
     }
 }

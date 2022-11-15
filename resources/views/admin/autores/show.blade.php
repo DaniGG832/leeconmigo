@@ -18,30 +18,29 @@
 
             <div>
 
-
               <div class="flex ">
 
-                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('temas.admin')}}">Atras</a>
+                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('autores.admin')}}">Atras</a>
 
-                <h3 class="text-3xl font-medium text-gray-700 mt-5"> <span class="text-3xl font-medium text-gray-500 mt-5">Tema:</span> {{$tema->name}} </h3>
+                <h3 class="text-3xl font-medium text-gray-700 mt-5"> <span class="text-3xl font-medium text-gray-500 mt-5">autor:</span> {{$autor->name}} </h3>
 
 
               </div>
 
-
-
-
-
+              
+              
+              
+              
               <div class="flex flex-col mt-8">
                 <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                   <div class="p-4 inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-
-
+                    
+                    
                     <div class="flex-shrink-0  mt-1 lg:flex">
                       <img class=" rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt="">
                       <div class="text-3xl text-gray-500 mt-5 p-5">
                         <h2>Descripción:</h2>
-                        <p class="text-sm text-2xl text-gray-700 mt-2">{{$tema->descripcion}}</p>
+                        <p class="text-sm text-2xl text-gray-700 mt-2">{{$autor->descripcion}}</p>
                       </div>
                     </div>
 

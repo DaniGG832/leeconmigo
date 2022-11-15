@@ -76,7 +76,8 @@ class AutorController extends Controller
      */
     public function show(Autor $autor)
     {
-        //
+        return view('admin.autores.show', compact('autor'));
+
     }
 
     /**
@@ -87,7 +88,7 @@ class AutorController extends Controller
      */
     public function edit(Autor $autor)
     {
-        //
+        return view('admin.autores.edit', compact('autor'));
     }
 
     /**
@@ -99,7 +100,13 @@ class AutorController extends Controller
      */
     public function update(UpdateAutorRequest $request, Autor $autor)
     {
-        //
+        //return $request->validated();
+
+        $autor->fill($request->validated());
+
+        $autor->save();
+
+        return redirect()->route('autores.admin')->with('success', "autor $autor->name editado correctamente");
     }
 
     /**
@@ -110,6 +117,19 @@ class AutorController extends Controller
      */
     public function destroy(Autor $autor)
     {
-        //
+        //return $autor->libros->count();
+        
+        if ($autor->libros->count()) {
+
+            
+            //dd($autor->libros);
+            return redirect()->route('autores.admin')->with('error', 'No se puede borrar un autor con libros asociadas');
+            
+        }else{
+            
+
+            $autor->delete();
+            return redirect()->route('autores.admin')->with('success', 'autor borrado correctamente');
+        }
     }
 }

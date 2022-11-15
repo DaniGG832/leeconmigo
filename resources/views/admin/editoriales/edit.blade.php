@@ -35,10 +35,10 @@
                     {{-- formulario --}}
 
 
-                    <form class="p-10" action="{{ route('editoriales.store', $editorial, true) }}" method="post">
+                    <form class="p-10" action="{{ route('editoriales.update', $editorial, true) }}" method="post">
 
                       @csrf
-                      @method('post')
+                      @method('put')
 
                       {{-- Seleccionar archivo --}}
                       <label class="block mb-2 text-sm font-medium text-gray-900" for="Imagen">Selecione Imagen</label>

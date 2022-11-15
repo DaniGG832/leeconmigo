@@ -75,7 +75,8 @@ class IlustradorController extends Controller
      */
     public function show(Ilustrador $ilustrador)
     {
-        //
+        return view('admin.ilustradores.show', compact('ilustrador'));
+
     }
 
     /**
@@ -86,7 +87,8 @@ class IlustradorController extends Controller
      */
     public function edit(Ilustrador $ilustrador)
     {
-        //
+        return view('admin.ilustradores.edit', compact('ilustrador'));
+
     }
 
     /**
@@ -98,7 +100,14 @@ class IlustradorController extends Controller
      */
     public function update(UpdateIlustradorRequest $request, Ilustrador $ilustrador)
     {
-        //
+        //return $request->validated();
+
+        $ilustrador->fill($request->validated());
+
+        $ilustrador->save();
+
+        return redirect()->route('ilustradores.admin')->with('success', "ilustrador $ilustrador->name editado correctamente");
+    
     }
 
     /**
@@ -109,6 +118,19 @@ class IlustradorController extends Controller
      */
     public function destroy(Ilustrador $ilustrador)
     {
-        //
+        //return $ilustrador->libros->count();
+        
+        if ($ilustrador->libros->count()) {
+
+            
+            //dd($ilustrador->libros);
+            return redirect()->route('ilustradores.admin')->with('error', 'No se puede borrar un ilustrador con libros asociadas');
+            
+        }else{
+            
+
+            $ilustrador->delete();
+            return redirect()->route('ilustradores.admin')->with('success', 'ilustrador borrado correctamente');
+        }
     }
 }

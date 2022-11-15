@@ -15,7 +15,7 @@
             <x-session />
             
             <div>
-              <h3 class="text-3xl font-medium text-gray-700">Editoriales</h3>
+              <h3 class="text-3xl font-medium text-gray-700">idiomas</h3>
               <div class="mt-4">
                 <div class="flex flex-wrap -mx-6">
                   <div class="w-full px-6 mt-2 xl:w-1/2 mt-1">
@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="mt-8 ">
-                <a href="{{route('editoriales.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar Editorial</a>
+                <a href="{{route('idiomas.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar idioma</a>
               </div>
               <div class="flex flex-col mt-8">
                 <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -49,7 +49,7 @@
                     <table class="min-w-full">
                       <thead>
                         <tr>
-                          <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Nombre </th>
+                          <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Idioma </th>
                           <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> fecha Creacion </th>
 
                           <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
@@ -59,28 +59,28 @@
                       </thead>
                       <tbody class="bg-white">
 
-                        @foreach ($editoriales as $editorial)
+                        @foreach ($idiomas as $idioma)
                         <tr>
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                             <div class="flex items-center">
                               <div class="flex-shrink-0 w-10 h-10"><img class="w-10 h-12 rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt=""></div>
                               <div class="ml-4">
-                                <div class="text-sm font-medium leading-5 text-gray-900">{{$editorial->name}}</div>
+                                <div class="text-sm font-medium leading-5 text-gray-900">{{$idioma->name}} - {{$idioma->descripcion}}</div>
 
                               </div>
                             </div>
                           </td>
 
-                          <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$editorial->created_at}}</td>
+                          <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$idioma->created_at}}</td>
 
 
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('editoriales.show',$editorial)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('editoriales.edit',$editorial)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('idiomas.show',$idioma)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('idiomas.edit',$idioma)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
-                            <form action="{{route('editoriales.destroy', $editorial, true )}}" method="post">
+                            <form action="{{route('idiomas.destroy', $idioma, true )}}" method="post">
                               @csrf
                               @method('DELETE')
-                              <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la editorial')">Borrar</button>
+                              <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la idioma')">Borrar</button>
 
                             </form>
                           </td>

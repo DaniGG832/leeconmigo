@@ -51,6 +51,11 @@
         {{ __('Temas') }}
       </x-link-admin>
     </div>
+    <div class="">
+      <x-link-admin :href="route('idiomas.admin')" :active="request()->routeIs('idiomas.admin')">
+        {{ __('idiomas') }}
+      </x-link-admin>
+    </div>
     
 
 
