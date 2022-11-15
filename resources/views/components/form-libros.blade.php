@@ -3,7 +3,8 @@
 
 {{-- Seleccionar archivo --}}
 <label class="block mb-2 text-sm font-medium text-gray-900" for="Imagen">Selecione Imagen</label>
-<input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file">
+<input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " 
+id="Imagen" type="file" accept="image/*">
 
 {{-- Titulo --}}
 <div class="mb-6 mt-3">

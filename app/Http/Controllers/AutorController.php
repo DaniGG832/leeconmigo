@@ -58,7 +58,7 @@ class AutorController extends Controller
      */
     public function store(StoreAutorRequest $request)
     {
-        //return $request->validated();
+        dd( $request->validated());
 
         $autor = new Autor($request->validated());
 

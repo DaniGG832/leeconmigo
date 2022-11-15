@@ -61,7 +61,18 @@ class TemaController extends Controller
     public function store(StoreTemaRequest $request)
     {
 
-        //dd($request->validated()['img']);
+        if (isset( $request->validated()['img'])) {
+            
+            $filename = time().'.'.$request->validated()['img']->extension();
+
+            dd($filename);
+
+            /* TODO: subir imagen en el formulario */
+            //dd($request->img->hashName());
+
+            dd($request->validated()['img']->extension());
+        }
+        dd('sin imagen');
 
         //return $request->validated()['img'];
 

@@ -24,9 +24,9 @@ class UpdateAutorRequest extends FormRequest
     public function rules()
     {
         return [
-            'img'=>'',
-            'name'=>'',
-            'descripcion'=>'',
+            'img'=>'mimes:png,jpg,jpeg|max:10240',
+            'name'=>'required|min:3|max:255',
+            'descripcion'=>'required|min:3',
         ];
     }
 }

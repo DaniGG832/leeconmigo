@@ -42,12 +42,14 @@
 
                       {{-- Seleccionar archivo --}}
                       <label class="block mb-2 text-sm font-medium text-gray-900" for="Imagen">Selecione Imagen</label>
-                      <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file">
+                      <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " 
+                      id="Imagen" type="file" accept="image/*">
 
                       {{-- Titulo --}}
                       <div class="mb-6 mt-3">
                         <label for="name" class="block mb-2 text-md font-medium text-gray-900">Nombre</label>
-                        <input type="text" id="name" name="name" value="{{old('name',$autor->name)}}" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                        <input type="text" id="name" name="name" value="{{old('name',$autor->name)}}" required
+                        class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500">
                       </div>
 
                       {{-- descripción --}}
