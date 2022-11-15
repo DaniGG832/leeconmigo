@@ -18,12 +18,11 @@
 
             <div>
 
-
               <div class="flex ">
 
-                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('editoriales.admin')}}">Atras</a>
+                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('idiomas.admin')}}">Atras</a>
 
-                <h3 class="text-3xl font-medium text-gray-700 mt-5"> <span class="text-3xl font-medium text-gray-500 mt-5">Editorial:</span> {{$editorial->name}} </h3>
+                <h3 class="text-3xl font-medium text-gray-700 mt-5"> <span class="text-3xl font-medium text-gray-500 mt-5">Código:</span> {{$idioma->name}} </h3>
 
 
               </div>
@@ -40,10 +39,11 @@
                     <div class="flex-shrink-0  mt-1 lg:flex">
                       <img class=" rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt="">
                       <div class="text-3xl text-gray-500 mt-5 p-5">
-                        <h2>Descripción:</h2>
-                        <p class="text-sm text-2xl text-gray-700 mt-2">{{$editorial->descripcion}}</p>
+                        <h2>Idioma:</h2>
+                        <p class="text-sm text-2xl text-gray-700 mt-2">{{$idioma->descripcion}}</p>
                       </div>
                     </div>
+
 
 
 

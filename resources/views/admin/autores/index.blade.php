@@ -12,8 +12,10 @@
 
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 min-h-screen">
           <div class="container mx-auto px-6 py-8">
+            <x-session />
+            
             <div>
-              <h3 class="text-3xl font-medium text-gray-700">Autores</h3>
+              <h3 class="text-3xl font-medium text-gray-700">autores</h3>
               <div class="mt-4">
                 <div class="flex flex-wrap -mx-6">
                   <div class="w-full px-6 mt-2 xl:w-1/2 mt-1">
@@ -38,7 +40,7 @@
                 </div>
               </div>
               <div class="mt-8 ">
-                <a href="{{route('autores.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar Autor</a>
+                <a href="{{route('autores.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar autor</a>
               </div>
               <div class="flex flex-col mt-8">
                 <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -72,9 +74,16 @@
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$autor->created_at}}</td>
 
 
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-green-600 hover:text-green-900">Editar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-red-600 hover:text-red-900">Borrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('autores.show',$autor)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('autores.edit',$autor)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
+                            <form action="{{route('autores.destroy', $autor, true )}}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la autor')">Borrar</button>
+
+                            </form>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>
