@@ -44,6 +44,9 @@
                       <label class="block mb-2 text-sm font-medium text-gray-900" for="Imagen">Selecione Imagen</label>
                       <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*">
 
+                      <div id="pre">
+
+                      </div>
                       @error('img')
                       <p class="text-red-500 text-sm mt-1">
                         {{ $message }}
@@ -93,6 +96,77 @@
       </div>
     </div>
   </div>
+
+  <script>
+    var div = document.getElementById('pre');
+
+    function filePreview(input) {
+
+      if (input.files && input.files[0]) {
+
+        var reader = new FileReader();
+
+        reader.readAsDataURL(input.files[0]);
+
+        //let pre = Document.getElementById('pre');
+
+        console.log(pre);
+
+
+      }
+    }
+
+
+    let input = document.getElementById('Imagen');
+
+    input.addEventListener('change', function(e) {
+
+      var reader = new FileReader();
+
+      reader.readAsDataURL(input.files[0]);
+
+      console.log(reader);
+
+      reader.onload = function (e) {
+        console.log(e.target.result);
+
+        div.innerHTML = ("<img src="+e.target.result+" style= 'height: 100px'/>");
+
+
+      }
+
+    });
+
+    //Document.querySelector('input').addEventListener('change', filePreview(this));
+
+    /* function filePreview(input) {
+
+      if (input.files && input.files[0]) {
+
+        var reader = new FileReader();
+
+        reader.readAsDataURL(input.files[0]);
+
+        reader.onload = function(e) {
+
+          $(‘#uploadForm + img’).remove();
+
+          $(‘#uploadForm’).after(‘ < img src = ”‘+e.target.result + ‘”width = ”450″ height = ”300″ / > ’);
+
+        }
+
+      }
+
+    }
+
+    $(“#file”).change(function() {
+
+      filePreview(this);
+
+    });
+ */
+
+  </script>
 
 </x-admin>
 
