@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateAutorRequest;
 use App\Models\Autor;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class AutorController extends Controller
 {

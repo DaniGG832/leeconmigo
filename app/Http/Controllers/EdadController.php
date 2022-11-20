@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEdadRequest;
 use App\Http\Requests\UpdateEdadRequest;
 use App\Models\Edad;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class EdadController extends Controller
 {

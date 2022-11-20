@@ -38,8 +38,8 @@
                     
                     
                     <div class="flex-shrink-0  mt-1 lg:flex">
-                      <img class=" rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt="">
-                      <div class="text-3xl text-gray-500 mt-5 p-5">
+                      <img class=" rounded-lg max-h-64" src="{{$editorial->img ? asset($editorial->img) : asset('img/el-principito.jpg')}}" alt="">
+                      <div class="text-3xl text-gray-500 mt-5 p-5 w-96">
                         <h2>Descripción:</h2>
                         <p class="text-sm text-2xl text-gray-700 mt-2">{{$editorial->descripcion}}</p>
                       </div>

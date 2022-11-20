@@ -37,8 +37,8 @@
                   <div class="p-4 inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
 
 
-                    <div class="flex-shrink-0  mt-1 lg:flex w-96 ">
-                      <img class=" rounded-lg" src="{{$tema->img ? asset($tema->img) : asset('img/el-principito.jpg')}}" alt="">
+                    <div class="flex-shrink-0  mt-1 lg:flex  ">
+                      <img class=" rounded-lg max-h-64" src="{{$tema->img ? asset($tema->img) : asset('img/el-principito.jpg')}}" alt="">
                       <div class="text-3xl text-gray-500 mt-5 p-5">
                         <h2>Descripción:</h2>
                         <p class="text-sm text-2xl text-gray-700 mt-2">{{$tema->descripcion}}</p>

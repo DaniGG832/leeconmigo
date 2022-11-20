@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateEditorialRequest;
 use App\Models\Editorial;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class EditorialController extends Controller
 {
@@ -60,6 +62,15 @@ class EditorialController extends Controller
 
         $editorial = new Editorial($request->validated());
 
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/editorials');
+            
+            $url = FacadesStorage::url($imagen);
+
+            $editorial->img = $url;
+        }
+
         $editorial->save();
 
         return back()->with('success', "Editorial $editorial->name registrado correctamente");
@@ -99,6 +110,15 @@ class EditorialController extends Controller
         //return $request->validated();
 
         $editorial->fill($request->validated());
+
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/editorials');
+            
+            $url = FacadesStorage::url($imagen);
+
+            $editorial->img = $url;
+        }
 
         $editorial->save();
 

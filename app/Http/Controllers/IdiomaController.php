@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateIdiomaRequest;
 use App\Models\Idioma;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class IdiomaController extends Controller
 {

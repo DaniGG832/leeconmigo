@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateIlustradorRequest;
 use App\Models\Ilustrador;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class IlustradorController extends Controller
 {
