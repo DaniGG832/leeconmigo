@@ -65,7 +65,7 @@
                         <tr>
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                             <div class="flex items-center">
-                              <div class="flex-shrink-0 w-10 h-10"><img class="w-10 h-12 rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt=""></div>
+                              <div class="flex-shrink-0 w-10 h-10"><img class="w-10 h-12 rounded-lg" src="{{$tema->img ? asset($tema->img) : asset('img/el-principito.jpg')}}" alt=""></div>
                               <div class="ml-4">
                                 <div class="text-sm font-medium leading-5 text-gray-900">{{$tema->name}}</div>
 

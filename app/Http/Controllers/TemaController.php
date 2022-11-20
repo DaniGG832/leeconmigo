@@ -8,6 +8,9 @@ use App\Models\Ilustrador;
 use App\Models\Libro;
 use App\Models\Tema;
 use App\Models\User;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Iluminate\Support\Facades\storage;
 
 class TemaController extends Controller
 {
@@ -17,7 +20,7 @@ class TemaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function temasAdmin()
+    public function t()
     {
         
     }
@@ -60,23 +63,32 @@ class TemaController extends Controller
      */
     public function store(StoreTemaRequest $request)
     {
+        $tema = new Tema($request->validated());
+
+        //return($request);
 
         if (isset( $request->validated()['img'])) {
             
-            $filename = time().'.'.$request->validated()['img']->extension();
+            //return($request->img);
+            //$filename = time().'.'.$request->validated()['img']->extension();
 
-            dd($filename);
+            $imagen =$request->validated()['img']->store('public/imagenes/temas');
+            
+            //return $imagen;
+
+            $url = FacadesStorage::url($imagen);
+
+            //return $url;
+
+            //return($request->validated()['img']);
 
             /* TODO: subir imagen en el formulario */
             //dd($request->img->hashName());
 
-            dd($request->validated()['img']->extension());
+            //dd($request->validated()['img']->extension());
+            $tema->img = $url;
         }
-        dd('sin imagen');
-
-        //return $request->validated()['img'];
-
-        $tema = new Tema($request->validated());
+        
 
         $tema->save();
 
@@ -118,6 +130,15 @@ class TemaController extends Controller
         //return $request->validated();
 
         $tema->fill($request->validated());
+
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/temas');
+            
+            $url = FacadesStorage::url($imagen);
+
+            $tema->img = $url;
+        }
 
         $tema->save();
 

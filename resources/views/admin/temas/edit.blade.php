@@ -41,13 +41,28 @@
                       @method('put')
 
                       {{-- Seleccionar archivo --}}
-                      <label class="block mb-2 text-sm font-medium text-gray-900" for="Imagen">Selecione Imagen</label>
-                      <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img">
-                      @error('img')
-                      <p class="text-red-500 text-sm mt-1">
-                        {{ $message }}
-                      </p>
-                      @enderror
+                      <div>
+
+                        <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
+                        <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none" value="{{old('img',$tema->img)}}">
+                        {{-- <div id="pre" class="h-32 flex items-center ">
+                          <label class="block mb-2 text-md font-medium text-gray-900 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen"><img src="{{asset($tema->img) }}" alt="" ></label>
+                          {{-- <label class="block text-md font-medium text-gray-900" for="Imagen">click en la imagen para seleccionar otra.</label> --}}
+                        {{-- </div>  --}}
+
+                        
+                        <div id="pre" class="h-32 flex items-center ">
+                          <label for='Imagen'><img class='rounded-lg' src="{{$tema->img ? asset($tema->img) : asset('img/el-principito.jpg')}}" style= 'height: 7rem' for='Imagen'/></label>
+          <br><label class="block mb-2 text-md font-medium text-gray-900 ml-2 " for="Imagen">Click en la imagen para seleccionar otra.</label>
+                        </div>
+ 
+                        @error('img')
+                        <p class="text-red-500 text-sm mt-1">
+                          {{ $message }}
+                        </p>
+                        @enderror
+                      </div>
+
                       {{-- Titulo --}}
                       <div class="mb-6 mt-3">
                         <label for="name" class="block mb-2 text-md font-medium text-gray-900">Nombre</label>
