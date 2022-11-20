@@ -46,7 +46,7 @@
                         <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
                         <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none">
                         <div id="pre" class="h-32 flex items-center ">
-                          <label class="block mb-2 text-md font-medium text-gray-900 border border-blue-200 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">click aqui.</label>
+                          <label class="block mb-2 text-md font-medium text-gray-900 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">Click aquí.</label>
                           {{-- <label class="block text-md font-medium text-gray-900" for="Imagen">click en la imagen para seleccionar otra.</label> --}}
                         </div>
 
@@ -102,24 +102,10 @@
   </div>
 
   <script>
+
+    /* Previsualizar imagen antes de enviar un formulario */
+
     var div = document.getElementById('pre');
-
-    function filePreview(input) {
-
-      if (input.files && input.files[0]) {
-
-        var reader = new FileReader();
-
-        reader.readAsDataURL(input.files[0]);
-
-        //let pre = Document.getElementById('pre');
-
-        console.log(pre);
-
-
-      }
-    }
-
 
     let input = document.getElementById('Imagen');
 
@@ -132,60 +118,26 @@
 
             reader.readAsDataURL(input.files[0]);
 
-
             console.log(reader);
 
             reader.onload = function(e) {
               console.log(e.target.result);
 
               div.innerHTML = ("<label for='Imagen'><img class='rounded-lg' src=" + e.target.result + " style= 'height: 7rem' for='Imagen'/></label>" +
-                '<br><label class="block mb-2 text-md font-medium text-gray-900 ml-2 " for="Imagen">click en la imagen para seleccionar otra.</label>'
+                '<br><label class="block mb-2 text-md font-medium text-gray-900 ml-2 " for="Imagen">Click en la imagen para seleccionar otra.</label>'
               );
 
-
             }
-
 
           } else {
             console.log('no');
 
             div.innerHTML = ('<label class="block mb-2 text-md font-medium text-gray-900 border border-blue-200 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">click aqui.</label>');
 
-
             }
-
-
 
           });
 
-        //Document.querySelector('input').addEventListener('change', filePreview(this));
-
-        /* function filePreview(input) {
-
-      if (input.files && input.files[0]) {
-
-        var reader = new FileReader();
-
-        reader.readAsDataURL(input.files[0]);
-
-        reader.onload = function(e) {
-
-          $(‘#uploadForm + img’).remove();
-
-          $(‘#uploadForm’).after(‘ < img src = ”‘+e.target.result + ‘”width = ”450″ height = ”300″ / > ’);
-
-        }
-
-      }
-
-    }
-
-    $(“#file”).change(function() {
-
-      filePreview(this);
-
-    });
- */
 
   </script>
 
