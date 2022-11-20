@@ -127,7 +127,7 @@ class TemaController extends Controller
      */
     public function update(UpdateTemaRequest $request, Tema $tema)
     {
-        //return $request->validated();
+        //dd( $request->validated()['img']);
 
         $tema->fill($request->validated());
 
