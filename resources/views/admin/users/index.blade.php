@@ -38,7 +38,7 @@
                 </div>
               </div>
               {{-- <div class="mt-8 ">
-                <a href="{{route('libros.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar Libro</a>
+                <a href="{{route('admin.libros.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar Libro</a>
             </div> --}}
             <div class="flex flex-col mt-8">
               <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">

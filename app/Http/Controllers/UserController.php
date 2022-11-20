@@ -16,15 +16,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function usersAdmin()
+    public function users()
     {
 
-        $users = User::all();
-        $totalLibros = Libro::all()->count();
-        $totalUsuarios = User::all()->count();
-
-        //return $users;
-        return view('admin.users.index', compact(['users', 'totalUsuarios','totalLibros']));
+       
     }
 
 
@@ -38,7 +33,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.users.index', compact(['users', 'totalUsuarios','totalLibros']));
     }
 
     /**

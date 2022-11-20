@@ -16,14 +16,9 @@ class IdiomaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function idiomasAdmin()
+    public function i()
     {
-        $idiomas = Idioma::all();
-        $totalLibros = Libro::all()->count();
-        $totalUsuarios = User::all()->count();
-
-        //return $users;
-        return view('admin.idiomas.index', compact('idiomas', 'totalUsuarios','totalLibros'));
+        
     }
 
 
@@ -34,7 +29,12 @@ class IdiomaController extends Controller
      */
     public function index()
     {
-        //
+        $idiomas = Idioma::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.idiomas.index', compact('idiomas', 'totalUsuarios','totalLibros'));
     }
 
     /**
@@ -63,7 +63,7 @@ class IdiomaController extends Controller
 
         $idioma->save();
 
-        return back()->with('success', "Autor $idioma->name registrado correctamente");
+        return back()->with('success', "Idioma $idioma->name registrado correctamente");
     }
 
     /**
@@ -104,7 +104,7 @@ class IdiomaController extends Controller
 
          $idioma->save();
  
-         return redirect()->route('idiomas.admin')->with('success', "idioma $idioma->name editado correctamente");
+         return redirect()->route('admin.idiomas.index')->with('success', "idioma $idioma->name editado correctamente");
      
     }
 
@@ -122,13 +122,13 @@ class IdiomaController extends Controller
 
             
             //dd($idioma->libros);
-            return redirect()->route('idiomas.admin')->with('error', 'No se puede borrar un idioma con libros asociadas');
+            return redirect()->route('admin.idiomas.index')->with('error', 'No se puede borrar un idioma con libros asociadas');
             
         }else{
             
 
             $idioma->delete();
-            return redirect()->route('idiomas.admin')->with('success', 'idioma borrado correctamente');
+            return redirect()->route('admin.idiomas.index')->with('success', 'idioma borrado correctamente');
         }
     }
 }

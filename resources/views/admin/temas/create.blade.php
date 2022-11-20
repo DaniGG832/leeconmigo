@@ -21,7 +21,7 @@
 
               <div class="flex ">
 
-                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('temas.admin')}}">Atras</a>
+                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('admin.temas.index')}}">Atras</a>
 
                 <h3 class="text-3xl font-medium text-gray-700 mt-5">Registrar Tema </h3>
 
@@ -35,7 +35,7 @@
                     {{-- formulario --}}
 
 
-                    <form class="p-10" action="{{ route('temas.store', $tema, true) }}" enctype="multipart/form-data" method="post">
+                    <form class="p-10" action="{{ route('admin.temas.store', $tema, true) }}" enctype="multipart/form-data" method="post">
 
                       @csrf
                       @method('post')
@@ -61,7 +61,7 @@
                       <div class="mb-6 mt-3">
                         <label for="name" class="block mb-2 text-md font-medium text-gray-900">Nombre</label>
                         <input type="text" id="name" name="name" value="{{old('name',$tema->name)}}" required class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500">
-                        @error('img')
+                        @error('name')
                         <p class="text-red-500 text-sm mt-1">
                           {{ $message }}
                         </p>
@@ -74,7 +74,7 @@
                       <label for="descripcion" class="block mt-6 mb-2 text-sm font-medium text-gray-900 ">Descripción</label>
                       <textarea id="descripcion" name="descripcion" rows="4" required class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$tema->descripcion)}}</textarea>
 
-                      @error('img')
+                      @error('descripcion')
                       <p class="text-red-500 text-sm mt-1">
                         {{ $message }}
                       </p>

@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="mt-8 ">
-                <a href="{{route('idiomas.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar idioma</a>
+                <a href="{{route('admin.idiomas.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar idioma</a>
               </div>
               <div class="flex flex-col mt-8">
                 <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -74,10 +74,10 @@
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$idioma->created_at}}</td>
 
 
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('idiomas.show',$idioma)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('idiomas.edit',$idioma)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('admin.idiomas.show',$idioma)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('admin.idiomas.edit',$idioma)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
-                            <form action="{{route('idiomas.destroy', $idioma, true )}}" method="post">
+                            <form action="{{route('admin.idiomas.destroy', $idioma, true )}}" method="post">
                               @csrf
                               @method('DELETE')
                               <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la idioma')">Borrar</button>

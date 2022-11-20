@@ -22,13 +22,12 @@ class LibroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function librosAdmin()
+    public function mostrar()
     {
         $libros = Libro::all();
-        $totalUsuarios = User::all()->count();
-        $totalLibros = Libro::all()->count();
 
-        return view('admin.libros.index', compact(['libros', 'totalUsuarios','totalLibros']));
+        return view('user.libros.index', compact('libros'));
+        
     }
 
 
@@ -41,8 +40,10 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::all();
+        $totalUsuarios = User::all()->count();
+        $totalLibros = Libro::all()->count();
 
-        return view('user.libros.index', compact('libros'));
+        return view('admin.libros.index', compact(['libros', 'totalUsuarios','totalLibros']));
     }
 
     /**

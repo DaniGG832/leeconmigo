@@ -22,38 +22,38 @@
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('libros.admin')" :active="request()->routeIs('libros.admin')">
+      <x-link-admin :href="route('admin.libros.index')" :active="request()->routeIs('admin.libros.index')">
         {{ __('libros') }}
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('users.admin')" :active="request()->routeIs('users.admin')">
+      <x-link-admin :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
         {{ __('Usuarios') }}
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('autores.admin')" :active="request()->routeIs('autores.admin')">
+      <x-link-admin :href="route('admin.autores.index')" :active="request()->routeIs('admin.autores.index')">
         {{ __('Autores') }}
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('ilustradores.admin')" :active="request()->routeIs('ilustradores.admin')">
+      <x-link-admin :href="route('admin.ilustradores.index')" :active="request()->routeIs('admin.ilustradores.index')">
         {{ __('Ilustradores') }}
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('editoriales.admin')" :active="request()->routeIs('editoriales.admin')">
+      <x-link-admin :href="route('admin.editoriales.index')" :active="request()->routeIs('admin.editoriales.index')">
         {{ __('Editoriales') }}
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('temas.admin')" :active="request()->routeIs('temas.admin')">
+      <x-link-admin :href="route('admin.temas.index')" :active="request()->routeIs('admin.temas.index')">
         {{ __('Temas') }}
       </x-link-admin>
     </div>
     <div class="">
-      <x-link-admin :href="route('idiomas.admin')" :active="request()->routeIs('idiomas.admin')">
-        {{ __('idiomas') }}
+      <x-link-admin :href="route('admin.idiomas.index')" :active="request()->routeIs('admin.idiomas.index')">
+        {{ __('Idiomas') }}
       </x-link-admin>
     </div>
     

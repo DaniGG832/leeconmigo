@@ -21,7 +21,7 @@
 
               <div class="flex ">
 
-                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('autores.admin')}}">Atras</a>
+                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('admin.autores.index')}}">Atras</a>
 
                 <h3 class="text-3xl font-medium text-gray-700 mt-5">Registrar Autor </h3>
 
@@ -35,7 +35,7 @@
                     {{-- formulario --}}
 
 
-                    <form class="p-10" action="{{ route('autores.update', $autor, true) }}" method="post">
+                    <form class="p-10" action="{{ route('admin.autores.update', $autor, true) }}" method="post">
 
                       @csrf
                       @method('put')

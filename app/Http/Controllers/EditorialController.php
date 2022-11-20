@@ -16,14 +16,9 @@ class EditorialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function editorialesAdmin()
+    public function e()
     {
-        $editoriales = Editorial::all();
-        $totalLibros = Libro::all()->count();
-        $totalUsuarios = User::all()->count();
-
-        //return $users;
-        return view('admin.editoriales.index', compact('editoriales', 'totalUsuarios','totalLibros'));
+       
     }
 
     /**
@@ -33,7 +28,12 @@ class EditorialController extends Controller
      */
     public function index()
     {
-        //
+        $editoriales = Editorial::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.editoriales.index', compact('editoriales', 'totalUsuarios','totalLibros'));
     }
 
     /**
@@ -102,7 +102,7 @@ class EditorialController extends Controller
 
         $editorial->save();
 
-        return redirect()->route('editoriales.admin')->with('success', "Editorial $editorial->name editado correctamente");
+        return redirect()->route('admin.editoriales.index')->with('success', "Editorial $editorial->name editado correctamente");
     }
 
     /**
@@ -120,13 +120,13 @@ class EditorialController extends Controller
 
             
             //dd($editorial->libros);
-            return redirect()->route('editoriales.admin')->with('error', 'No se puede borrar un editorial con libros asociadas');
+            return redirect()->route('admin.editoriales.index')->with('error', 'No se puede borrar un editorial con libros asociadas');
             
         }else{
             
 
             $editorial->delete();
-            return redirect()->route('editoriales.admin')->with('success', 'editorial borrado correctamente');
+            return redirect()->route('admin.editoriales.index')->with('success', 'editorial borrado correctamente');
         }
     }
 }

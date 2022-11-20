@@ -19,12 +19,7 @@ class TemaController extends Controller
      */
     public function temasAdmin()
     {
-        $temas = Tema::paginate(12);
-        $totalLibros = Libro::all()->count();
-        $totalUsuarios = User::all()->count();
-
-        //return $users;
-        return view('admin.temas.index', compact('temas', 'totalUsuarios','totalLibros'));
+        
     }
 
 
@@ -37,7 +32,12 @@ class TemaController extends Controller
      */
     public function index()
     {
-        //
+        $temas = Tema::paginate(12);
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.temas.index', compact('temas', 'totalUsuarios','totalLibros'));
     }
 
     /**
@@ -121,7 +121,7 @@ class TemaController extends Controller
 
         $tema->save();
 
-        return redirect()->route('temas.admin')->with('success', "Tema $tema->name editado correctamente");
+        return redirect()->route('admin.temas.index')->with('success', "Tema $tema->name editado correctamente");
     }
 
     /**
@@ -135,11 +135,11 @@ class TemaController extends Controller
 
         if ($tema->libros->count()) {
             //dd($tema->libros);
-            return redirect()->route('temas.admin')->with('error', 'No se puede borrar un tema con libros asociadas');
+            return redirect()->route('admin.temas.index')->with('error', 'No se puede borrar un tema con libros asociadas');
             
         }else{
             $tema->delete();
-            return redirect()->route('temas.admin')->with('success', 'tema borrado correctamente');
+            return redirect()->route('admin.temas.index')->with('success', 'tema borrado correctamente');
         }
 
         

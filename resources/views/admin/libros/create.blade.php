@@ -21,7 +21,7 @@
 
               <div class="flex ">
 
-                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('libros.admin')}}">Atras</a>
+                <a class=" mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2" href="{{route('admin.libros.index')}}">Atras</a>
 
                 <h3 class="text-3xl font-medium text-gray-700 mt-5">Crear ficha libro </h3>
 
@@ -39,7 +39,7 @@
 
 
 
-                      <form class="p-10" action="{{ route('libros.store', $libro, true) }}" method="post">
+                      <form class="p-10" action="{{ route('admin.libros.store', $libro, true) }}" method="post">
 
                         @csrf
                         @method('post')
