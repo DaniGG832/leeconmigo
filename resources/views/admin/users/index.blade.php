@@ -51,7 +51,7 @@
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Rol </th>
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Stasus </th>
                         <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Fecha alta </th>
-                        <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Comentarios </th>
+                        {{-- <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Comentarios </th> --}}
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
@@ -115,7 +115,7 @@
 
                         <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">{{$user->created_at}}</td>
 
-                        @if ($user->comentar)
+                        {{-- @if ($user->comentar)
 
                         <td class="px-3 py-2 text-sm font-medium leading-5 text-center border-b border-gray-200 whitespace-nowrap"><a href="#" class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-200 rounded-full hover:text-red-100 hover:bg-red-600">Bloquear</a></td>
 
@@ -123,7 +123,7 @@
                         
                         <td class="px-3 py-2 text-sm font-medium leading-5 text-center border-b border-gray-200 whitespace-nowrap"><a href="#" class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full hover:text-green-900 hover:bg-green-600" >Desbloquear</a></td>
 
-                        @endif
+                        @endif --}}
 
 
                         <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>

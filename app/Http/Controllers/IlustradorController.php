@@ -68,7 +68,7 @@ class IlustradorController extends Controller
             
             
 
-            $imagen =$request->validated()['img']->store('public/imagenes/ilustradors');
+            $imagen =$request->validated()['img']->store('public/imagenes/ilustradores');
             
             //return $imagen;
 
@@ -122,7 +122,7 @@ class IlustradorController extends Controller
 
         if (isset( $request->validated()['img'])) {
             
-            $imagen =$request->validated()['img']->store('public/imagenes/ilustradors');
+            $imagen =$request->validated()['img']->store('public/imagenes/ilustradores');
             
             $url = FacadesStorage::url($imagen);
 

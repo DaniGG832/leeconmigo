@@ -11,6 +11,7 @@ use App\Models\Encuadernacion;
 use App\Models\Idioma;
 use App\Models\Ilustrador;
 use App\Models\Libro;
+
 use App\Models\Tema;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
@@ -58,8 +59,10 @@ class LibroController extends Controller
 
         $libro = new Libro();
         $temas = Tema::all();
+        $libros = libro::all();
         $autores = Autor::all();
         $ilustradores = Ilustrador::all();
+        $libros = libro::all();
         $editoriales = Editorial::all();
         $edades = Edad::all();
         $idiomas = Idioma::all();
@@ -70,8 +73,10 @@ class LibroController extends Controller
             compact(
                 'libro',
                 'temas',
+                'libros',
                 'autores',
                 'ilustradores',
+                'libros',
                 'editoriales',
                 'edades',
                 'idiomas',
@@ -88,14 +93,23 @@ class LibroController extends Controller
      */
     public function store(StoreLibroRequest $request)
     {
-        //return $request->validated();
+        //return $request->validated()['temas'];
 
         $libro = new Libro($request->validated());
 
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/libros');
+            
+            $url = FacadesStorage::url($imagen);
+
+            $libro->img = $url;
+        }
         //return $libro;
 
         $libro->save();
 
+        
         $libro->temas()->sync($request->validated()['temas']);
 
         return back()->with('success', "Ficha de $libro->titulo creada correctamente");
@@ -109,7 +123,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-        //
+        return view('admin.libros.show', compact('libro'));
     }
 
     /**

@@ -39,7 +39,7 @@
 
 
 
-                      <form class="p-10" action="{{ route('admin.libros.store', $libro, true) }}" method="post">
+                      <form class="p-10" action="{{ route('admin.libros.store', $libro, true) }}" method="post" enctype="multipart/form-data">
 
                         @csrf
                         @method('post')
