@@ -37,7 +37,8 @@
                     
                     
                     <div class="flex-shrink-0  mt-1 lg:flex">
-                      <img class=" rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt="">
+                      <img class=" rounded-lg max-h-64" src="{{$ilustrador->img ? asset($ilustrador->img) : asset('img/el-principito.jpg')}}" alt="">
+
                       <div class="text-3xl text-gray-500 mt-5 p-5">
                         <h2>Descripción:</h2>
                         <p class="text-sm text-2xl text-gray-700 mt-2">{{$ilustrador->descripcion}}</p>

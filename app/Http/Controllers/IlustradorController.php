@@ -64,6 +64,20 @@ class IlustradorController extends Controller
 
         $ilustrador = new Ilustrador($request->validated());
 
+        if (isset( $request->validated()['img'])) {
+            
+            
+
+            $imagen =$request->validated()['img']->store('public/imagenes/ilustradors');
+            
+            //return $imagen;
+
+            $url = FacadesStorage::url($imagen);
+
+            
+            $ilustrador->img = $url;
+        }
+        
         $ilustrador->save();
 
         return back()->with('success', "Autor $ilustrador->name registrado correctamente");
@@ -106,6 +120,15 @@ class IlustradorController extends Controller
 
         $ilustrador->fill($request->validated());
 
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/ilustradors');
+            
+            $url = FacadesStorage::url($imagen);
+
+            $ilustrador->img = $url;
+        }
+        
         $ilustrador->save();
 
         return redirect()->route('admin.ilustradores.index')->with('success', "ilustrador $ilustrador->name editado correctamente");

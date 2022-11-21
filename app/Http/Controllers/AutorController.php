@@ -50,9 +50,20 @@ class AutorController extends Controller
      */
     public function store(StoreAutorRequest $request)
     {
-        dd( $request->validated());
+        //dd( $request->validated());
 
         $autor = new Autor($request->validated());
+        if (isset( $request->validated()['img'])) { 
+
+            $imagen =$request->validated()['img']->store('public/imagenes/autors');
+            
+            //return $imagen;
+
+            $url = FacadesStorage::url($imagen);
+
+            
+            $autor->img = $url;
+        }
 
         $autor->save();
 
@@ -95,7 +106,15 @@ class AutorController extends Controller
         //return $request->validated();
 
         $autor->fill($request->validated());
+        
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/autors');
+            
+            $url = FacadesStorage::url($imagen);
 
+            $autor->img = $url;
+        }
         $autor->save();
 
         return redirect()->route('admin.autores.index')->with('success', "autor $autor->name editado correctamente");

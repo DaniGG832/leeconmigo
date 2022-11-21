@@ -9,6 +9,8 @@ use App\Models\Libro;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
+use Iluminate\Support\Facades\storage;
+
 
 class IdiomaController extends Controller
 {
@@ -63,6 +65,18 @@ class IdiomaController extends Controller
 
         $idioma = new idioma($request->validated());
 
+        if (isset( $request->validated()['img'])) { 
+
+            $imagen =$request->validated()['img']->store('public/imagenes/idiomas');
+            
+            //return $imagen;
+
+            $url = FacadesStorage::url($imagen);
+
+            
+            $idioma->img = $url;
+        }
+
         $idioma->save();
 
         return back()->with('success', "Idioma $idioma->name registrado correctamente");
@@ -104,7 +118,18 @@ class IdiomaController extends Controller
 
          $idioma->fill($request->validated());
 
+         if (isset( $request->validated()['img'])) {
+             
+             $imagen =$request->validated()['img']->store('public/imagenes/idiomas');
+             
+             $url = FacadesStorage::url($imagen);
+ 
+             $idioma->img = $url;
+         }
+ 
          $idioma->save();
+        
+        
  
          return redirect()->route('admin.idiomas.index')->with('success', "idioma $idioma->name editado correctamente");
      

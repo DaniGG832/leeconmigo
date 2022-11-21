@@ -64,7 +64,7 @@ class EditorialController extends Controller
 
         if (isset( $request->validated()['img'])) {
             
-            $imagen =$request->validated()['img']->store('public/imagenes/editorials');
+            $imagen =$request->validated()['img']->store('public/imagenes/editoriales');
             
             $url = FacadesStorage::url($imagen);
 
@@ -113,7 +113,7 @@ class EditorialController extends Controller
 
         if (isset( $request->validated()['img'])) {
             
-            $imagen =$request->validated()['img']->store('public/imagenes/editorials');
+            $imagen =$request->validated()['img']->store('public/imagenes/editoriales');
             
             $url = FacadesStorage::url($imagen);
 
