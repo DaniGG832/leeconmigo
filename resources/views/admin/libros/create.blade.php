@@ -4,20 +4,20 @@
     <div class="flex font-roboto">
 
       <x-nav-admin></x-nav-admin>
-      
-      
+
+
       <div class="flex-1 flex flex-col overflow-hidden">
-        
+
         <x-header-admin></x-header-admin>
-        
-        
+
+
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 min-h-screen">
           <div class="container mx-auto px-6 py-8">
-            
-            <x-session/>
-            
+
+            <x-session />
+
             <div>
-              
+
 
               <div class="flex ">
 
@@ -43,7 +43,15 @@
 
                         @csrf
                         @method('post')
+                        {{-- Seleccionar archivo --}}
+                        <div>
 
+                          <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
+                          <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none" value="{{old('img',$libro->img)}}">
+                          <div id="pre" class="h-32 flex items-center ">
+                            <label class="block mb-2 text-md font-medium text-gray-600 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">Click aquí.</label>
+                            {{-- <label class="block text-md font-medium text-gray-900" for="Imagen">click en la imagen para seleccionar otra.</label> --}}
+                          </div>
 
 
                     </x-form-libros>

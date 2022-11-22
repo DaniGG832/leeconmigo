@@ -24,7 +24,22 @@ class UpdateLibroRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo'=> '',
+            'titulo_original'=> '',
+            'ISBN13'=> 'unique:libros,ISBN10'.$this->id,
+            'ISBN13'=> 'unique:libros,ISBN13'.$this->libros()->id,
+            'year'=> '',
+            'n_pag'=> '',
+            'img'=> '',
+            'descripcion'=> '',
+            'sinopsis'=> '',
+            'editorial_id'=> '',
+            'ilustrador_id'=> '',
+            'edad_id'=> '', 
+            'idioma_id'=> '', 
+            'autor_id'=> '',
+            'encuadernacion_id'=> '',
+            'temas'=>'',
         ];
     }
 }

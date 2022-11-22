@@ -1,15 +1,7 @@
 {{ $slot }}
 
 
-{{-- Seleccionar archivo --}}
-<div>
 
-  <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
-  <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none" value="{{old('img',$libro->img)}}">
-  <div id="pre" class="h-32 flex items-center ">
-    <label class="block mb-2 text-md font-medium text-gray-600 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">Click aquí.</label>
-    {{-- <label class="block text-md font-medium text-gray-900" for="Imagen">click en la imagen para seleccionar otra.</label> --}}
-  </div>
 
   @error('img')
   <p class="text-red-500 text-sm mt-1">
@@ -132,7 +124,7 @@
 
       @foreach ($autores as $autor)
 
-      <option value="{{$autor->id}}">{{$autor->name}}</option>
+      <option value="{{$autor->id}}" {{$libro->autor_id==$autor->id ? 'selected' : ''}}>{{$autor->name}}</option>
 
       @endforeach
 
@@ -155,7 +147,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($ilustradores as $ilustrador)
-      <option value="{{$ilustrador->id}}">{{$ilustrador->name}}</option>
+      <option value="{{$ilustrador->id}}" {{$libro->ilustrador_id==$ilustrador->id ? 'selected' : ''}}>{{$ilustrador->name}}</option>
 
       @endforeach
 
@@ -175,7 +167,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($editoriales as $editorial)
-      <option value="{{$editorial->id}}">{{$editorial->name}}</option>
+      <option value="{{$editorial->id}}" {{$libro->editorial_id==$editorial->id ? 'selected' : ''}}>{{$editorial->name}}</option>
 
       @endforeach
 
@@ -197,7 +189,7 @@
 
 
       @foreach ($edades as $edad)
-      <option value="{{$edad->id}}">{{$edad->descripcion}}</option>
+      <option value="{{$edad->id}}"{{$libro->edad_id==$edad->id ? 'selected' : ''}} >{{$edad->descripcion}}</option>
 
       @endforeach
 
@@ -237,7 +229,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($encuadernaciones as $encuadernacion)
-      <option value="{{$encuadernacion->id}}">{{$encuadernacion->name}}</option>
+      <option value="{{$encuadernacion->id}}" {{$libro->encuadernacion_id==$encuadernacion->id ? 'selected' : ''}}>{{$encuadernacion->name}}</option>
 
       @endforeach
 
@@ -258,7 +250,8 @@
   @foreach ($temas as $tema)
 
   <div class="flex items-center mb-4">
-    <input id="{{$tema->name}}" type="checkbox" value="{{$tema->id}}" name="temas[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+    <input id="{{$tema->name}}" type="checkbox" value="{{$tema->id}}" name="temas[]" {{$libro->temas->contains($tema) ? 'checked' : ''}} 
+    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
     <label for="{{$tema->name}}" class="ml-2 text-sm font-medium text-gray-900 ">{{$tema->name}}</label>
   </div>
 
