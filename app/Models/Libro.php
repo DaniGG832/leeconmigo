@@ -50,6 +50,16 @@ class Libro extends Model
         return $this->belongsTo(Ilustrador::class, 'ilustrador_id', 'id');
     }
 
+    /**
+     * Get the ilustrador that owns the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function editorial()
+    {
+        return $this->belongsTo(Editorial::class, 'editorial_id', 'id');
+    }
+
 
     /**
      * Get the ilustrador that owns the Libro
