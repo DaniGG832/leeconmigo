@@ -7,6 +7,10 @@ use App\Http\Requests\UpdateIdiomaRequest;
 use App\Models\Idioma;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
+use Iluminate\Support\Facades\storage;
+
 
 class IdiomaController extends Controller
 {
@@ -16,14 +20,9 @@ class IdiomaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function idiomasAdmin()
+    public function i()
     {
-        $idiomas = Idioma::all();
-        $totalLibros = Libro::all()->count();
-        $totalUsuarios = User::all()->count();
-
-        //return $users;
-        return view('admin.idiomas.index', compact('idiomas', 'totalUsuarios','totalLibros'));
+        
     }
 
 
@@ -34,7 +33,12 @@ class IdiomaController extends Controller
      */
     public function index()
     {
-        //
+        $idiomas = Idioma::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.idiomas.index', compact('idiomas', 'totalUsuarios','totalLibros'));
     }
 
     /**
@@ -61,9 +65,21 @@ class IdiomaController extends Controller
 
         $idioma = new idioma($request->validated());
 
+        if (isset( $request->validated()['img'])) { 
+
+            $imagen =$request->validated()['img']->store('public/imagenes/idiomas');
+            
+            //return $imagen;
+
+            $url = FacadesStorage::url($imagen);
+
+            
+            $idioma->img = $url;
+        }
+
         $idioma->save();
 
-        return back()->with('success', "Autor $idioma->name registrado correctamente");
+        return back()->with('success', "Idioma $idioma->name registrado correctamente");
     }
 
     /**
@@ -102,9 +118,20 @@ class IdiomaController extends Controller
 
          $idioma->fill($request->validated());
 
-         $idioma->save();
+         if (isset( $request->validated()['img'])) {
+             
+             $imagen =$request->validated()['img']->store('public/imagenes/idiomas');
+             
+             $url = FacadesStorage::url($imagen);
  
-         return redirect()->route('idiomas.admin')->with('success', "idioma $idioma->name editado correctamente");
+             $idioma->img = $url;
+         }
+ 
+         $idioma->save();
+        
+        
+ 
+         return redirect()->route('admin.idiomas.index')->with('success', "idioma $idioma->name editado correctamente");
      
     }
 
@@ -122,13 +149,13 @@ class IdiomaController extends Controller
 
             
             //dd($idioma->libros);
-            return redirect()->route('idiomas.admin')->with('error', 'No se puede borrar un idioma con libros asociadas');
+            return redirect()->route('admin.idiomas.index')->with('error', 'No se puede borrar un idioma con libros asociadas');
             
         }else{
             
 
             $idioma->delete();
-            return redirect()->route('idiomas.admin')->with('success', 'idioma borrado correctamente');
+            return redirect()->route('admin.idiomas.index')->with('success', 'idioma borrado correctamente');
         }
     }
 }

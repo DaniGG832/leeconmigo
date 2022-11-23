@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateIlustradorRequest;
 use App\Models\Ilustrador;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class IlustradorController extends Controller
 {
@@ -18,14 +20,9 @@ class IlustradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function ilustradoresAdmin()
+    public function i()
     {
-        $ilustradores = Ilustrador::all();
-        $totalLibros = Libro::all()->count();
-        $totalUsuarios = User::all()->count();
-
-        //return $users;
-        return view('admin.ilustradores.index', compact('ilustradores', 'totalUsuarios','totalLibros'));
+        
     }
 
     /**
@@ -35,7 +32,12 @@ class IlustradorController extends Controller
      */
     public function index()
     {
-        //
+        $ilustradores = Ilustrador::all();
+        $totalLibros = Libro::all()->count();
+        $totalUsuarios = User::all()->count();
+
+        //return $users;
+        return view('admin.ilustradores.index', compact('ilustradores', 'totalUsuarios','totalLibros'));
     }
 
     /**
@@ -62,6 +64,20 @@ class IlustradorController extends Controller
 
         $ilustrador = new Ilustrador($request->validated());
 
+        if (isset( $request->validated()['img'])) {
+            
+            
+
+            $imagen =$request->validated()['img']->store('public/imagenes/ilustradores');
+            
+            //return $imagen;
+
+            $url = FacadesStorage::url($imagen);
+
+            
+            $ilustrador->img = $url;
+        }
+        
         $ilustrador->save();
 
         return back()->with('success', "Autor $ilustrador->name registrado correctamente");
@@ -104,9 +120,18 @@ class IlustradorController extends Controller
 
         $ilustrador->fill($request->validated());
 
+        if (isset( $request->validated()['img'])) {
+            
+            $imagen =$request->validated()['img']->store('public/imagenes/ilustradores');
+            
+            $url = FacadesStorage::url($imagen);
+
+            $ilustrador->img = $url;
+        }
+        
         $ilustrador->save();
 
-        return redirect()->route('ilustradores.admin')->with('success', "ilustrador $ilustrador->name editado correctamente");
+        return redirect()->route('admin.ilustradores.index')->with('success', "ilustrador $ilustrador->name editado correctamente");
     
     }
 
@@ -124,13 +149,13 @@ class IlustradorController extends Controller
 
             
             //dd($ilustrador->libros);
-            return redirect()->route('ilustradores.admin')->with('error', 'No se puede borrar un ilustrador con libros asociadas');
+            return redirect()->route('admin.ilustradores.index')->with('error', 'No se puede borrar un ilustrador con libros asociadas');
             
         }else{
             
 
             $ilustrador->delete();
-            return redirect()->route('ilustradores.admin')->with('success', 'ilustrador borrado correctamente');
+            return redirect()->route('admin.ilustradores.index')->with('success', 'ilustrador borrado correctamente');
         }
     }
 }

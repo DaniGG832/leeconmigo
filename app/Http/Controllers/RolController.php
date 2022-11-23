@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRolRequest;
 use App\Http\Requests\UpdateRolRequest;
+use App\Models\Autor;
+use App\Models\Ilustrador;
+use App\Models\Libro;
 use App\Models\Rol;
+use App\Models\User;
 
 use function Ramsey\Uuid\v1;
 
@@ -17,7 +21,13 @@ class RolController extends Controller
      */
     public function index()
     {
-        return view('admin.admin');
+
+        $totalUsuarios = User::all()->count();
+        $totalLibros = Libro::all()->count();
+        $totalAutores = Autor::all()->count();
+        $totalIlustrador = Ilustrador::all()->count();
+
+        return view('admin.admin', compact('totalUsuarios', 'totalLibros', 'totalLibros'));
     }
 
     /**

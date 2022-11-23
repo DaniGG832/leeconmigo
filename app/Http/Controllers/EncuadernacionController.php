@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEncuadernacionRequest;
 use App\Http\Requests\UpdateEncuadernacionRequest;
 use App\Models\Encuadernacion;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 
 class EncuadernacionController extends Controller
 {

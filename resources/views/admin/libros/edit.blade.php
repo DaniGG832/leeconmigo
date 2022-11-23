@@ -39,19 +39,22 @@
 
 
 
-                      <form class="p-10" action="{{ route('admin.libros.store', $libro, true) }}" method="post" enctype="multipart/form-data">
+                      <form class="p-10" action="{{ route('admin.libros.update', $libro, true) }}" method="post" enctype="multipart/form-data">
 
                         @csrf
-                        @method('post')
-                        {{-- Seleccionar archivo --}}
-                        <div>
+                        @method('PUT')
+                        
+                          {{-- Seleccionar archivo --}}
+                      <div>
 
-                          <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
-                          <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none" value="{{old('img',$libro->img)}}">
-                          <div id="pre" class="h-32 flex items-center ">
-                            <label class="block mb-2 text-md font-medium text-gray-600 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">Click aquí.</label>
-                            {{-- <label class="block text-md font-medium text-gray-900" for="Imagen">click en la imagen para seleccionar otra.</label> --}}
-                          </div>
+                        <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
+                        <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none" value="{{old('img',$libro->img)}}">
+
+
+                        <div id="pre" class="h-32 flex items-center ">
+                          <label for='Imagen'><img class='rounded-lg' src="{{$libro->img ? asset($libro->img) : asset('img/el-principito.jpg')}}" style='height: 7rem' for='Imagen' /></label>
+                          <br><label class="block mb-2 text-md font-medium text-gray-800 ml-2 " for="Imagen">Click en la imagen para seleccionar otra.</label>
+                        </div>
 
 
                     </x-form-libros>
@@ -68,18 +71,3 @@
   </div>
 
 </x-admin>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- -------------------------------------------------------------------------------------------------------------------------- --}}

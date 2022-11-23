@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="mt-8 ">
-                <a href="{{route('editoriales.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar Editorial</a>
+                <a href="{{route('admin.editoriales.create')}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Registrar Editorial</a>
               </div>
               <div class="flex flex-col mt-8">
                 <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -63,9 +63,9 @@
                         <tr>
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                             <div class="flex items-center">
-                              <div class="flex-shrink-0 w-10 h-10"><img class="w-10 h-12 rounded-lg" src="{{asset('img/el-principito.jpg')}}" alt=""></div>
+                              <div class="flex-shrink-0 w-10 h-10"><a href="{{route('admin.editoriales.show',$editorial)}}"><img class="w-10 h-12 rounded-lg" src="{{$editorial->img ? asset($editorial->img) :asset('img/el-principito.jpg')}}" alt=""></a></div>
                               <div class="ml-4">
-                                <div class="text-sm font-medium leading-5 text-gray-900">{{$editorial->name}}</div>
+                                <div class="text-sm font-medium leading-5 text-gray-900"><a href="{{route('admin.editoriales.show',$editorial)}}">{{$editorial->name}}</a></div>
 
                               </div>
                             </div>
@@ -74,10 +74,10 @@
                           <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$editorial->created_at}}</td>
 
 
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('editoriales.show',$editorial)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
-                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('editoriales.edit',$editorial)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('admin.editoriales.show',$editorial)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                          <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('admin.editoriales.edit',$editorial)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
-                            <form action="{{route('editoriales.destroy', $editorial, true )}}" method="post">
+                            <form action="{{route('admin.editoriales.destroy', $editorial, true )}}" method="post">
                               @csrf
                               @method('DELETE')
                               <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la editorial')">Borrar</button>
