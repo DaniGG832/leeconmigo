@@ -55,7 +55,7 @@ class AutorController extends Controller
         $autor = new Autor($request->validated());
         if (isset( $request->validated()['img'])) { 
 
-            $imagen =$request->validated()['img']->store('public/imagenes/autors');
+            $imagen =$request->validated()['img']->store('public/imagenes/autores');
             
             //return $imagen;
 
@@ -109,7 +109,7 @@ class AutorController extends Controller
         
         if (isset( $request->validated()['img'])) {
             
-            $imagen =$request->validated()['img']->store('public/imagenes/autors');
+            $imagen =$request->validated()['img']->store('public/imagenes/autores');
             
             $url = FacadesStorage::url($imagen);
 

@@ -44,6 +44,7 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::all();
+        $libros = $libros->sortByDesc('year');
         $totalUsuarios = User::all()->count();
         $totalLibros = Libro::all()->count();
 

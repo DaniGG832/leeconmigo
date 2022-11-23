@@ -189,7 +189,7 @@
 
 
       @foreach ($edades as $edad)
-      <option value="{{$edad->id}}"{{$libro->edad_id==$edad->id ? 'selected' : ''}} >{{$edad->descripcion}}</option>
+      <option value="{{$edad->id}}" {{$libro->edad_id==$edad->id ? 'selected' : ''}} >{{$edad->descripcion}}</option>
 
       @endforeach
 
@@ -209,7 +209,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($idiomas as $idioma)
-      <option value="{{$idioma->id}}">{{$idioma->descripcion}} - {{$idioma->name}}</option>
+      <option value="{{$idioma->id}}" {{$libro->idioma_id==$idioma->id ? 'selected' : ''}} >{{$idioma->descripcion}} - {{$idioma->name}}</option>
 
       @endforeach
 

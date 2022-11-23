@@ -23,12 +23,13 @@ class UpdateLibroRequest extends FormRequest
      */
     public function rules()
     {
+        /* OJO: muy importante la coma dentro de las comillas para el 'unique:libros,ISBN13,'.$this->libro->id, (ISBN13 , '.$this) */
         return [
             'titulo'=> '',
             'titulo_original'=> '',
-            'ISBN13'=> 'unique:libros,ISBN10'.$this->id,
-            'ISBN13'=> 'unique:libros,ISBN13'.$this->libros()->id,
+            'ISBN10'=> 'unique:libros,ISBN10,'.$this->libro->id, 
             'year'=> '',
+            'ISBN13'=> 'unique:libros,ISBN13,'.$this->libro->id, 
             'n_pag'=> '',
             'img'=> '',
             'descripcion'=> '',
