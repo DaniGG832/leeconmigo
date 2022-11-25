@@ -30,6 +30,8 @@
                                 <span class="text-sm font-semibold">ab</span>&nbsp;<span class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
                               </div>
                             </div>
+                            <div class="p-4 flex items-center text-sm text-gray-600"><span class="ml-2">34 Bewertungen</span></div>
+                            
                             <div class="p-4 border-t border-b text-xs text-gray-700">
                               
                                 @foreach ($libro->temas as $tema)
@@ -40,8 +42,6 @@
                                 @endforeach
                                  
                             </div>
-                            <div class="p-4 flex items-center text-sm text-gray-600"><span class="ml-2">34 Bewertungen</span></div>
-                          
                           </div>
 
                         @endforeach
