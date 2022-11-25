@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateLibroRequest extends FormRequest
 {
@@ -27,9 +28,9 @@ class UpdateLibroRequest extends FormRequest
         return [
             'titulo'=> '',
             'titulo_original'=> '',
-            'ISBN10'=> 'unique:libros,ISBN10,'.$this->libro->id, 
+            'ISBN10'=> 'nullable|unique:libros,ISBN10,'.$this->libro->id,
+            'ISBN13'=> 'nullable|unique:libros,ISBN13,'.$this->libro->id, 
             'year'=> '',
-            'ISBN13'=> 'unique:libros,ISBN13,'.$this->libro->id, 
             'n_pag'=> '',
             'img'=> '',
             'descripcion'=> '',

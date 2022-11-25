@@ -27,7 +27,7 @@ return new class extends Migration
             //$table->string('encuadernacion')->nullable();
             //$table->string('idioma')->nullable();
             $table->foreignId('editorial_id')->constrained('editoriales');
-            $table->foreignId('ilustrador_id')->constrained('ilustradores');
+            $table->foreignId('ilustrador_id')->constrained('ilustradores')->nullable();
             $table->foreignId('edad_id')->constrained('edades');
             $table->foreignId('idioma_id')->constrained('idiomas');
             $table->foreignId('autor_id')->constrained('autores');
