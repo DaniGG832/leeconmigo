@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolSeeder::class);
         $this->call(EdadSeeder::class);
         $this->call(IdiomaSeeder::class);
+        $this->call(EncuadernacionSeeder::class);
 
         User::truncate(); 
 

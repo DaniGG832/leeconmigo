@@ -1,5 +1,9 @@
-<header class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-blue-600">
-  <div class="flex items-center"><button class="text-gray-500 focus:outline-none lg:hidden"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<header class="flex items-center justify-between {{-- px-6 py-4 --}} bg-white border-b-4 border-blue-600">
+
+  <x-nav>
+
+  </x-nav>
+  {{-- <div class="flex items-center"><button class="text-gray-500 focus:outline-none lg:hidden"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg></button>
     <div class="relative mx-4 lg:mx-0"><span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none">
@@ -13,5 +17,5 @@
       <div class="fixed inset-0 z-10 w-full h-full" style="display: none;"></div>
       <div class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl" style="display: none;"><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">Profile</a><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">Products</a><a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">Log out</a></div>
     </div>
-  </div>
+  </div> --}}
 </header>

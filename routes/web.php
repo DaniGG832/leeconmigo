@@ -35,13 +35,13 @@ require __DIR__ . '/auth.php';
 
 
 
+Route::get('libros', [LibroController::class, 'mostrar'])->name('libros.mostrar');
 
 
 Route::middleware(['auth'])->group(function () {
 
 
 
-     Route::get('libros', [LibroController::class, 'mostrar'])->name('libros.mostrar');
 
     //Route::get('libros/{libro}', [LibroController::class, 'show'])->name('libro.show');
 
