@@ -25,7 +25,7 @@
                             <div class="p-4">
                               <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
                               <h2 class="mt-2 mb-2  font-bold">{{$libro->titulo}}</h2>
-                              <p class="text-sm">{{$libro->titulo ?? ''}} </p>
+                              <p class="text-sm">{{$libro->titulo_original ?? ''}} </p>
                               <div class="mt-3 flex items-center">
                                 <span class="text-sm font-semibold">ab</span>&nbsp;<span class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
                               </div>
