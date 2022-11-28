@@ -40,6 +40,16 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
+                        @if (Auth::user()->rol_id!=1)
+                            
+                        <x-dropdown-link :href="route('admin')">
+                       
+                                             
+                                 {{ __('admin') }}
+                             </x-dropdown-link>
+                             
+                       @endif
+                       
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -50,15 +60,6 @@
                             </x-dropdown-link>
                         </form>
                     
-                       @if (Auth::user()->rol_id!=1)
-                           
-                       <x-dropdown-link :href="route('admin')">
-                      
-                                            
-                                {{ __('admin') }}
-                            </x-dropdown-link>
-                            
-                      @endif
                         
 
                     </x-slot>

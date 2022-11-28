@@ -15,14 +15,34 @@ use Iluminate\Support\Facades\storage;
 class TemaController extends Controller
 {
     
-/**
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function t()
+    public function userIndex()
     {
-        
+        $temas = Tema::paginate(15);
+
+
+        //return $users;
+        return view('user.temas.index', compact('temas'));
+    }
+
+/**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Tema  $tema
+     * @return \Illuminate\Http\Response
+     */
+    public function mostrar(Tema $tema)
+    {
+        $libros =$tema->libros;
+        //return $libros;
+
+        return view('user/temas/show',compact  ('libros','tema'));
     }
 
 

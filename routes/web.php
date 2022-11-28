@@ -33,9 +33,14 @@ require __DIR__ . '/auth.php';
 
 
 
-
+/* rutas publicas */
 
 Route::get('libros', [LibroController::class, 'mostrar'])->name('libros.mostrar');
+
+Route::get('temas', [TemaController::class,'userIndex'])->name('temas.index');
+Route::get('temas/{tema}', [TemaController::class,'mostrar'])->name('tema.libros');
+
+
 
 
 Route::middleware(['auth'])->group(function () {
