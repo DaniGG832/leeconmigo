@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutorController;
+use App\Http\Controllers\EdadController;
 use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
@@ -35,11 +36,14 @@ require __DIR__ . '/auth.php';
 
 /* rutas publicas */
 
-Route::get('libros', [LibroController::class, 'mostrar'])->name('libros.mostrar');
+Route::get('libros', [LibroController::class, 'userIndex'])->name('libros');
+Route::get('libros/{libro}', [LibroController::class, 'userShow'])->name('libros.show');
 
 Route::get('temas', [TemaController::class,'userIndex'])->name('temas.index');
-Route::get('temas/{tema}', [TemaController::class,'mostrar'])->name('tema.libros');
+Route::get('temas/{tema}', [TemaController::class,'userShow'])->name('temas.show');
 
+Route::get('edades', [EdadController::class,'userIndex'])->name('edades.index');
+Route::get('edades/{edad}', [EdadController::class,'userShow'])->name('edades.show');
 
 
 

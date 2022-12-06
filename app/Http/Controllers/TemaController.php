@@ -37,9 +37,10 @@ class TemaController extends Controller
      * @param  \App\Models\Tema  $tema
      * @return \Illuminate\Http\Response
      */
-    public function mostrar(Tema $tema)
+    public function userShow(Tema $tema)
     {
-        $libros =$tema->libros;
+        $libros =$tema->libros()->paginate(15) ;
+
         //return $libros;
 
         return view('user/temas/show',compact  ('libros','tema'));
