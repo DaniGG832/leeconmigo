@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('libro_id')->constrained('libros');
             $table->unique(['libro_id','user_id']);
-            $table->integer('votos');
+            $table->integer('voto');
             $table->timestamps();
         });
     }

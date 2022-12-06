@@ -30,6 +30,17 @@ class Libro extends Model
 
 
     /**
+     * Get all of the votaciones for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function votaciones()
+    {
+        return $this->hasMany(Votacion::class, 'libro_id', 'id');
+    }
+
+
+    /**
      * The temas that belong to the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
