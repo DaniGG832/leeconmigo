@@ -26,7 +26,19 @@ class LibroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function mostrar()
+    public function userIndex()
+    {
+        $libros = Libro::paginate(15);
+
+        return view('user.libros.index', compact('libros'));
+        
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function userShow()
     {
         $libros = Libro::all();
 

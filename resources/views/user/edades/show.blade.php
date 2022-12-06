@@ -1,14 +1,16 @@
 <x-invitado>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Libros Infantiles') }}
+          {{ __('Libros infantiles ' . $edad->descripcion) }}
       </h2>
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            
+              <div class="p-6 bg-white border-b border-gray-200">
+                
                 {{ $libros->links() }}
                 
                 <div class="container mx-auto">
@@ -36,7 +38,9 @@
                               </div>
                             </div>
                             <div class="text-center p-4 pt-2 flex items-center text-sm text-gray-600">
-                              <a href="{{route('edades.show',$libro->edad)}}"><span class="ml-2">{{$libro->edad->descripcion}}</span></a>
+                              <a href="{{route('edades.show',$libro->edad)}}">
+                                <span class="ml-2">{{$libro->edad->descripcion}}</span>
+                              </a>
                             </div>
                             
                             <div class="p-4 border-t border-b text-xs text-gray-700">
@@ -57,8 +61,8 @@
                         
         
                       </div>
-                      
                     </div>
+
 
                     {{-- ------------------------------- --}}
                     

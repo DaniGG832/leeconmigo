@@ -10,6 +10,43 @@ use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class EdadController extends Controller
 {
+
+
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function userIndex()
+    {
+        $edades = Edad::paginate(15);
+
+
+        //return $users;
+        return view('user.edades.index', compact('edades'));
+    }
+
+/**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Edad  $edad
+     * @return \Illuminate\Http\Response
+     */
+    public function userShow(Edad $edad)
+    {
+        $libros =$edad->libros()->paginate(15) ;
+
+        //return $libros;
+
+        return view('user/edades/show',compact  ('libros','edad'));
+    }
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *

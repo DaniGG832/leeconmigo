@@ -11,6 +11,8 @@
             
               <div class="p-6 bg-white border-b border-gray-200">
                 
+                {{ $libros->links() }}
+
                 <div class="container mx-auto">
                   <div class="flex flex-wrap -mx-4">
 
@@ -42,7 +44,7 @@
                             <div class="p-4 border-t border-b text-xs text-gray-700">
                               
                                 @foreach ($libro->temas as $tema)
-                                <a class="no-underline hover:underline hover:text-blue-700" href="{{route('tema.libros',$tema)}}">
+                                <a class="no-underline hover:underline hover:text-blue-700" href="{{route('temas.show',$tema)}}">
                                   <span class=" m-1">
                                     #{{$tema->name}}
                                   </span>
