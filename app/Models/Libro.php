@@ -62,7 +62,7 @@ class Libro extends Model
     }
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the editorial that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -73,7 +73,7 @@ class Libro extends Model
 
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the autor that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -84,7 +84,7 @@ class Libro extends Model
 
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the edad that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -95,12 +95,22 @@ class Libro extends Model
 
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the idioma that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function idioma()
     {
         return $this->belongsTo(Idioma::class, 'idioma_id', 'id');
+    }
+
+    /**
+     * Get the ilustrador that owns the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function encuadernacion()
+    {
+        return $this->belongsTo(Encuadernacion::class, 'encuadernacion_id', 'id');
     }
 }
