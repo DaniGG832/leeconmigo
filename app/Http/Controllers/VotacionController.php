@@ -5,9 +5,50 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVotacionRequest;
 use App\Http\Requests\UpdateVotacionRequest;
 use App\Models\Votacion;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class VotacionController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function votar(StoreVotacionRequest $request)
+    {
+        Log::info($request->nota);
+
+        $votaciones = Votacion::where('user_id',auth()->id())->get();
+        $voto = $votaciones->where('libro_id', $request->libro)->first();
+
+        if($voto){
+
+            $voto->voto = $request->nota;
+            $voto->save();
+
+        }else{
+
+            $voto = new Votacion();
+
+            $voto->voto = $request->nota;
+            $voto->user_id = auth()->id();
+            $voto->libro_id = $request->libro;
+
+            $voto->save();
+
+        }
+
+        Log::info($votaciones);
+        Log::info($voto);
+        
+        return $request;
+
+
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *

@@ -9,6 +9,7 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VotacionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +51,7 @@ Route::get('edades/{edad}', [EdadController::class,'userShow'])->name('edades.sh
 Route::middleware(['auth'])->group(function () {
 
 
-
+Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
 
     //Route::get('libros/{libro}', [LibroController::class, 'show'])->name('libro.show');
 

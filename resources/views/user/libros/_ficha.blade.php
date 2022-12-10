@@ -17,15 +17,23 @@
           <p class="text-center text-gray-600 text-sm mt-2">{{$libro->titulo_original ?? ''}}</p>
 
 
-          <div x-data="dropdown" class="flex flex-row mt-8">
+          <div x-data="votacion" class="flex flex-row mt-8">
             <div>
-          
-              <button x-on:click="toggle()">Toggle Content</button>
-              <img x-show="open" class=" ml-8 max-w-48 h-auto md:w-auto md:h-96 object-cover rounded-t-lg md:rounded-none md:rounded-l-lg" src="{{$libro->img ? asset($libro->img) : asset('img/el-principito.jpg')}}" alt="" />
+
+              
+              <img class=" ml-8 max-w-48 h-auto md:w-auto md:h-96 object-cover rounded-t-lg md:rounded-none md:rounded-l-lg" src="{{$libro->img ? asset($libro->img) : asset('img/el-principito.jpg')}}" alt="" />
             </div>
             <div class="p-5">
-              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Votar</label>
-              <select x-on:click="open = ! open" id="countries" class="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+
+              <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Nota media: 
+                <span class="font-bold text-xl" id="media">
+                  {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1) }} 
+          
+                </span>
+              </span>
+
+              <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
+              <select x-on:change="votar" id="nota" class="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
                 @for ($i = 0; $i <= 10; $i++) <option value="$i">{{$i}}</option>
                   @endfor
@@ -171,13 +179,47 @@
 
 <script>
   document.addEventListener('alpine:init', () => {
-        Alpine.data('dropdown', () => ({
-            open: false,
- 
-            toggle() {
-                this.open = ! this.open
-            }
-        }))
-    })
+    Alpine.data('votacion', () => ({
+      
+      select: document.querySelector('#nota'),
+
+      url: "{{route('votar')}}",
+
+      async votar(e) {
+
+
+        //this.open = ! this.open
+        select2 = document.querySelector('#nota');
+        /* console.log(e.target.options.selectedIndex);
+        console.log(this.select.options.selectedIndex);
+        console.log(select2.options.selectedIndex); */
+
+        let response = await fetch(this.url, {
+        
+          method: 'POST'
+          , mode: 'cors'
+          , headers: {
+            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify({
+            nota : e.target.options.selectedIndex,
+            libro : "{{$libro->id}}",
+          }),
+
+        })
+
+        
+        console.log(this.url);
+        //console.log(await response.json());
+        console.log(await response.text());
+
+        //return await response.text()
+      },
+
+
+    }))
+  })
 
 </script>
