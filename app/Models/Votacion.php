@@ -32,4 +32,8 @@ class Votacion extends Model
     }
 
 
+    public function voto(){
+
+        return $this->where('user_id',auth()->id());
+    }
 }
