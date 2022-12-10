@@ -185,6 +185,8 @@
 
       url: "{{route('votar')}}",
 
+      media : document.querySelector('#media'),
+
       async votar(e) {
 
 
@@ -211,9 +213,11 @@
         })
 
         
+        document.getElementById("media").innerHTML = await response.text();
+         
         console.log(this.url);
         //console.log(await response.json());
-        console.log(await response.text());
+        //console.log(await response.text());
 
         //return await response.text()
       },

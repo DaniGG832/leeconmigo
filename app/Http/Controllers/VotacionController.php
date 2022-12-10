@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVotacionRequest;
 use App\Http\Requests\UpdateVotacionRequest;
+use App\Models\Libro;
 use App\Models\Votacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -17,6 +18,8 @@ class VotacionController extends Controller
      */
     public function votar(StoreVotacionRequest $request)
     {
+
+        /*  */
         Log::info($request->nota);
 
         $votaciones = Votacion::where('user_id',auth()->id())->get();
@@ -42,7 +45,11 @@ class VotacionController extends Controller
         Log::info($votaciones);
         Log::info($voto);
         
-        return $request;
+        $media = Libro::find($request->libro)->votaciones->avg('voto');
+
+        $media = is_int($media)? number_format( $media): number_format($media, 1); 
+
+        return $media;
 
 
 
