@@ -43,15 +43,22 @@
                 
               <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
               <select x-on:change="votar" id="nota"
-                class="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                class="w-30 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+
+
+                <option value="">No votado</option>
 
                 @for ($i = 0; $i <= 10; $i++)
 
                 
-                  <option value="$i"  
-                   @if ($i == $libro->votaciones->where('user_id',auth()->id())->first()->voto)
-                      selected
+                  <option value="{{$i}}"  
+
+                  @if ( $libro->votaciones->where('user_id', auth()->id())->first())
+                  @if ($i == $libro->user_voto)
+                     selected
+                 @endif
                   @endif
+                   
                   >{{ $i }}</option>
                 @endfor
               </select>
@@ -238,12 +245,12 @@
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: JSON.stringify({
-            nota: e.target.options.selectedIndex,
+            nota: e.target.value,
             libro: "{{ $libro->id }}",
           }),
 
         })
-
+        console.log(e.target.value);
 
         document.getElementById("media").innerHTML = await response.text();
 

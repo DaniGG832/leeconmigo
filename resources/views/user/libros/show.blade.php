@@ -1,4 +1,7 @@
-{{-- {{$libro->votaciones->where('user_id',auth()->id())->first()->voto}} --}}
+ {{-- {{$libro->voto()}}  --}}
+ {{-- {{$libro->user_voto}} 
+ {{$libro->media()}} 
+ {{$libro->media}}  --}}
 
 <x-invitado>
   <x-slot name="header">

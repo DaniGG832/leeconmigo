@@ -22,8 +22,8 @@ class Libro extends Model
         'descripcion',
         'editorial_id',
         'ilustrador_id',
-        'edad_id', 
-        'idioma_id', 
+        'edad_id',
+        'idioma_id',
         'autor_id',
         'encuadernacion_id'
     ];
@@ -113,4 +113,34 @@ class Libro extends Model
     {
         return $this->belongsTo(Encuadernacion::class, 'encuadernacion_id', 'id');
     }
+
+
+
+    public function voto()
+    {
+
+        return $this->votaciones->where('user_id', auth()->id())->first()->voto;
+    }
+
+    public function getUserVotoAttribute()
+    {
+
+        return $this->votaciones->where('user_id', auth()->id())->first()->voto;
+    }
+
+    public function media()
+    {
+
+        return $this->votaciones->avg('voto');
+    }
+
+
+
+
+    public function getMediaAttribute()
+    {
+        return $this->votaciones->avg('voto') ;
+    }
+
+    
 }

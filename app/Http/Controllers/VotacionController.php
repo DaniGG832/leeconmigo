@@ -20,30 +20,41 @@ class VotacionController extends Controller
     {
 
         /*  */
-        Log::info($request->nota);
-
         $votaciones = Votacion::where('user_id',auth()->id())->get();
         $voto = $votaciones->where('libro_id', $request->libro)->first();
-
-        if($voto){
-
-            $voto->voto = $request->nota;
-            $voto->save();
-
-        }else{
-
-            $voto = new Votacion();
-
-            $voto->voto = $request->nota;
-            $voto->user_id = auth()->id();
-            $voto->libro_id = $request->libro;
-
-            $voto->save();
-
-        }
-
         Log::info($votaciones);
         Log::info($voto);
+
+        if ($request->nota){
+
+            Log::info($request->nota);
+    
+    
+            if($voto){
+    
+                $voto->voto = $request->nota;
+                $voto->save();
+    
+            }else{
+    
+                $voto = new Votacion();
+    
+                $voto->voto = $request->nota;
+                $voto->user_id = auth()->id();
+                $voto->libro_id = $request->libro;
+    
+                $voto->save();
+    
+            }
+    
+    
+        }else{
+
+            $voto->delete();
+            Log::info('nulo');
+
+
+        }
         
         $media = Libro::find($request->libro)->votaciones->avg('voto');
 
