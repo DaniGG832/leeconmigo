@@ -56,6 +56,7 @@ class VotacionController extends Controller
 
         }
         
+        /* obtiene la nota media y le da el formato deseado */
         $media = Libro::find($request->libro)->votaciones->avg('voto');
 
         $media = is_int($media)? number_format( $media): number_format($media, 1); 
