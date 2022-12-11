@@ -8,6 +8,7 @@
   <div class="p-4 text-center">
     <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Nota media: 
       <span class="font-bold text-xl">
+        {{-- obtiene la nota media --}}
         {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1) }} 
 
       </span>

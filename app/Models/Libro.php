@@ -128,13 +128,13 @@ class Libro extends Model
         return $this->votaciones->where('user_id', auth()->id())->first()->voto;
     }
 
+
+/* funciones para obtener la nota media */
     public function media()
     {
 
         return $this->votaciones->avg('voto');
     }
-
-
 
 
     public function getMediaAttribute()
