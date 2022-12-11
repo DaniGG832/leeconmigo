@@ -22,11 +22,22 @@ class Libro extends Model
         'descripcion',
         'editorial_id',
         'ilustrador_id',
-        'edad_id', 
-        'idioma_id', 
+        'edad_id',
+        'idioma_id',
         'autor_id',
         'encuadernacion_id'
     ];
+
+
+    /**
+     * Get all of the votaciones for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function votaciones()
+    {
+        return $this->hasMany(Votacion::class, 'libro_id', 'id');
+    }
 
 
     /**
@@ -51,7 +62,7 @@ class Libro extends Model
     }
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the editorial that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -62,7 +73,7 @@ class Libro extends Model
 
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the autor that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -73,7 +84,7 @@ class Libro extends Model
 
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the edad that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -84,7 +95,7 @@ class Libro extends Model
 
 
     /**
-     * Get the ilustrador that owns the Libro
+     * Get the idioma that owns the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -92,4 +103,44 @@ class Libro extends Model
     {
         return $this->belongsTo(Idioma::class, 'idioma_id', 'id');
     }
+
+    /**
+     * Get the ilustrador that owns the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function encuadernacion()
+    {
+        return $this->belongsTo(Encuadernacion::class, 'encuadernacion_id', 'id');
+    }
+
+
+
+    public function voto()
+    {
+
+        return $this->votaciones->where('user_id', auth()->id())->first()->voto;
+    }
+
+    public function getUserVotoAttribute()
+    {
+
+        return $this->votaciones->where('user_id', auth()->id())->first()->voto;
+    }
+
+    public function media()
+    {
+
+        return $this->votaciones->avg('voto');
+    }
+
+
+
+
+    public function getMediaAttribute()
+    {
+        return $this->votaciones->avg('voto') ;
+    }
+
+    
 }

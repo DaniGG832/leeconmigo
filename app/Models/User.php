@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Rol::class, 'rol_id', 'id');
     }
+
+    /**
+     * Get all of the votaciones for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function votaciones()
+    {
+        return $this->hasMany(Votacion::class, 'user_id', 'id');
+    }
 }

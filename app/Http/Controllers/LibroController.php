@@ -33,16 +33,17 @@ class LibroController extends Controller
         return view('user.libros.index', compact('libros'));
         
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function userShow()
+    public function libroShow(Libro $libro)
     {
-        $libros = Libro::all();
 
-        return view('user.libros.index', compact('libros'));
+
+        return view('user.libros.show', compact('libro'));
         
     }
 
