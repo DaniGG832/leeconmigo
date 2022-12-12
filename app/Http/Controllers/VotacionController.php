@@ -76,12 +76,12 @@ class VotacionController extends Controller
     {
 
         //$votaciones = auth()->user()->votaciones->sortByDesc('voto');
-        $votaciones = auth()->user()->votaciones->sortBy('voto');
+        $votaciones = auth()->user()->votaciones;
 
-        return $votaciones;
+        //return $votaciones;
 
         
-        return view('user.profiles.mis-votaciones');
+        return view('user.profiles.mis-votaciones',compact('votaciones'));
     }
 
     /**
