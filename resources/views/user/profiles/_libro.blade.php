@@ -8,20 +8,23 @@
   </div>
 </a>
   <div class="p-4 text-center">
-    <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Nota media: 
-      <span class="font-bold text-xl">
+    <div class="grid grid-rows">
+
+      <div class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Nota media: 
+        <span class="font-bold text-xl">
         {{-- obtiene la nota media --}}
         {{is_int($votacion->libro->votaciones->avg('voto'))? number_format( $votacion->libro->votaciones->avg('voto')): number_format($votacion->libro->votaciones->avg('voto'), 1) }} 
-
+        
       </span>
-    </span>
-    <span class=" mt-1 inline-block px-2 py-1 leading-none bg-cyan-200 text-cyan-800 rounded-full font-semibold uppercase tracking-wide text-xs">mi voto: 
+    </div>
+    <div class=" mt-1 inline-block px-2 py-1 leading-none bg-cyan-200 text-cyan-800 rounded-full font-semibold uppercase tracking-wide text-xs">mi voto: 
       <span class="font-bold text-xl">
         {{-- obtiene mi voto --}}
         {{$votacion->voto }} 
-
+        
       </span>
-    </span>
+    </div>
+  </div>
     <h2 class="mt-2 mb-2  font-bold">{{$votacion->libro->titulo}}</h2>
     <p class="text-sm">{{$votacion->libro->titulo_original ?? ''}} </p>
     <div class="mt-3">
