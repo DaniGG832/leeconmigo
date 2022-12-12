@@ -40,31 +40,38 @@ require __DIR__ . '/auth.php';
 Route::get('libros', [LibroController::class, 'userIndex'])->name('libros');
 Route::get('libros/{libro}', [LibroController::class, 'libroShow'])->name('libros.show');
 
-Route::get('temas', [TemaController::class,'userIndex'])->name('temas.index');
-Route::get('temas/{tema}', [TemaController::class,'userShow'])->name('temas.show');
+Route::get('temas', [TemaController::class, 'userIndex'])->name('temas.index');
+Route::get('temas/{tema}', [TemaController::class, 'userShow'])->name('temas.show');
 
-Route::get('edades', [EdadController::class,'userIndex'])->name('edades.index');
-Route::get('edades/{edad}', [EdadController::class,'userShow'])->name('edades.show');
+Route::get('edades', [EdadController::class, 'userIndex'])->name('edades.index');
+Route::get('edades/{edad}', [EdadController::class, 'userShow'])->name('edades.show');
 
 
 
 Route::middleware(['auth'])->group(function () {
 
 
-Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
+    Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
+    
+    //Route::get('profile', [VotacionController::class, 'votar'])->name('profile');
+    
+    Route::get('votaciones', [VotacionController::class, 'index'])->name('votaciones');
+
+
+
 
     //Route::get('libros/{libro}', [LibroController::class, 'show'])->name('libro.show');
 
     //Route::get('autores', [AutorController::class, 'mostrar'])->name('Autores.mostrar');
     //Route::get('Autor/{autor}', [LibroController::class, 'show'])->name('libro.show');
 
-   // Route::get('ilustradores', [LibroController::class, 'index'])->name('libros.index');
-   // Route::get('ilustradores/{ilustrador}', [LibroController::class, 'show'])->name('libro.show');
+    // Route::get('ilustradores', [LibroController::class, 'index'])->name('libros.index');
+    // Route::get('ilustradores/{ilustrador}', [LibroController::class, 'show'])->name('libro.show');
 
     //Route::get('editoriales', [LibroController::class, 'index'])->name('libros.index');
     //Route::get('editoriales/{editorial}', [LibroController::class, 'show'])->name('libro.show'); 
 
-    
+
 });
 
 
@@ -72,13 +79,13 @@ Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
 Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
     Route::get('/admin', [RolController::class, 'index'])->name('admin');
-    
-    
+
+
     Route::prefix('admin')->name('admin.')->group(function () {
 
 
 
-       
+
         Route::resource('users', UserController::class);
 
         Route::resource('libros', LibroController::class);
@@ -102,7 +109,7 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
         Route::resource('edades', EditorialController::class)->parameters([
             'edades' => 'edad'
         ]);
-        
+
 
         //Route::get('libro/create', [LibroController::class, 'create'])->name('libro.create');
         //Route::post('libro/store', [LibroController::class, 'store'])->name('libro.store');
@@ -117,17 +124,11 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
 
 Route::middleware(['auth', 'can:solo-superadmin'])->group(function () {
-    
+
     Route::prefix('admin')->group(function () {
 
-        Route::get('prueba',[RolController::class, 'index'] )->name('prueba');
-
-    
-
-
+        Route::get('prueba', [RolController::class, 'index'])->name('prueba');
     });
-    
-
 });
 
 

@@ -56,7 +56,6 @@ class VotacionController extends Controller
 
         }
         
-        /* obtiene la nota media y le da el formato deseado */
         $media = Libro::find($request->libro)->votaciones->avg('voto');
 
         $media = is_int($media)? number_format( $media): number_format($media, 1); 
@@ -75,7 +74,14 @@ class VotacionController extends Controller
      */
     public function index()
     {
-        //
+
+        //$votaciones = auth()->user()->votaciones->sortByDesc('voto');
+        $votaciones = auth()->user()->votaciones->sortBy('voto');
+
+        return $votaciones;
+
+        
+        return view('user.profiles.mis-votaciones');
     }
 
     /**
