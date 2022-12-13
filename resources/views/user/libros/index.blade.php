@@ -26,9 +26,7 @@
               <option value="4">Menos reciente</option>
               <option value="5">Titulo ↓</option>
               <option value="6">Titulo ↑</option>
-              <option value="7">Autor ↓</option>
-              <option value="8">Autor ↑</option>
-              <option value="9">Ultimos agregados</option>
+              <option value="7">Ultimos agregados</option>
 
               {{-- @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" @if ($libro->votaciones->where('user_id',
               auth()->id())->first()) @if ($i == $libro->user_voto)
