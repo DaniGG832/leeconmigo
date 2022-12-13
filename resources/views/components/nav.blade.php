@@ -31,11 +31,11 @@
             {{ __('Edades ') }}
           </x-nav-link>
         </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+        {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('votaciones')" :active="request()->routeIs('votaciones')">
             {{ __('mis Votaciones ') }}
           </x-nav-link>
-        </div>
+        </div> --}}
       </div>
 
 
@@ -63,13 +63,19 @@
 
           <x-slot name="content">
             <!-- Authentication -->
+
+            <x-dropdown-link :href="route('votaciones')">
+
+              {{ __('Mis Votaciones') }}
+    
+            </x-dropdown-link>
+
             @if (auth()->check()&&Auth::user()->rol_id!=1)
             
-
             <x-dropdown-link :href="route('admin')">
 
 
-              {{ __('admin') }}
+              {{ __('Admin') }}
             </x-dropdown-link>
 
             @endif
@@ -129,11 +135,11 @@
         {{ __('Edades ') }}
       </x-nav-link>
     </div>
-    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+    {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
       <x-nav-link :href="route('votaciones')" :active="request()->routeIs('votaciones')">
         {{ __('mis Votaciones ') }}
       </x-nav-link>
-    </div>
+    </div> --}}
     <!-- Responsive Settings Options -->
     <div class="pt-4 pb-1 border-t border-gray-200">
       <div class="px-4">
@@ -146,11 +152,15 @@
 
       <div class="mt-3 space-y-1">
         <!-- Authentication -->
+        <x-dropdown-link :href="route('votaciones')">
 
+          {{ __('Mis Votaciones') }}
+
+        </x-dropdown-link>
         @if (auth()->check() && Auth::user()->rol_id!=1)
         <x-dropdown-link :href="route('admin')">
 
-          {{ __('admin') }}
+          {{ __('Admin') }}
 
         </x-dropdown-link>
 
