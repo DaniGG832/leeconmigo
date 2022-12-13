@@ -67,8 +67,8 @@
                   @endfor
                 </select>
                 
-                @endauth
               </div>
+              @endauth
                 
               </div>
           </div>

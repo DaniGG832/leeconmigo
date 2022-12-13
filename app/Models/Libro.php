@@ -142,5 +142,29 @@ class Libro extends Model
         return $this->votaciones->avg('voto') ;
     }
 
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeOrdenar($query,$data)
+    {
+        //dd( isset($data['sortBy'])); 
+        if(isset($data['sortBy'])){
+
+            switch ($data['sortBy']) {
+                case 1:
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                default:
+                    
+
+            }
+
+        }
+    }
     
+
 }
