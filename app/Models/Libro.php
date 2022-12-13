@@ -129,7 +129,7 @@ class Libro extends Model
     }
 
 
-/* funciones para obtener la nota media */
+    /* funciones para obtener la nota media */
     public function media()
     {
 
@@ -139,7 +139,7 @@ class Libro extends Model
 
     public function getMediaAttribute()
     {
-        return $this->votaciones->avg('voto') ;
+        return $this->votaciones->avg('voto');
     }
 
     /**
@@ -148,23 +148,55 @@ class Libro extends Model
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeOrdenar($query,$data)
+    public function scopeOrdenar($query, $data)
     {
         //dd( isset($data['sortBy'])); 
-        if(isset($data['sortBy'])){
+        if (isset($data['sortBy'])) {
 
             switch ($data['sortBy']) {
                 case 1:
+                    /* nota mas alta a mas baja*/
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 2:
+                    /* nota mas baja a mas alta */
+                    $query->orderBy('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 3:
+                    /* mas recientes */
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 4:
+                    /* menso recientes */
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 5:
+
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 6:
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 7:
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 8:
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 9:
                     $query->orderByDesc('votaciones_avg_voto');
                     //dd($data['sortBy']);
                     break;
                 default:
-                    
-
             }
-
         }
     }
-    
-
 }
