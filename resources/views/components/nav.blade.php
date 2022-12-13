@@ -11,11 +11,11 @@
         </div>
 
         <!-- Navigation Links -->
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+        {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}
           </x-nav-link>
-        </div>
+        </div> --}}
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('libros')" :active="request()->routeIs('libros')">
             {{ __('Libros ') }}
@@ -31,6 +31,11 @@
             {{ __('Edades ') }}
           </x-nav-link>
         </div>
+        {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('votaciones')" :active="request()->routeIs('votaciones')">
+            {{ __('mis Votaciones ') }}
+          </x-nav-link>
+        </div> --}}
       </div>
 
 
@@ -58,13 +63,19 @@
 
           <x-slot name="content">
             <!-- Authentication -->
+
+            <x-dropdown-link :href="route('votaciones')">
+
+              {{ __('Mis Votaciones') }}
+    
+            </x-dropdown-link>
+
             @if (auth()->check()&&Auth::user()->rol_id!=1)
             
-
             <x-dropdown-link :href="route('admin')">
 
 
-              {{ __('admin') }}
+              {{ __('Admin') }}
             </x-dropdown-link>
 
             @endif
@@ -104,12 +115,31 @@
 
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-    <div class="pt-2 pb-3 space-y-1">
+    {{-- <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
         {{ __('Dashboard') }}
       </x-responsive-nav-link>
+    </div> --}}
+    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+      <x-nav-link :href="route('libros')" :active="request()->routeIs('libros')">
+        {{ __('Libros ') }}
+      </x-nav-link>
     </div>
-
+    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+      <x-nav-link :href="route('temas.index')" :active="request()->routeIs('temas.index')">
+        {{ __('Temas ') }}
+      </x-nav-link>
+    </div>
+    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+      <x-nav-link :href="route('edades.index')" :active="request()->routeIs('edades.index')">
+        {{ __('Edades ') }}
+      </x-nav-link>
+    </div>
+    {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+      <x-nav-link :href="route('votaciones')" :active="request()->routeIs('votaciones')">
+        {{ __('mis Votaciones ') }}
+      </x-nav-link>
+    </div> --}}
     <!-- Responsive Settings Options -->
     <div class="pt-4 pb-1 border-t border-gray-200">
       <div class="px-4">
@@ -122,11 +152,15 @@
 
       <div class="mt-3 space-y-1">
         <!-- Authentication -->
+        <x-dropdown-link :href="route('votaciones')">
 
+          {{ __('Mis Votaciones') }}
+
+        </x-dropdown-link>
         @if (auth()->check() && Auth::user()->rol_id!=1)
         <x-dropdown-link :href="route('admin')">
 
-          {{ __('admin') }}
+          {{ __('Admin') }}
 
         </x-dropdown-link>
 

@@ -28,7 +28,7 @@ class Votacion extends Model
      */
     public function libro()
     {
-        return $this->belongsTo(Libro::class, 'id', 'libro_id');
+        return $this->belongsTo(Libro::class, 'libro_id', 'id');
     }
 
 
