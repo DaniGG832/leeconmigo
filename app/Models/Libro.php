@@ -129,7 +129,7 @@ class Libro extends Model
     }
 
 
-/* funciones para obtener la nota media */
+    /* funciones para obtener la nota media */
     public function media()
     {
 
@@ -139,8 +139,59 @@ class Libro extends Model
 
     public function getMediaAttribute()
     {
-        return $this->votaciones->avg('voto') ;
+        return $this->votaciones->avg('voto');
     }
 
-    
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeOrdenar($query, $data)
+    {
+        //dd( isset($data['sortBy'])); 
+        if (isset($data['sortBy'])) {
+
+            switch ($data['sortBy']) {
+                case 1:
+                    /* nota mas alta a mas baja*/
+                    $query->orderByDesc('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 2:
+                    /* nota mas baja a mas alta */
+                    $query->orderBy('votaciones_avg_voto');
+                    //dd($data['sortBy']);
+                    break;
+                case 3:
+                    /* mas recientes */
+                    $query->orderByDesc('year');
+                    //dd($data['sortBy']);
+                    break;
+                case 4:
+                    /* menos recientes */
+                    $query->orderBy('year');
+                    //dd($data['sortBy']);
+                    break;
+                case 5:
+                    /* titulo descendente ↓ */
+                    $query->orderBy('titulo');
+                    //dd($data['sortBy']);
+                    break;
+                case 6:
+                    /* titulo ascendente */
+                    $query->orderByDesc('titulo');
+                    //dd($data['sortBy']);
+                    break;
+            
+                case 7:
+                    /* Añadidos mas recientes */
+                    $query->orderByDesc('created_at');
+                    //dd($data['sortBy']);
+                    break;
+                default:
+            }
+        }
+    }
 }

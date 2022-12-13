@@ -15,6 +15,7 @@ use App\Models\Libro;
 
 use App\Models\Tema;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 
@@ -26,11 +27,22 @@ class LibroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function userIndex()
+    public function userIndex(Request $request)
     {
-        $libros = Libro::paginate(15);
+        $sortBy = $request->sortBy;
+        //return $request->sortBy;
 
-        return view('user.libros.index', compact('libros'));
+        $libros = Libro::with('autor')->withAvg('votaciones','voto')->Ordenar($request->all())->paginate(1,['*'],'pagina');
+        
+        //return $libros;
+        
+        if ($request->all()) {
+            
+            //return 1;
+        }
+
+
+        return view('user.libros.index', compact('libros','sortBy'));
         
     }
 
