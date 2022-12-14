@@ -26,7 +26,7 @@
     </div>
   </div>
     <h2 class="mt-2 mb-2  font-bold">{{$votacion->libro->titulo}}</h2>
-    <p class="text-sm">{{$votacion->libro->titulo_original ?? ''}} </p>
+    {{-- <p class="text-sm">{{$votacion->libro->titulo_original ?? ''}} </p> --}}
     <div class="mt-3">
       <div class="py-2 border-t border-b text-xs text-gray-700">
       <p class="text-sm text-gray-400">Autor </p>

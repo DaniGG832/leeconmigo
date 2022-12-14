@@ -32,7 +32,7 @@ class LibroController extends Controller
         $sortBy = $request->sortBy;
         //return $request->sortBy;
 
-        $libros = Libro::with('autor')->withAvg('votaciones','voto')->Ordenar($request->all())->paginate(15,['*'],'pagina');
+        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones','voto')->Ordenar($request->all())->paginate(15,['*'],'pagina');
         
         //return $libros;
         

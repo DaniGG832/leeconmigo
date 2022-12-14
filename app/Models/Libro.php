@@ -166,26 +166,31 @@ class Libro extends Model
                     break;
                 case 3:
                     /* mas recientes */
-                    $query->orderByDesc('year');
+                    $query->orderByDesc('votaciones_count');
                     //dd($data['sortBy']);
                     break;
                 case 4:
+                    /* mas recientes */
+                    $query->orderByDesc('year');
+                    //dd($data['sortBy']);
+                    break;
+                case 5:
                     /* menos recientes */
                     $query->orderBy('year');
                     //dd($data['sortBy']);
                     break;
-                case 5:
+                case 6:
                     /* titulo descendente ↓ */
                     $query->orderBy('titulo');
                     //dd($data['sortBy']);
                     break;
-                case 6:
+                case 7:
                     /* titulo ascendente */
                     $query->orderByDesc('titulo');
                     //dd($data['sortBy']);
                     break;
-            
-                case 7:
+
+                case 8:
                     /* Añadidos mas recientes */
                     $query->orderByDesc('created_at');
                     //dd($data['sortBy']);
