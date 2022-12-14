@@ -24,12 +24,13 @@
               <option selected disabled value="">Ordenar por :</option>
               <option {{Request::input('sortBy')==1 ? 'selected' : ''}} value="1">Nota ↓</option>
               <option {{Request::input('sortBy')==2 ? 'selected' : ''}} value="2">Nota ↑</option>
-              <option {{Request::input('sortBy')==2 ? 'selected' : ''}} value="3">Mas votados</option>
-              <option {{Request::input('sortBy')==3 ? 'selected' : ''}} value="4">Mas reciente</option>
-              <option {{Request::input('sortBy')==4 ? 'selected' : ''}} value="5">Menos reciente</option>
-              <option {{Request::input('sortBy')==5 ? 'selected' : ''}} value="6">Titulo ↓</option>
-              <option {{Request::input('sortBy')==6 ? 'selected' : ''}} value="7">Titulo ↑</option>
-              <option {{Request::input('sortBy')==7 ? 'selected' : ''}} value="8">Ultimos agregados</option> {{-- muestra de agregados mas recientes a mas antiguo  --}}
+              <option {{Request::input('sortBy')==3 ? 'selected' : ''}} value="3">Mas votados</option>
+              <option {{Request::input('sortBy')==4 ? 'selected' : ''}} value="4">Mas reciente</option>
+              <option {{Request::input('sortBy')==5 ? 'selected' : ''}} value="5">Menos reciente</option>
+              <option {{Request::input('sortBy')==6 ? 'selected' : ''}} value="6">Titulo ↓</option>
+              <option {{Request::input('sortBy')==7 ? 'selected' : ''}} value="7">Titulo ↑</option>
+            
+              <option {{Request::input('sortBy')==8 ? 'selected' : ''}} value="8">Ultimos agregados</option> {{-- muestra de agregados mas recientes a mas antiguo  --}}
 
               {{-- @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" @if ($libro->votaciones->where('user_id',
               auth()->id())->first()) @if ($i == $libro->user_voto)
@@ -88,7 +89,7 @@
 
         ordenar() {
           //alert(this);
-          console.log(this.form.submit());
+          this.form.submit();
           //console.log(e);
         }
 
