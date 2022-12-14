@@ -101,6 +101,9 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+
+        /* TODO: guardar la imagen en la base de datos */
+        return $request;
         $user->name = $request->input('name');
         $user->save();
 

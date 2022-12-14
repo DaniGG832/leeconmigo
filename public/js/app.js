@@ -17,7 +17,7 @@ if(document.getElementById('Imagen')){
 
   input.addEventListener('change', function(e) {
     
-        console.log(this.defaultValue);
+        console.log(this.files);
     
 
     if (this.files && this.files[0]) {
@@ -57,5 +57,7 @@ if(document.getElementById('Imagen')){
     
 
   
+  
+
     
     
