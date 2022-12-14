@@ -18,15 +18,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function users()
+    public function profile()
     {
+
+        
+        $user = User::find(Auth()->id());
+
+        //return $user;
+
+        return view('user.profiles.profile',compact('user'));
 
        
     }
-
-
-
-
 
      /**
      * Display a listing of the resource.

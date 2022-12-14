@@ -63,7 +63,11 @@
 
           <x-slot name="content">
             <!-- Authentication -->
+            <x-dropdown-link :href="route('profile')">
 
+              {{ __('Mi perfil') }}
+    
+            </x-dropdown-link>
             <x-dropdown-link :href="route('votaciones')">
 
               {{ __('Mis Votaciones') }}
@@ -152,6 +156,11 @@
 
       <div class="mt-3 space-y-1">
         <!-- Authentication -->
+        <x-dropdown-link :href="route('profile')">
+
+          {{ __('Mi perfil') }}
+
+        </x-dropdown-link>
         <x-dropdown-link :href="route('votaciones')">
 
           {{ __('Mis Votaciones') }}
