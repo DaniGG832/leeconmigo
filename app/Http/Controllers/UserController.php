@@ -18,18 +18,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile()
+    /* public function profile()
     {
-
-        
         $user = User::find(Auth()->id());
-
         //return $user;
-
         return view('user.profiles.profile',compact('user'));
-
-       
-    }
+    } */
 
      /**
      * Display a listing of the resource.
@@ -67,7 +61,11 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //
+        $user = User::find(Auth()->id());
+
+        //return $user;
+
+        return view('user.profiles.profile',compact('user'));
     }
 
     /**
@@ -76,9 +74,11 @@ class UserController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
-        //
+        $user = User::find(Auth()->id());
+        //return $user;
+        return view('user.profiles.show',compact('user'));
     }
 
     /**
@@ -101,7 +101,12 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $user->name = $request->input('name');
+        $user->save();
+
+
+
+        return redirect()->back()->with('success', "Usuario editado correctamente.");
     }
 
     /**

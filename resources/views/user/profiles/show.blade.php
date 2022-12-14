@@ -40,17 +40,21 @@
             </div>
           </div>
 
-          <div x-show="!open" class=" rounded py-16 px-12 flex flex-col items-center justify-center">
-            <div class="bg-blue-100 border rounded py-16 px-12 flex flex-col items-center justify-center">
+          <div x-show="!open" class="bg-blue-50 rounded py-16 px-12 flex flex-col items-center justify-center">
+            <div @click.outside="open=!open" class="bg-blue-100 border rounded py-16 px-12 flex flex-col items-center justify-center">
               <p @click="open=!open" class="self-end cursor-pointer">🅇</p>
 
-              <form action="" method="post" class="flex flex-col items-center justify-center">
+              <form action="{{ route('user.edit', $user, true) }}" enctype="multipart/form-data" method="post" method="post" class="flex flex-col items-center justify-center">
+                    @method('put')
                 @csrf
-                <label for="avatar">
-                  <img class="rounded-full h-32 w-32" src="{{$user->img ? asset($user->img) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
-                </label>
-                <p class=" text-gray-500 px-4">click para cambiar </p>
-                <input name="avatar" id="avatar" type="file" class="hidden">
+                <div class="flex-col items-center justify-center border">
+
+                  <label for="avatar">
+                    <img class="rounded-full h-32 w-32 mx-auto" src="{{$user->img ? asset($user->img) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
+                    <span class=" text-gray-500 px-4">click para cambiar </span>
+                  </label>
+                  <input name="avatar" id="avatar" type="file" class="hidden">
+                </div>
 
                 <div class="mt-8 mb-4">
                   <div class="mb-4">
@@ -62,7 +66,7 @@
                   <div class="my-4 flex items-center">
 
                   </div>
-                  <button @click="open=!open" class="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-3 rounded" type="submit">Enviar</button>
+                  <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-3 rounded" type="submit">Enviar</button>
                 </div>
 
 
