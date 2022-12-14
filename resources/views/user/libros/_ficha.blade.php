@@ -37,7 +37,7 @@
                 </span>
               </span>
 
-              <span class="inline-block px-2 py-1 leading-none bg-cyan-200 text-cyan-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+              <span class="inline-block px-2 py-1 leading-none bg-blue-200 text-blue-800 rounded-full font-semibold uppercase tracking-wide text-xs">
                 Votos: 
 
                 {{-- muestra el numero de  votos de un libro --}}
