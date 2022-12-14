@@ -57,6 +57,10 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('votaciones', [VotacionController::class, 'index'])->name('votaciones');
 
+    Route::get('profile', [UserController::class, 'show'])->name('profile');
+
+    Route::put('profile/edit/{user}', [UserController::class, 'update'])->name('user.edit');
+
 
 
 
