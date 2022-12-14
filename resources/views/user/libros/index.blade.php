@@ -6,27 +6,30 @@
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg  border-2 border-blue-400 ">
 
         <div x-data="ordenar" class="px-4 ">
 
-  {{--  {{Request::getQueryString()}}  --}}
-   {{-- {{$_GET["page"]}} --}}
-          <form  id="ordenar" action="{{route('libros')}}"> 
+          {{-- {{Request::getQueryString()}} --}}
+          {{-- {{Request::input('sortBy')}} --}}
+          {{-- {{isset($_GET["sortBy"])}} --}}
 
-          <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
-            <select x-on:change="ordenar" name="sortBy" id="sortBy" class="px-16 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ">
+          <form id="ordenar" action="{{route('libros')}}">
+
+            <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
+            <select x-on:change="ordenar" name="sortBy" id="sortBy" class="px-12 bg-blue-50 border border-blue-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ">
 
 
               <option selected disabled value="">Ordenar por :</option>
-              <option value="1">Nota ↓</option>
-              <option value="2">Nota ↑</option>
-              <option value="3">Mas reciente</option>
-              <option value="4">Menos reciente</option>
-              <option value="5">Titulo ↓</option>
-              <option value="6">Titulo ↑</option>
-              <option value="7">Ultimos agregados</option>
+              <option {{Request::input('sortBy')==1 ? 'selected' : ''}} value="1">Nota ↓</option>
+              <option {{Request::input('sortBy')==2 ? 'selected' : ''}} value="2">Nota ↑</option>
+              <option {{Request::input('sortBy')==2 ? 'selected' : ''}} value="3">Mas votados</option>
+              <option {{Request::input('sortBy')==3 ? 'selected' : ''}} value="4">Mas reciente</option>
+              <option {{Request::input('sortBy')==4 ? 'selected' : ''}} value="5">Menos reciente</option>
+              <option {{Request::input('sortBy')==5 ? 'selected' : ''}} value="6">Titulo ↓</option>
+              <option {{Request::input('sortBy')==6 ? 'selected' : ''}} value="7">Titulo ↑</option>
+              <option {{Request::input('sortBy')==7 ? 'selected' : ''}} value="8">Ultimos agregados</option>
 
               {{-- @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" @if ($libro->votaciones->where('user_id',
               auth()->id())->first()) @if ($i == $libro->user_voto)
@@ -81,9 +84,9 @@
       Alpine.data('ordenar', () => ({
 
 
-        form : document.querySelector('#ordenar'),
+        form: document.querySelector('#ordenar'),
 
-        ordenar(){
+        ordenar() {
           //alert(this);
           console.log(this.form.submit());
           //console.log(e);

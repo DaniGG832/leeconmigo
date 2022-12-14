@@ -1,6 +1,6 @@
 {{-- {{$votacion->libro->temas}} --}}
+<div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-4 bg-blue-50 rounded-md border-2 border-blue-200">
 
-<div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-4">
   <a href="{{route('libros.show',$votacion->libro)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
   <div class="relative pb-56 overflow-hidden">
     {{-- <div class="rounded-full absolute z-50 bg-red-600">7.5</div> --}}
@@ -17,7 +17,7 @@
         
       </span>
     </div>
-    <div class=" mt-1 inline-block px-2 py-1 leading-none bg-cyan-200 text-cyan-800 rounded-full font-semibold uppercase tracking-wide text-xs">mi voto: 
+    <div class=" mt-1 inline-block px-2 py-1 leading-none bg-blue-200 text-blue-800 rounded-full font-semibold uppercase tracking-wide text-xs">mi voto: 
       <span class="font-bold text-xl">
         {{-- obtiene mi voto --}}
         {{$votacion->voto }} 
@@ -26,7 +26,7 @@
     </div>
   </div>
     <h2 class="mt-2 mb-2  font-bold">{{$votacion->libro->titulo}}</h2>
-    <p class="text-sm">{{$votacion->libro->titulo_original ?? ''}} </p>
+    {{-- <p class="text-sm">{{$votacion->libro->titulo_original ?? ''}} </p> --}}
     <div class="mt-3">
       <div class="py-2 border-t border-b text-xs text-gray-700">
       <p class="text-sm text-gray-400">Autor </p>

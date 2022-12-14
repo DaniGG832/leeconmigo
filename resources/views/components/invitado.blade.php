@@ -38,7 +38,7 @@
 
           <!-- Page Heading -->
           @if (isset($header))
-              <header class="bg-white shadow">
+              <header class="bg-white shadow  border-2 border-blue-200 bg-blue-50">
                   <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                       {{ $header }}
                   </div>
@@ -46,7 +46,7 @@
           @endif
 
           <!-- Page Content -->
-          <main>
+          <main class="fondo">
               {{ $slot }}
           </main>
       </div>
