@@ -29,7 +29,7 @@
               <option {{Request::input('sortBy')==4 ? 'selected' : ''}} value="5">Menos reciente</option>
               <option {{Request::input('sortBy')==5 ? 'selected' : ''}} value="6">Titulo ↓</option>
               <option {{Request::input('sortBy')==6 ? 'selected' : ''}} value="7">Titulo ↑</option>
-              <option {{Request::input('sortBy')==7 ? 'selected' : ''}} value="8">Ultimos agregados</option>
+              <option {{Request::input('sortBy')==7 ? 'selected' : ''}} value="8">Ultimos agregados</option> {{-- muestra de agregados mas recientes a mas antiguo  --}}
 
               {{-- @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" @if ($libro->votaciones->where('user_id',
               auth()->id())->first()) @if ($i == $libro->user_voto)

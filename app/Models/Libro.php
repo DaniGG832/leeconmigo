@@ -191,7 +191,7 @@ class Libro extends Model
                     break;
 
                 case 8:
-                    /* Añadidos mas recientes */
+                    /*  muestra de agregados mas recientes a mas antiguo  */
                     $query->orderByDesc('created_at');
                     //dd($data['sortBy']);
                     break;
