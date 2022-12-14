@@ -189,9 +189,8 @@ class Libro extends Model
                     $query->orderByDesc('titulo');
                     //dd($data['sortBy']);
                     break;
-
                 case 8:
-                    /* Añadidos mas recientes */
+                    /*  muestra de agregados mas recientes a mas antiguo  */
                     $query->orderByDesc('created_at');
                     //dd($data['sortBy']);
                     break;
