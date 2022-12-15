@@ -198,4 +198,17 @@ class Libro extends Model
             }
         }
     }
+
+    public function scopeBuscar($query, $data){
+
+        
+        if (isset($data['search'])) {
+            
+            //dd($data['search']);
+
+            $query->where('titulo','ILIKE','%'.$data['search'].'%');
+        
+        }
+
+    }
 }
