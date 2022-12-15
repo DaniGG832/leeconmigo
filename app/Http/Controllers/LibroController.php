@@ -29,10 +29,14 @@ class LibroController extends Controller
      */
     public function userIndex(Request $request)
     {
+
+
+        //return $request;
         $sortBy = $request->sortBy;
+        $search = $request->search;
         //return $request->sortBy;
 
-        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones','voto')->Ordenar($request->all())->paginate(15,['*'],'pagina');
+        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones','voto')->buscar($request->all())->ordenar($request->all())->paginate(1,['*'],'pagina');
         
         //return $libros;
         
@@ -42,7 +46,7 @@ class LibroController extends Controller
         }
 
 
-        return view('user.libros.index', compact('libros','sortBy'));
+        return view('user.libros.index', compact('libros','sortBy','search'));
         
     }
 
