@@ -26,21 +26,21 @@ class UpdateLibroRequest extends FormRequest
     {
         /* OJO: muy importante la coma dentro de las comillas para el 'unique:libros,ISBN13,'.$this->libro->id, (ISBN13 , '.$this) */
         return [
-            'titulo'=> '',
+            'titulo'=> 'required|',
             'titulo_original'=> '',
             'ISBN10'=> 'nullable|unique:libros,ISBN10,'.$this->libro->id,
             'ISBN13'=> 'nullable|unique:libros,ISBN13,'.$this->libro->id, 
-            'year'=> '',
-            'n_pag'=> '',
-            'img'=> '',
+            'year'=> 'required',
+            'n_pag'=> 'required',
+            'img'=> 'nullable|image',
             'descripcion'=> '',
-            'sinopsis'=> '',
-            'editorial_id'=> '',
-            'ilustrador_id'=> '',
-            'edad_id'=> '', 
-            'idioma_id'=> '', 
-            'autor_id'=> '',
-            'encuadernacion_id'=> '',
+            'sinopsis'=> 'required',
+            'editorial_id'=> 'required',
+            'ilustrador_id'=> 'required',
+            'edad_id'=> 'required', 
+            'idioma_id'=> 'required', 
+            'autor_id'=> 'required',
+            'encuadernacion_id'=> 'required',
             'temas'=>'',
         ];
     }
