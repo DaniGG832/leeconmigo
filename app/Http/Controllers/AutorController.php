@@ -7,14 +7,43 @@ use App\Http\Requests\UpdateAutorRequest;
 use App\Models\Autor;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 
 class AutorController extends Controller
 {
-   
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function userIndex()
+    {
+        $autores = Autor::paginate(15);
 
-    
+
+        //return $users;
+        return view('user.autores.index', compact('autores'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Autor  $autor
+     * @return \Illuminate\Http\Response
+     */
+    public function userShow(Autor $autor)
+    {
+        $libros = $autor->libros()->paginate(15);
+
+        //return $libros;
+
+        return view('user/autores/show', compact('libros', 'autor'));
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +56,7 @@ class AutorController extends Controller
         $totalUsuarios = User::all()->count();
 
         //return $users;
-        return view('admin.autores.index', compact('autores', 'totalUsuarios','totalLibros'));
+        return view('admin.autores.index', compact('autores', 'totalUsuarios', 'totalLibros'));
     }
 
     /**
@@ -37,9 +66,9 @@ class AutorController extends Controller
      */
     public function create()
     {
-       $autor = new Autor();
+        $autor = new Autor();
 
-       return view('admin.autores.create',compact('autor'));
+        return view('admin.autores.create', compact('autor'));
     }
 
     /**
@@ -53,22 +82,21 @@ class AutorController extends Controller
         //dd( $request->validated());
 
         $autor = new Autor($request->validated());
-        if (isset( $request->validated()['img'])) { 
+        if (isset($request->validated()['img'])) {
 
-            $imagen =$request->validated()['img']->store('public/imagenes/autores');
-            
+            $imagen = $request->validated()['img']->store('public/imagenes/autores');
+
             //return $imagen;
 
             $url = FacadesStorage::url($imagen);
 
-            
+
             $autor->img = $url;
         }
 
         $autor->save();
 
         return back()->with('success', "Autor $autor->name registrado correctamente");
-
     }
 
     /**
@@ -80,7 +108,6 @@ class AutorController extends Controller
     public function show(Autor $autor)
     {
         return view('admin.autores.show', compact('autor'));
-
     }
 
     /**
@@ -106,11 +133,11 @@ class AutorController extends Controller
         //return $request->validated();
 
         $autor->fill($request->validated());
-        
-        if (isset( $request->validated()['img'])) {
-            
-            $imagen =$request->validated()['img']->store('public/imagenes/autores');
-            
+
+        if (isset($request->validated()['img'])) {
+
+            $imagen = $request->validated()['img']->store('public/imagenes/autores');
+
             $url = FacadesStorage::url($imagen);
 
             $autor->img = $url;
@@ -129,15 +156,14 @@ class AutorController extends Controller
     public function destroy(Autor $autor)
     {
         //return $autor->libros->count();
-        
+
         if ($autor->libros->count()) {
 
-            
+
             //dd($autor->libros);
             return redirect()->route('admin.autores.index')->with('error', 'No se puede borrar un autor con libros asociadas');
-            
-        }else{
-            
+        } else {
+
 
             $autor->delete();
             return redirect()->route('admin.autores.index')->with('success', 'autor borrado correctamente');

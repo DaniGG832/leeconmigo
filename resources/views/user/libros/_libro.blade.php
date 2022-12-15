@@ -18,8 +18,10 @@
     <div class="mt-3">
       <div class="py-2 border-t border-b text-xs text-gray-700">
       <p class="text-sm text-gray-400">Autor </p>
+<a href="{{route('autores.show',$libro->autor)}}">
 
-      <p class="font-bold">{{$libro->autor->name}}</p>
+  <p class="font-bold">{{$libro->autor->name}}</p>
+</a>
     </div>
     </div>
   </div>
