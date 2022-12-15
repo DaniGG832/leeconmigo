@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutorController;
+use App\Http\Controllers\CriticaController;
 use App\Http\Controllers\EdadController;
 use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\IdiomaController;
@@ -49,6 +50,9 @@ Route::get('edades/{edad}', [EdadController::class, 'userShow'])->name('edades.s
 Route::get('autores', [AutorController::class, 'userIndex'])->name('autores.index');
 Route::get('autores/{autor}', [AutorController::class, 'userShow'])->name('autores.show');
 
+Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criticas');
+Route::get('criticas/{libro}/create', [CriticaController::class, 'create'])->name('criticas.create');
+Route::post('criticas/{libro}/update', [CriticaController::class, 'update'])->name('criticas.update');
 
 
 Route::middleware(['auth'])->group(function () {
