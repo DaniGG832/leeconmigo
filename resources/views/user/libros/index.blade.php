@@ -17,8 +17,9 @@
 
           <form id="ordenar" action="{{route('libros')}}">
 
+            <input type="text" class="hidden" name="search" value="{{Request::input('search')}}">
             <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
-            <select x-on:change="ordenar" name="sortBy" id="sortBy" class="px-12 bg-blue-50 border border-blue-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ">
+            <select x-on:change="ordenar" name="sortBy" id="sortBy" class="px-12 bg-blue-50 border border-blue-200 text-gray-900 text-sm rounded-lg focus:ring-blue-300 focus:border-blue-300 block  p-2.5 ">
 
 
               <option selected disabled value="">Ordenar por :</option>
@@ -45,7 +46,10 @@
 
         </div>
 
-        <form id="formSearch" action="{{route('libros',['idguest' => 1, 'idbook' => 2, 'idroom' => 3])}}">   
+        <form id="formSearch" action="{{route('libros')}}"> 
+
+          <input type="text" class="hidden" name="sortBy" value="{{Request::input('sortBy')}}">
+
           <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
           <div class="relative">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
