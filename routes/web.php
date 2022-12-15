@@ -46,6 +46,9 @@ Route::get('temas/{tema}', [TemaController::class, 'userShow'])->name('temas.sho
 Route::get('edades', [EdadController::class, 'userIndex'])->name('edades.index');
 Route::get('edades/{edad}', [EdadController::class, 'userShow'])->name('edades.show');
 
+Route::get('autores', [AutorController::class, 'userIndex'])->name('autores.index');
+Route::get('autores/{autor}', [AutorController::class, 'userShow'])->name('autores.show');
+
 
 
 Route::middleware(['auth'])->group(function () {
