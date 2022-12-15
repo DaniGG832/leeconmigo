@@ -103,8 +103,23 @@ class UserController extends Controller
     {
 
         /* TODO: guardar la imagen en la base de datos */
-        return $request;
-        $user->name = $request->input('name');
+        $user->fill($request->validated());
+
+        //return $user;
+
+        if (isset( $request->validated()['avatar'])) {
+            
+            $avatar =$request->validated()['avatar']->store('public/imagenes/avatar');
+            
+            $url = FacadesStorage::url($avatar);
+
+            $user->avatar = $url;
+        }
+        /* return $user;
+        return $request->avatar;
+
+
+        $user->name = $request->input('name'); */
         $user->save();
 
 

@@ -10,7 +10,7 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg  border-2 border-blue-400 ">
-        <div x-data="avatar" class=" bg-white border-b border-gray-200">
+        <div x-data="avatar" x-init="alIniciar" class=" bg-white border-b border-gray-200">
 
 
 
@@ -19,7 +19,7 @@
             <div class="bg-blue-100 border rounded py-16 px-12 flex flex-col items-center justify-center">
 
 
-              <img class="rounded-full h-32 w-32" src="{{$user->img ? asset($user->img) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
+              <img class="rounded-full h-32 w-32" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}"" alt=" user avatar" />
               <div class="mt-8 mb-4">
                 <div class="mb-4">
 
@@ -45,52 +45,54 @@
               <p @click="open=!open" class="self-end cursor-pointer">🅇</p>
 
               <form action="{{ route('user.edit', $user, true) }}" enctype="multipart/form-data" method="post" method="post" class="flex flex-col items-center justify-center">
-
+                <input id="mensaje" type="text" class="hidden" value="@error('avatar')
+                {{ $message }}
+                @enderror">
                 @method('put')
                 @csrf
                 <div class="flex-col items-center justify-center border">
 
                   <label for="avatar" id="pre">
-                    <img id="imgAvatar" class="rounded-full h-32 w-32 mx-auto" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar"/>
+                    <img id="imgAvatar" class="rounded-full h-32 w-32 mx-auto" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
                     <span class=" text-gray-500 px-4">click para cambiar </span>
                   </label>
-                  <input @change="cambioAvatar" name="avatar" id="avatar" type="file" class="hidden" accept="image/*" value="{{old('avatar',$user->avatar)}}">
-                  @error('avatar')
-                  <p class="text-red-500 text-sm mt-1">
-                    {{ $message }}
-                  </p>
-                  @enderror
+                  <input @change="cambioAvatar()" x-model="file" name="avatar" id="avatar" type="file" class="hidden" accept="image/*" value="{{old('avatar',$user->avatar)}}">
                 </div>
-                
+                @error('avatar')
+                <p class="text-red-500 text-sm mt-1">
+                  {{ $message }}
+                </p>
+                @enderror
 
 
-          <div class="mt-8 mb-4">
-            <div class="mb-4">
-              <label for="name" class="sr-only">Nombre</label>
-              <input name="name" value="{{old('name',$user->name)}}" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="name" placeholder="Nombre" required />
-              @error('name')
-              <p class="text-red-500 text-sm mt-1">
-                {{ $message }}
-              </p>
-              @enderror
+
+                <div class="mt-8 mb-4">
+                  <div class="mb-4">
+                    <label for="name" class="sr-only">Nombre</label>
+                    <input name="name" value="{{old('name',$user->name)}}" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="name" placeholder="Nombre" required minlength="3" max="255" />
+                    @error('name')
+                    <p class="text-red-500 text-sm mt-1">
+                      {{ $message }}
+                    </p>
+                    @enderror
+                  </div>
+
+                  <div class="my-4 flex items-center">
+
+                  </div>
+                  <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-3 rounded" type="submit">Enviar</button>
+                </div>
+
+
+              </form>
+
             </div>
 
-            <div class="my-4 flex items-center">
 
-            </div>
-            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-3 rounded" type="submit">Enviar</button>
           </div>
-
-
-          </form>
-
         </div>
 
-
-      </div>
-    </div>
-
-    {{-- <div class="bg-gray-200 rounded py-16 px-12 m-16 flex flex-col items-center justify-center">
+        {{-- <div class="bg-gray-200 rounded py-16 px-12 m-16 flex flex-col items-center justify-center">
                         <!-- User profile image -->
                         <img class="rounded-full h-32 w-32" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="user avatar" />
                         <form method="post" class="mt-8 mb-4">
@@ -113,8 +115,8 @@
 
 
 
-  </div>
-  </div>
+      </div>
+    </div>
   </div>
   </div>
 
