@@ -3,17 +3,17 @@
 
 
 
-  @error('img')
-  <p class="text-red-500 text-sm mt-1">
-    {{ $message }}
-  </p>
-  @enderror
+@error('img')
+<p class="text-red-500 text-sm mt-1">
+  {{ $message }}
+</p>
+@enderror
 </div>
 
 {{-- Titulo --}}
 <div class="mb-6 mt-3">
   <label for="titulo" class="block mb-2 text-md font-medium text-gray-900">Título</label>
-  <input type="text" id="titulo" name="titulo" value="{{old('titulo',$libro->titulo)}}" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500">
+  <input required type="text" id="titulo" name="titulo" value="{{old('titulo',$libro->titulo)}}" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500">
   @error('titulo')
   <p class="text-red-500 text-sm mt-1">
     {{ $message }}
@@ -65,7 +65,7 @@
 
   <div class="mb-6 ">
     <label for="year" class="block mb-2 text-sm font-medium text-gray-900">Año</label>
-    <input type="text" id="year" name="year" value="{{old('year',$libro->year)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="year" name="year" value="{{old('year',$libro->year)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('year')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -77,8 +77,8 @@
 
   <div class="mb-6 ">
     <label for="n_pag" class="block mb-2 text-sm font-medium text-gray-900">Páginas</label>
-    <input type="text" id="n_pag" name="n_pag" value="{{old('n_pag',$libro->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-  
+    <input required type="text" id="n_pag" name="n_pag" value="{{old('n_pag',$libro->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
     @error('n_pag')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -91,34 +91,34 @@
 
 {{-- sinopsis --}}
 <div class="mb-6 ">
-<label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-900 ">Sinopsis</label>
-<textarea id="sinopsis" name="sinopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$libro->sinopsis)}}</textarea>
-@error('sinopsis')
-    <p class="text-red-500 text-sm mt-1">
-      {{ $message }}
-    </p>
-    @enderror
-  </div>
+  <label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-900 ">Sinopsis</label>
+  <textarea required id="sinopsis" name="sinopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$libro->sinopsis)}}</textarea>
+  @error('sinopsis')
+  <p class="text-red-500 text-sm mt-1">
+    {{ $message }}
+  </p>
+  @enderror
+</div>
 
 
 {{-- descripción --}}
 
 <div class="mb-6 ">
-<label for="descripcion" class="block mt-6 mb-2 text-sm font-medium text-gray-900 ">Descripción</label>
-<textarea id="descripcion" name="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$libro->descripcion)}}</textarea>
-@error('descripcion')
-    <p class="text-red-500 text-sm mt-1">
-      {{ $message }}
-    </p>
-    @enderror
-  </div>
+  <label for="descripcion" class="block mt-6 mb-2 text-sm font-medium text-gray-900 ">Descripción</label>
+  <textarea id="descripcion" name="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$libro->descripcion)}}</textarea>
+  @error('descripcion')
+  <p class="text-red-500 text-sm mt-1">
+    {{ $message }}
+  </p>
+  @enderror
+</div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-3">
 
   <div>
 
     <label for="autor" class="block mb-2 text-sm font-medium text-gray-900 ">Autor</label>
-    <select id="autor" name="autor_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    <select required id="autor" name="autor_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
       <option value="" class="text-red-900">Selecione una opción</option>
 
@@ -142,7 +142,7 @@
   <div>
 
     <label for="ilustrador" class="block mb-2 text-sm font-medium text-gray-900 ">Ilustrador</label>
-    <select id="ilustrador" name="ilustrador_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    <select required id="ilustrador" name="ilustrador_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
       <option value="" class="text-red-900">Selecione una opción</option>
 
@@ -162,7 +162,7 @@
   <div>
 
     <label for="editorial" class="block mb-2 text-sm font-medium text-gray-900">Editorial</label>
-    <select id="editorial" name="editorial_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    <select required id="editorial" name="editorial_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
       <option value="" class="text-red-900">Selecione una opción</option>
 
@@ -183,13 +183,13 @@
   <div>
 
     <label for="edad" class="block mb-2 text-sm font-medium text-gray-900">Edad recomendada</label>
-    <select id="edad" name="edad_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <select required id="edad" name="edad_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
       <option value="" class="text-red-900">Selecione una opción</option>
 
 
       @foreach ($edades as $edad)
-      <option value="{{$edad->id}}" {{$libro->edad_id==$edad->id ? 'selected' : ''}} >{{$edad->descripcion}}</option>
+      <option value="{{$edad->id}}" {{$libro->edad_id==$edad->id ? 'selected' : ''}}>{{$edad->descripcion}}</option>
 
       @endforeach
 
@@ -204,12 +204,12 @@
   <div>
 
     <label for="idioma" class="block mb-2 text-sm font-medium text-gray-900">Idioma</label>
-    <select id="idioma" name="idioma_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <select required id="idioma" name="idioma_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($idiomas as $idioma)
-      <option value="{{$idioma->id}}" {{$libro->idioma_id==$idioma->id ? 'selected' : ''}} >{{$idioma->descripcion}} - {{$idioma->name}}</option>
+      <option value="{{$idioma->id}}" {{$libro->idioma_id==$idioma->id ? 'selected' : ''}}>{{$idioma->descripcion}} - {{$idioma->name}}</option>
 
       @endforeach
 
@@ -224,7 +224,7 @@
   <div>
 
     <label for="encuadernacion" class="block mb-2 text-sm font-medium text-gray-900">Encuadernación</label>
-    <select id="encuadernacion" name="encuadernacion_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <select required id="encuadernacion" name="encuadernacion_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
       <option value="" class="text-red-900">Selecione una opción</option>
 
@@ -250,8 +250,7 @@
   @foreach ($temas as $tema)
 
   <div class="flex items-center mb-4">
-    <input id="{{$tema->name}}" type="checkbox" value="{{$tema->id}}" name="temas[]" {{$libro->temas->contains($tema) ? 'checked' : ''}} 
-    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+    <input id="{{$tema->name}}" type="checkbox" value="{{$tema->id}}" name="temas[]" {{$libro->temas->contains($tema) ? 'checked' : ''}} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
     <label for="{{$tema->name}}" class="ml-2 text-sm font-medium text-gray-900 ">{{$tema->name}}</label>
   </div>
 
