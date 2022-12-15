@@ -54,7 +54,7 @@
 
                   <label for="avatar" id="pre">
                     <img id="imgAvatar" class="rounded-full h-32 w-32 mx-auto" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
-                    <span class=" text-gray-500 px-4">click para cambiar </span>
+                    <span class=" text-gray-500 px-4">click para cambiar avatar</span>
                   </label>
                   <input @change="cambioAvatar()" x-model="file" name="avatar" id="avatar" type="file" class="hidden" accept="image/*" value="{{old('avatar',$user->avatar)}}">
                 </div>
