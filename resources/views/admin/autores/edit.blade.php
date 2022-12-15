@@ -53,7 +53,7 @@
                         
                         <div id="pre" class="h-32 flex items-center ">
                           <label for='Imagen'><img class='rounded-lg' src="{{$autor->img ? asset($autor->img) : asset('img/el-principito.jpg')}}" style= 'height: 7rem' for='Imagen'/></label>
-          <br><label class="block mb-2 text-md font-medium text-gray-800 ml-2 " for="Imagen">Click en la imagen para seleccionar otra.</label>
+          
                         </div>
  
                         @error('img')
