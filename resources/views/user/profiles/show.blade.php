@@ -19,7 +19,7 @@
             <div class="bg-blue-100 border rounded py-16 px-12 flex flex-col items-center justify-center">
 
 
-              <img class="rounded-full h-32 w-32" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}"" alt=" user avatar" />
+              <img class="rounded-full h-32 w-32" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt=" user avatar" />
               <div class="mt-8 mb-4">
                 <div class="mb-4">
 

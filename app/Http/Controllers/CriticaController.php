@@ -17,9 +17,11 @@ class CriticaController extends Controller
     public function index(Libro $libro)
     {
         
-        $criticas = $libro->criticas[0]->libro;
+        /* $c = $libro->criticas[0]->user;
+        return $c; */
+        $criticas = Critica::where('libro_id',$libro->id)->paginate(8);
         
-        return $criticas;
+        return view('user.criticas.index', compact('criticas', 'libro'));
     }
 
     /**
