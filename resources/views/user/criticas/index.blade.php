@@ -44,7 +44,7 @@
               <p class="text-xs text-gray-500 mt-1"> {{$libro->autor->name}}</p>
             </div>
             <div class="text-gray-400 rounded-lg  p-1.5 ml-auto inline-flex items-center">
-              <p class="text-2xl text-white  p-3 border border-blue-500 bg-blue-300 rounded-lg">Nota Media:
+              <p class="text-2xl text-white  p-3 border border-blue-500 bg-blue-400 rounded-lg">Nota Media:
                 <span class="text-blue-800">
                   {{ is_int($libro->votaciones->avg('voto'))
                       ? number_format($libro->votaciones->avg('voto'))

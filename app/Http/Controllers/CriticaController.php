@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCriticaRequest;
 use App\Http\Requests\UpdateCriticaRequest;
 use App\Models\Critica;
 use App\Models\Libro;
+use Illuminate\Support\Facades\Auth;
 
 class CriticaController extends Controller
 {
@@ -29,9 +30,12 @@ class CriticaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Libro $libro)
     {
-        return 'create';
+
+        $critica = new Critica();
+        //return $libro;
+        return view('user.criticas.create', compact('libro','critica'));
 
     }
 
@@ -41,9 +45,24 @@ class CriticaController extends Controller
      * @param  \App\Http\Requests\StoreCriticaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCriticaRequest $request)
+    public function store(StoreCriticaRequest $request, Libro $libro)
     {
-        return 'store';
+        //return $request->validated();
+
+        $critica = new Critica();
+
+        $critica->user_id = auth()->user()->id;
+        $critica->libro_id = $libro->id;
+
+        $critica->fill($request->validated());
+
+        $critica->save();
+
+        /* return $critica; */
+
+        return redirect()->back()->with('success', 'Su crítica se a añadido correctamente.') ;
+
+
 
     }
 
