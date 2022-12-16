@@ -119,6 +119,6 @@ class CriticaController extends Controller
      */
     public function destroy(Critica $critica)
     {
-        //
+        return 'des';
     }
 }

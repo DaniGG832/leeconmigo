@@ -31,13 +31,13 @@
       {{$critica->critica}}
     </p>
 
-    <div class="flex justify-end">
+    <div x-data class="flex justify-end">
 
       {{-- {{$critica->user }} --}}
       {{-- {{Auth::user() }} --}}
 
-      @if ($critica->user->id==Auth::id()) 
-          
+      @if ($critica->user->id==Auth::id())
+
       <a href="{{route('criticas.edit',[$libro,$critica])}}" class="p-2">
 
         <svg class="h-6 w-6 text-blue-500 hover:text-blue-800" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -45,14 +45,20 @@
           <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
       </a>
 
-      <a href="" class="p-2">
+      <form x-ref="form" action="{{route('criticas.destroy',$critica)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button x-on:click.prevent="if (confirm('¿Esta seguro que desea de borrar la critica?')) $refs.form.submit()" class="p-2">
+          <svg class="h-6 w-6 text-red-400 hover:text-red-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6" />
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            <line x1="10" y1="11" x2="10" y2="17" />
+            <line x1="14" y1="11" x2="14" y2="17" /></svg>
+        </button>
 
-        <svg class="h-6 w-6 text-red-400 hover:text-red-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="3 6 5 6 21 6" />
-          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-          <line x1="10" y1="11" x2="10" y2="17" />
-          <line x1="14" y1="11" x2="14" y2="17" /></svg>
-      </a>
+
+      </form>
+
       @endif
 
     </div>

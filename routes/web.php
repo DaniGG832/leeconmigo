@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('criticas/{libro}/store', [CriticaController::class, 'store'])->name('criticas.store');
     Route::get('criticas/{libro}/edit/{critica}', [CriticaController::class, 'edit'])->name('criticas.edit');
     Route::put('criticas/{critica}/update/{libro}', [CriticaController::class, 'update'])->name('criticas.update');
+    Route::delete('criticas/{critica}', [CriticaController::class, 'destroy'])->name('criticas.destroy');
 
     Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
     
