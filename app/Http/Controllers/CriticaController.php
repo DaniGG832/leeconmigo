@@ -118,7 +118,7 @@ class CriticaController extends Controller
     public function destroy(Critica $critica)
     {
 
-        if($critica->user_id == auth()->user()->id){
+        if($critica->user_id == auth()->user()->id  || Auth::user()->rol_id!= 1){
             $critica->delete();
 
             return redirect()->back()->with('success', 'Critica borrada correctamente.');
