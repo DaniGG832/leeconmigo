@@ -24,7 +24,7 @@
   <div class="p-6 space-y-6 ">
     <h3 class="text-gray-900 text-sm md:text-xl font-semibold ml-3">
       {{$critica->titulo}}
-      <p class="text-xs text-gray-300"> {{isset($critica->created_at) ? $critica->created_at->format('d-m-Y H:i:s') :''}}</p>
+      <p class="text-xs text-gray-400"> {{isset($critica->created_at) ? $critica->created_at->format('d-m-Y H:i:s') :''}}</p>
 
     </h3>
     <p class="text-gray-500 text-xs md:text-sm leading-relaxed ">
