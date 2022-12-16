@@ -11,9 +11,16 @@
 
         <div class="p-6 bg-white border-b border-gray-200">
 
-          <div class="flex items-start pb-4">
-            Volver a libro
+
+  <div class=" pb-4 ">
+    <a href="{{route('libros.show',$libro)}}" 
+    class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+      
+      Volver a libro
+    </a>
+    
           </div>
+        
           <div class="flex items-start justify-between p-5 border border-blue-100 rounded-t" style="min-height: 11em">
 
 
