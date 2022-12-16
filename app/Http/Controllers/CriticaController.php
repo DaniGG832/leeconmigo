@@ -104,8 +104,6 @@ class CriticaController extends Controller
 
         $critica->save();
 
-        $criticas = Critica::where('libro_id',$libro->id)->paginate(8);
-
         return redirect()->route('criticas',$libro)->with('success', 'Su crítica se a modificado correctamente.');
         //return view('user.criticas.index',compact('libro','criticas'))->with('success', 'Su crítica se a modificado correctamente.') ;
 
@@ -119,6 +117,13 @@ class CriticaController extends Controller
      */
     public function destroy(Critica $critica)
     {
-        //
+
+        if($critica->user_id == auth()->user()->id){
+            $critica->delete();
+
+            return redirect()->back()->with('success', 'Critica borrada correctamente.');
+        }
+
+        return redirect()->back()->with('error', 'No tienes permisos para borrar esa crítica');
     }
 }
