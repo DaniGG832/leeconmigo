@@ -16,8 +16,17 @@
     <a href="{{route('libros.show',$libro)}}" 
     class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
       
-      Volver a libro
+      Volver a la ficha
     </a>
+    @auth
+      
+    <a href="{{route('criticas.create',$libro)}}" 
+    class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+      
+      Escribe tu crítica
+    </a>
+    @endauth
+    
     
           </div>
         

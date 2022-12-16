@@ -70,12 +70,12 @@
               </div>
               @endauth
               <div>
-                <a class="mx-5 mt-2 inline-block px-2 py-1 leading-none border border-blue-100 hover:bg-blue-800 hover:text-blue-50 text-blue-600 rounded-full font-semibold uppercase tracking-wide font-bold" href="{{route('criticas',$libro)}}">Criticas
-                  <span class="text-xl rounded-full text-blue-400 ">[ 25 ]{{-- TODO: poner variable con criticas --}}</span>
+                <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('criticas',$libro)}}">Criticas
                 </a>
+                <span class="text-l rounded-full no-underline">[ {{$libro->criticas->count()}} ]{{-- TODO: poner variable con criticas --}}</span>
               </div>
-              <a class="mx-5 mt-2 inline-block px-2 py-1 leading-none border border-blue-100 hover:bg-blue-800 hover:text-blue-50 text-blue-600 rounded-full font-semibold uppercase tracking-wide font-bold" href="{{route('criticas.create',$libro)}}">Escribe tu crítica
-                <span class="text-xl rounded-full text-blue-400"></span>
+              <a class="mt-2 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide" href="{{route('criticas.create',$libro)}}">Escribe tu crítica
+                <span class="text-xl rounded-full "></span>
               </a>
               <div>
               </div>
