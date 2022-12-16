@@ -114,7 +114,15 @@ class Libro extends Model
         return $this->belongsTo(Encuadernacion::class, 'encuadernacion_id', 'id');
     }
 
-
+/**
+ * Get all of the criticas for the Libro
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+public function criticas()
+{
+    return $this->hasMany(Critica::class, 'libro_id', 'id');
+}
 
     public function voto()
     {

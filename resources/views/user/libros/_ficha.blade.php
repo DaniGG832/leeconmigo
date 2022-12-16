@@ -38,7 +38,7 @@
               </span>
 
               <span class="inline-block px-2 py-1 leading-none bg-blue-200 text-blue-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-                Votos: 
+                Votos:
 
                 {{-- muestra el numero de  votos de un libro --}}
                 <span class="font-bold text-xl" id="media">
@@ -54,23 +54,33 @@
 
                 <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
                 <select x-on:change="votar" id="nota" class="w-30 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                  
-                  
+
+
                   <option value="">No votado</option>
-                  
+
                   @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" @if ($libro->votaciones->where('user_id',
-                  auth()->id())->first()) @if ($i == $libro->user_voto)
-                  selected @endif
-                  @endif
-                  
-                  >{{ $i }}</option>
-                  @endfor
+                    auth()->id())->first()) @if ($i == $libro->user_voto)
+                    selected @endif
+                    @endif
+
+                    >{{ $i }}</option>
+                    @endfor
                 </select>
-                
+
               </div>
               @endauth
-                
+              <div>
+                <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('criticas',$libro)}}">Criticas
+                  [ <span class="text-xl rounded-full no-underline">{{$libro->criticas->count()}}</span>  ]
+                </a>
               </div>
+              <a class="mt-2 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide" href="{{route('criticas.create',$libro)}}">Escribe tu crítica
+                <span class="text-xl rounded-full "></span>
+              </a>
+              <div>
+              </div>
+
+            </div>
           </div>
 
 

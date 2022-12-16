@@ -63,4 +63,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Votacion::class, 'user_id', 'id');
     }
+
+    /**
+ * Get all of the criticas for the Libro
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+public function criticas()
+{
+    return $this->hasMany(Critica::class, 'user_id', 'id');
+}
 }
