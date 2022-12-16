@@ -3,7 +3,7 @@
 <x-invitado>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Escribe tú crítica de '.$libro->titulo ) }}
+      {{ __('Editar crítica de '.$libro->titulo ) }}
     </h2>
   </x-slot>
 
@@ -66,9 +66,9 @@
               <div class="bg-blue-50 mb-5 border border-blue-300 rounded-t p-5">
 
 
-                <form action="{{route('criticas.store',$libro)}}" method="post">
+                <form action="{{route('criticas.update',[$critica,$libro])}}" method="post">
                   @csrf
-
+                  @method('put')
                   {{-- Título de tu crítica --}}
                   <div class="mb-6 mt-3">
                     <label for="titulo" class="block mb-2 text-md font-medium text-gray-900">Título de tu crítica</label>
