@@ -20,7 +20,7 @@ class CriticaController extends Controller
         
         /* $c = $libro->criticas[0]->user;
         return $c; */
-        $criticas = Critica::where('libro_id',$libro->id)->paginate(8);
+        $criticas = Critica::orderBy('created_at', 'desc')->where('libro_id',$libro->id)->paginate(8);
         
         return view('user.criticas.index', compact('criticas', 'libro'));
     }
@@ -60,7 +60,7 @@ class CriticaController extends Controller
 
         /* return $critica; */
 
-        return redirect()->back()->with('success', 'Su crítica se a añadido correctamente.') ;
+        return redirect()->route('criticas',$libro)->with('success', 'Su crítica se a añadido correctamente.') ;
 
 
 
@@ -83,9 +83,9 @@ class CriticaController extends Controller
      * @param  \App\Models\Critica  $critica
      * @return \Illuminate\Http\Response
      */
-    public function edit(Critica $critica)
+    public function edit(Libro $libro, Critica $critica)
     {
-        //
+        return view('user.criticas.edit', compact('libro','critica'));
     }
 
     /**
@@ -95,9 +95,20 @@ class CriticaController extends Controller
      * @param  \App\Models\Critica  $critica
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCriticaRequest $request, Critica $critica)
+    public function update(UpdateCriticaRequest $request, Critica $critica, Libro $libro)
     {
-        //
+        //return $request->validated();
+        //return $libro;
+
+        $critica->fill($request->validated());
+
+        $critica->save();
+
+        $criticas = Critica::where('libro_id',$libro->id)->paginate(8);
+
+        return redirect()->route('criticas',$libro)->with('success', 'Su crítica se a modificado correctamente.');
+        //return view('user.criticas.index',compact('libro','criticas'))->with('success', 'Su crítica se a modificado correctamente.') ;
+
     }
 
     /**

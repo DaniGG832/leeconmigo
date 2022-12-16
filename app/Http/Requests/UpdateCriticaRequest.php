@@ -24,7 +24,8 @@ class UpdateCriticaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo'=> 'required|min:3',
+            'critica'=> 'required|min:3',
         ];
     }
 }
