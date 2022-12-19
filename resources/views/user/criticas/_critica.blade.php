@@ -13,7 +13,10 @@
 
     <h3 class="text-gray-900 text-sm md:text-l font-semibold ml-3">
       {{$critica->user->name}}
-      <p class="text-xs text-gray-400"> {{$critica->user->votaciones->count()}} Votaciones</p>
+      
+      <a href="{{route('votos.usuario',[$critica->user,$libro])}}">
+        <p class="text-xs text-gray-400"> {{$critica->user->votaciones->count()}} Votaciones <span class="text-xs hover:text-blue-800 decoration-blue-800 hover:underline">( Ver )</span></p>
+      </a>
       <p class="text-xs text-gray-400"> {{$critica->user->criticas->count()}} Criticas</p>
     </h3>
     <div class="text-gray-400 rounded-lg  p-1.5 ml-auto inline-flex items-center">

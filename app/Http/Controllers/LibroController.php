@@ -36,7 +36,7 @@ class LibroController extends Controller
         $search = $request->search;
         //return $request->sortBy;
 
-        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones','voto')->buscar($request->all())->ordenar($request->all())->paginate(1,['*'],'pagina');
+        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones','voto')->buscar($request->all())->ordenar($request->all())->paginate(15,['*'],'pagina');
         
         //return $libros;
         

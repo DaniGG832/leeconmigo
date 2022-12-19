@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVotacionRequest;
 use App\Http\Requests\UpdateVotacionRequest;
 use App\Models\Libro;
+use App\Models\User;
 use App\Models\Votacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -83,6 +84,29 @@ class VotacionController extends Controller
         
         return view('user.profiles.mis-votaciones',compact('votaciones'));
     }
+
+
+    
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function votosUsuario(User $user, Libro $libro)
+    {
+
+        //$votaciones = auth()->user()->votaciones->sortByDesc('voto');
+        //$votaciones = $user->votaciones;
+
+        $votaciones = Votacion::where('user_id', $user->id)->paginate(15);
+
+        //return $votaciones;
+
+        
+        return view('user.votaciones.votos_usuario',compact('votaciones','user','libro'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
