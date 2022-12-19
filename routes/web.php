@@ -62,11 +62,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('criticas/{critica}/update/{libro}', [CriticaController::class, 'update'])->name('criticas.update');
     Route::delete('criticas/{critica}', [CriticaController::class, 'destroy'])->name('criticas.destroy');
 
+    /* votos otros usuarios */
+    Route::get('Votaciones/{user}/{libro?}', [VotacionController::class, 'votosUsuario'])->name('votos.usuario');
+
+    /* ruta para la votacion (ajax) */
     Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
     
+    /* votos usuario logeado */
+    Route::get('votaciones', [VotacionController::class, 'index'])->name('votaciones');
+
     //Route::get('profile', [VotacionController::class, 'votar'])->name('profile');
     
-    Route::get('votaciones', [VotacionController::class, 'index'])->name('votaciones');
 
     Route::get('profile', [UserController::class, 'show'])->name('profile');
 

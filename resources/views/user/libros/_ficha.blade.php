@@ -74,10 +74,10 @@
                   <span class="text-xl rounded-full no-underline">[ {{$libro->criticas->count()}} ]</span> 
                 </a>
               </div>
+              <div>
               <a class="mt-2 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide" href="{{route('criticas.create',$libro)}}">Escribe tu crítica
                 <span class="text-xl rounded-full "></span>
               </a>
-              <div>
               </div>
 
             </div>
