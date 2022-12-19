@@ -55,6 +55,7 @@ Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criti
 
 Route::middleware(['auth'])->group(function () {
 
+    /* Rutas para las criticas */
     Route::get('criticas/{libro}/create', [CriticaController::class, 'create'])->name('criticas.create');
     Route::post('criticas/{libro}/store', [CriticaController::class, 'store'])->name('criticas.store');
     Route::get('criticas/{libro}/edit/{critica}', [CriticaController::class, 'edit'])->name('criticas.edit');
