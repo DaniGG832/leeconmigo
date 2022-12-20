@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRespuestaRequest;
 use App\Http\Requests\UpdateRespuestaRequest;
+use App\Models\Pregunta;
 use App\Models\Respuesta;
+use Illuminate\Support\Facades\Redirect;
 
 class RespuestaController extends Controller
 {
@@ -34,9 +36,19 @@ class RespuestaController extends Controller
      * @param  \App\Http\Requests\StoreRespuestaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRespuestaRequest $request)
+    public function store(StoreRespuestaRequest $request, Pregunta $pregunta)
     {
-        //
+        //return $request->validated();
+
+        $respuesta = new Respuesta($request->validated());
+        $respuesta->user_id = auth()->id();
+        $respuesta->pregunta_id = $pregunta->id;
+
+        //return $respuesta;
+
+        $respuesta->save();
+
+        return Redirect()->back()->with('success','Respuesta añadida correctamente.');
     }
 
     /**

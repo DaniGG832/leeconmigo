@@ -9,7 +9,7 @@
       <div class="p-6 space-y-6 ">
 
         <p class="text-gray-600 text-xs md:text-sm leading-relaxed ">
-          {{$respuesta->descripcion}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere enim sit, nostrum officia earum ullam? Veniam, vitae optio ipsum fugiat, cupiditate eligendi reprehenderit architecto accusamus magnam id minima similique.
+          {{$respuesta->descripcion}} 
         </p>
 
 

@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
     /* rutas foro para usuaro autentificado */
     //Route::get('foro/create', [PreguntaController::class, 'create'])->name('preguntas.create');
     Route::post('foro/preguntas/store', [PreguntaController::class, 'store'])->name('preguntas.store');
-    Route::post('foro/respuestas/store', [RespuestaController::class, 'store'])->name('respuestas.store');
+    Route::post('foro/respuestas/{pregunta}/store', [RespuestaController::class, 'store'])->name('respuestas.store');
 
 
 

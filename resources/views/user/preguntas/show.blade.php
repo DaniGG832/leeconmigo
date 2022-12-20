@@ -83,7 +83,7 @@
                     </div>
 
 
-                    <form action="{{route('respuestas.store')}}" method="post">
+                    <form action="{{route('respuestas.store',$pregunta)}}" method="post">
                       @csrf
 
                       {{-- Título --}}{{--
