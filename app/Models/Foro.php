@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Foro extends Model
 {
     use HasFactory;
+
+    
 }

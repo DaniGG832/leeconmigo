@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('descripcion');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('foro_id')->constrained('foros');
+            $table->foreignId('pregunta_id')->constrained('preguntas');
             $table->softDeletes();
             $table->timestamps();
         });

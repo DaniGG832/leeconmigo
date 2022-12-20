@@ -37,7 +37,7 @@
           </x-nav-link>
         </div>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('foro.index')" :active="request()->routeIs('foro.index')">
+          <x-nav-link :href="route('preguntas.index')" :active="request()->routeIs('preguntas.index')">
             {{ __('Foro ') }}
           </x-nav-link>
         </div>
@@ -150,8 +150,8 @@
       </x-nav-link>
     </div>
     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-      <x-nav-link :href="route('foro.index')" :active="request()->routeIs('foro.index')">
-        {{ __('Foro2') }}
+      <x-nav-link :href="route('preguntas.index')" :active="request()->routeIs('preguntas.index')">
+        {{ __('Foro') }}
       </x-nav-link>
     </div> --}}
     {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

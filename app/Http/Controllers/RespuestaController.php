@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreForoRequest;
-use App\Http\Requests\UpdateForoRequest;
-use App\Models\Foro;
+use App\Http\Requests\StoreRespuestaRequest;
+use App\Http\Requests\UpdateRespuestaRequest;
+use App\Models\Respuesta;
 
-class ForoController extends Controller
+class RespuestaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,7 @@ class ForoController extends Controller
      */
     public function index()
     {
-
-        
-
-
-
+        //
     }
 
     /**
@@ -35,10 +31,10 @@ class ForoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreForoRequest  $request
+     * @param  \App\Http\Requests\StoreRespuestaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreForoRequest $request)
+    public function store(StoreRespuestaRequest $request)
     {
         //
     }
@@ -46,22 +42,21 @@ class ForoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Foro  $foro
+     * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function show(Foro $foro)
+    public function show(Respuesta $respuesta)
     {
-        
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Foro  $foro
+     * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Foro $foro)
+    public function edit(Respuesta $respuesta)
     {
         //
     }
@@ -69,11 +64,11 @@ class ForoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateForoRequest  $request
-     * @param  \App\Models\Foro  $foro
+     * @param  \App\Http\Requests\UpdateRespuestaRequest  $request
+     * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateForoRequest $request, Foro $foro)
+    public function update(UpdateRespuestaRequest $request, Respuesta $respuesta)
     {
         //
     }
@@ -81,10 +76,10 @@ class ForoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Foro  $foro
+     * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Foro $foro)
+    public function destroy(Respuesta $respuesta)
     {
         //
     }
