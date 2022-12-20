@@ -1,4 +1,7 @@
 document.addEventListener("alpine:init", () => {
+
+
+    /* editar perfil */
     Alpine.data("avatar", () => ({
         open: true,
 
@@ -68,4 +71,27 @@ document.addEventListener("alpine:init", () => {
             alert("prueba");
         }, */
     }));
+
+/* index foro  (abril modal si hay errores del servidor)*/
+
+
+    Alpine.data("newPregunta", () => ({
+        show : false,
+
+        
+
+        alIniciar(condicion = 0) {
+            console.log(condicion);
+
+            if (condicion) {
+                this.show = true;
+            }
+        },
+
+        /* init: (condicion = 0) => {
+            console.log(2);
+        }, */
+    }));
+
+
 });

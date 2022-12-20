@@ -4,9 +4,11 @@ use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CriticaController;
 use App\Http\Controllers\EdadController;
 use App\Http\Controllers\EditorialController;
+use App\Http\Controllers\ForoController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UserController;
@@ -52,8 +54,22 @@ Route::get('autores/{autor}', [AutorController::class, 'userShow'])->name('autor
 
 Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criticas');
 
+/* foro */
+
+Route::get('foro', [PreguntaController::class, 'index'])->name('preguntas.index');
+Route::get('foro/{foro}/show', [PreguntaController::class, 'show'])->name('preguntas.show');
+
+
+
 
 Route::middleware(['auth'])->group(function () {
+    
+    
+    /* rutas foro para usuaro autentificado */
+    //Route::get('foro/create', [PreguntaController::class, 'create'])->name('preguntas.create');
+    Route::post('foro/store', [PreguntaController::class, 'store'])->name('preguntas.store');
+
+
 
     /* Rutas para las criticas */
     Route::get('criticas/{libro}/create', [CriticaController::class, 'create'])->name('criticas.create');
