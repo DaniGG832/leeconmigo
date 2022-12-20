@@ -52,6 +52,9 @@ Route::get('autores/{autor}', [AutorController::class, 'userShow'])->name('autor
 
 Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criticas');
 
+/* foro */
+
+
 
 Route::middleware(['auth'])->group(function () {
 
