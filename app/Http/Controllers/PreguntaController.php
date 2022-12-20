@@ -60,7 +60,7 @@ class PreguntaController extends Controller
      */
     public function show(Pregunta $pregunta)
     {
-        return 'show';
+        return view('user.preguntas.show',compact('pregunta'));
     }
 
     /**
