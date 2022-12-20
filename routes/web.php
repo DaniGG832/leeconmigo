@@ -9,7 +9,6 @@ use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PreguntaController;
-use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UserController;
@@ -58,7 +57,7 @@ Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criti
 /* foro */
 
 Route::get('foro', [PreguntaController::class, 'index'])->name('preguntas.index');
-Route::get('foro/{pregunta}/show', [PreguntaController::class, 'show'])->name('preguntas.show');
+Route::get('foro/{foro}/show', [PreguntaController::class, 'show'])->name('preguntas.show');
 
 
 
@@ -68,8 +67,7 @@ Route::middleware(['auth'])->group(function () {
     
     /* rutas foro para usuaro autentificado */
     //Route::get('foro/create', [PreguntaController::class, 'create'])->name('preguntas.create');
-    Route::post('foro/preguntas/store', [PreguntaController::class, 'store'])->name('preguntas.store');
-    Route::post('foro/respuestas/store', [RespuestaController::class, 'store'])->name('respuestas.store');
+    Route::post('foro/store', [PreguntaController::class, 'store'])->name('preguntas.store');
 
 
 
