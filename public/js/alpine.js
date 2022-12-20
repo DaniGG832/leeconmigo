@@ -88,6 +88,12 @@ document.addEventListener("alpine:init", () => {
             }
         },
 
+        abrirModal (){
+            this.show=true;
+            document.body.scrollIntoView();
+
+
+        }
         /* init: (condicion = 0) => {
             console.log(2);
         }, */
