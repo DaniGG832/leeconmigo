@@ -57,7 +57,7 @@ Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criti
 /* foro */
 
 Route::get('foro', [PreguntaController::class, 'index'])->name('preguntas.index');
-Route::get('foro/{foro}/show', [PreguntaController::class, 'show'])->name('preguntas.show');
+Route::get('foro/{pregunta}/show', [PreguntaController::class, 'show'])->name('preguntas.show');
 
 
 
