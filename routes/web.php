@@ -4,6 +4,7 @@ use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CriticaController;
 use App\Http\Controllers\EdadController;
 use App\Http\Controllers\EditorialController;
+use App\Http\Controllers\ForoController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibroController;
@@ -54,6 +55,7 @@ Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criti
 
 /* foro */
 
+Route::get('foro', [ForoController::class, 'index'])->name('foro.index');
 
 
 Route::middleware(['auth'])->group(function () {
