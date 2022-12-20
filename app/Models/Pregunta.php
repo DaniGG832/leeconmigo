@@ -34,13 +34,6 @@ class Pregunta extends Model
         return $this->hasMany(Respuesta::class, 'pregunta_id', 'id');
     }
     
-    /**
-     * Get all of the respuestas for the Pregunta
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function respuestas()
-    {
-        return $this->hasMany(Respuesta::class, 'pregunta_id', 'id');
-    }
+    
+    
 }

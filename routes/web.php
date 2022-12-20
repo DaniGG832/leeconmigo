@@ -9,11 +9,13 @@ use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PreguntaController;
+use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VotacionController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
