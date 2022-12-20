@@ -60,7 +60,13 @@ class PreguntaController extends Controller
      */
     public function show(Pregunta $pregunta)
     {
-        return 'show';
+        
+
+        //$respuestas = Pregunta::where('pregunta_id', $pregunta->id)->paginate(1);
+
+            
+        //return $respuestas;
+        return view('user.preguntas.show',compact('pregunta'));
     }
 
     /**
