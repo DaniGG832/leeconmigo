@@ -102,6 +102,10 @@ class RespuestaController extends Controller
      */
     public function destroy(Respuesta $respuesta)
     {
-        //
+        //return $respuesta;
+
+        $respuesta->delete();
+
+        return Redirect()->back()->with('success','Respuesta borrada correctamente.');
     }
 }
