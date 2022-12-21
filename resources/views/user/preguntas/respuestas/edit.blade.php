@@ -11,7 +11,7 @@
 
         <div x-data="newPregunta" x-init="alIniciar({{$errors->any()}})" class="p-6 bg-white border-b border-gray-200">
 
-          <a href="{{ url()->previous() }}" class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+          <a href="{{route('preguntas.show',$pregunta)}}" class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
 
             Volver atras
           </a>
