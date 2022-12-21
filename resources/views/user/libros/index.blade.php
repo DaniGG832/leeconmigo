@@ -106,21 +106,21 @@
   </div>
 
   <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('ordenar', () => ({
+    // document.addEventListener('alpine:init', () => {
+    //   Alpine.data('ordenar', () => ({
 
 
-        form: document.querySelector('#ordenar'),
+    //     form: document.querySelector('#ordenar'),
 
-        ordenar() {
-          //alert(this);
-          this.form.submit();
-          //console.log(e);
-        }
+    //     ordenar() {
+    //       //alert(this);
+    //       this.form.submit();
+    //       //console.log(e);
+    //     }
 
 
-      }))
-    })
+    //   }))
+    // })
 
   </script>
 
