@@ -1,19 +1,22 @@
 <div class="bg-blue-50 mb-5 border border-blue-300 rounded-t mt-2">
   <div class="flex items-start justify-between p-5 border border-blue-100 rounded-t">
 
-    <div class=" flex md:flex-row flex-col">
+    <div class=" w-full">
 
-      <img class="rounded-full h-12 w-12  object-cover" src="{{$respuesta->user->avatar ? asset($respuesta->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
+      
+      
+      <div class="p-1 space-y-6 ">
+        <div class="flex">
 
+          <img class="rounded-full h-12 w-12  object-cover mr-2" src="{{$respuesta->user->avatar ? asset($respuesta->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
+          
+          <p class="text-gray-600 text-xs md:text-sm leading-relaxed ">
+            {{$respuesta->descripcion}}
+          </p>
+          
+        </div>
 
-      <div class="p-6 space-y-6 ">
-
-        <p class="text-gray-600 text-xs md:text-sm leading-relaxed ">
-          {{$respuesta->descripcion}}
-        </p>
-
-
-        <div x-data class="flex justify-start">
+        <div class="flex justify-end">
 
           {{-- {{$respuesta->user }} --}}
           {{-- {{Auth::user() }} --}}
@@ -36,7 +39,7 @@
           @if (Auth::user() && ($respuesta->user->id==Auth::id() || Auth::user()->rol_id!= 1) )
 
 
-          <form x-ref="form" action="{{-- {{route('criticas.destroy',$critica)}} --}}" method="post">
+          <form x-ref="form" action="{{route('respuestas.destroy',[$respuesta,$pregunta])}}" method="post">
             @csrf
             @method('DELETE')
             <button x-on:click.prevent="if (confirm('¿Esta seguro que desea de borrar la critica?')) $refs.form.submit()" class="p-2">

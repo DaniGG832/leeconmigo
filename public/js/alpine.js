@@ -115,4 +115,20 @@ document.addEventListener("alpine:init", () => {
     }));
 
 
+    /* enviar el formulario al cambiar el select 
+     */
+    Alpine.data('ordenar', () => ({
+
+
+        form: document.querySelector('#ordenar'),
+
+        ordenar() {
+          //alert(this);
+          this.form.submit();
+          //console.log(e);
+        }
+
+
+      }))
+
 });
