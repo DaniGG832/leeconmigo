@@ -68,9 +68,10 @@ class RespuestaController extends Controller
      * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Respuesta $respuesta)
+    public function edit(Respuesta $respuesta,Pregunta $pregunta)
     {
-        //
+        
+        return view('user.preguntas.respuestas.edit',compact('respuesta','pregunta'));
     }
 
     /**
@@ -80,9 +81,17 @@ class RespuestaController extends Controller
      * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRespuestaRequest $request, Respuesta $respuesta)
+    public function update(UpdateRespuestaRequest $request, Respuesta $respuesta ,Pregunta $pregunta)
     {
-        //
+        //return $request->validated('descripcion');
+
+        $respuesta->descripcion = $request->validated('descripcion');
+
+        $respuesta->save();
+
+        /* TODO: redirigir a foro show  */
+        return redirect()->route('preguntas.show',$pregunta)->with('success', 'Respuesta editada correctamente');
+
     }
 
     /**
