@@ -70,7 +70,7 @@ class RespuestaController extends Controller
      */
     public function edit(Respuesta $respuesta)
     {
-        //
+        return view('user.preguntas.respuestas.edit',compact('respuesta'));
     }
 
     /**
@@ -82,7 +82,7 @@ class RespuestaController extends Controller
      */
     public function update(UpdateRespuestaRequest $request, Respuesta $respuesta)
     {
-        //
+        return 'update';
     }
 
     /**

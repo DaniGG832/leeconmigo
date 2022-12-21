@@ -71,6 +71,8 @@ Route::middleware(['auth'])->group(function () {
     //Route::get('foro/create', [PreguntaController::class, 'create'])->name('preguntas.create');
     Route::post('foro/preguntas/store', [PreguntaController::class, 'store'])->name('preguntas.store');
     Route::post('foro/respuestas/{pregunta}/store', [RespuestaController::class, 'store'])->name('respuestas.store');
+    Route::get('foro/respuestas/{respuesta}/edit', [RespuestaController::class, 'edit'])->name('respuestas.edit');
+    Route::put('foro/respuestas/{respuesta}/update', [RespuestaController::class, 'update'])->name('respuestas.update');
 
 
 

@@ -93,7 +93,22 @@ document.addEventListener("alpine:init", () => {
             document.body.scrollIntoView();
 
 
-        }
+        },
+        /* abrirVentana(){
+
+            const windowFeatures = "left=200,top=200,width=500,height=700";
+            establecerMensaje = function (mensaje) {
+                console.log("Mensaje: " + mensaje);
+            }
+
+            const ventana = window.open("",'edit',windowFeatures );
+            ventana.addEventListener("DOMContentLoaded", function () {
+                console.log("Ventana abierta lista!");
+                
+              });
+            
+              ventana.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+        } */
         /* init: (condicion = 0) => {
             console.log(2);
         }, */
