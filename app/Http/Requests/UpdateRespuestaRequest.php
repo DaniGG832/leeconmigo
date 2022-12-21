@@ -24,7 +24,7 @@ class UpdateRespuestaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'descripcion' => 'required|min:3',
         ];
     }
 }
