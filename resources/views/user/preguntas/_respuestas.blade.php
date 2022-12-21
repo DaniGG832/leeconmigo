@@ -3,17 +3,20 @@
 
     <div class=" w-full">
 
-      <img class="rounded-full h-12 w-12  object-cover" src="{{$respuesta->user->avatar ? asset($respuesta->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
+      
+      
+      <div class="p-1 space-y-6 ">
+        <div class="flex">
 
+          <img class="rounded-full h-12 w-12  object-cover mr-2" src="{{$respuesta->user->avatar ? asset($respuesta->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
+          
+          <p class="text-gray-600 text-xs md:text-sm leading-relaxed ">
+            {{$respuesta->descripcion}}
+          </p>
+          
+        </div>
 
-      <div class="p-6 space-y-6 ">
-
-        <p class="text-gray-600 text-xs md:text-sm leading-relaxed ">
-          {{$respuesta->descripcion}}
-        </p>
-
-
-        <div x-data class="flex justify-end">
+        <div class="flex justify-end">
 
           {{-- {{$respuesta->user }} --}}
           {{-- {{Auth::user() }} --}}
