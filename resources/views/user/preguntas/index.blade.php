@@ -12,7 +12,7 @@
         <div x-data="newPregunta" x-init="alIniciar({{$errors->any()}})" class="p-6 bg-white border-b border-gray-200">
           @auth
 
-          <button @click="show=true" class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
+          <button @click="abrirModal" class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
             Crear tema {{$errors->any()}}
           </button>
           
