@@ -69,18 +69,22 @@
 
               </div>
               @endauth
+              
+              @if (Auth::user())
               <div>
                 <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('libros.deseos.agregar',$libro)}}">
-                  @if (!Auth::user()->isdeseo($libro))
-                  <span>Añadir a </span>  
-                  @else
-                  <span>Quitar de</span>  
-                  @endif
-                   deseos
 
+                  @if (!Auth::user()->isdeseo($libro))
+                  <span>Añadir a </span>
+                  @else
+                  <span>Quitar de</span>
+                  @endif
+                  deseos
+                  
                   <span class="text-xl rounded-full no-underline"></span>
                 </a>
               </div>
+              @endif
               <div>
                 <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('criticas',$libro)}}">Criticas
                   <span class="text-xl rounded-full no-underline">[ {{$libro->criticas->count()}} ]</span>
