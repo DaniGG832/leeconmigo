@@ -74,6 +74,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('foro/respuestas/{respuesta}/edit/{pregunta}', [RespuestaController::class, 'edit'])->name('respuestas.edit');
     Route::put('foro/respuestas/{respuesta}/update/{pregunta}', [RespuestaController::class, 'update'])->name('respuestas.update');
     Route::delete('foro/preguntas/{pregunta}', [PreguntaController::class, 'destroy'])->name('preguntas.destroy');
+
+    /* borrar respuestas usuarios */
     Route::delete('foro/respuestas/{respuesta}/delete/{pregunta}', [RespuestaController::class, 'destroy'])->name('respuestas.destroy');
 
 
