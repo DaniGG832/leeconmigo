@@ -10,7 +10,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg  border-2 border-blue-400 " style="min-height: 80vh;">
 
 
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="p-6 bg-white">
         
 
           <div class="container mx-auto">
@@ -21,7 +21,7 @@
               {{-- {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1,) }} --}}
               {{-- {{number_format($libro->votaciones->avg('voto'), 1,)}} --}}
 
-              @include('user.libros._libro')
+              @include('user.deseos._libro')
 
 
               @endforeach

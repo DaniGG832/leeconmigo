@@ -65,10 +65,10 @@ class LibroController extends Controller
 
         //return $user->has('listaDeseos')->find($libro->id);
 
-        $togge = $user->listaDeseos()->toggle($libro->id);
+        $toggle = $user->listaDeseos()->toggle($libro->id);
 
         //return $togge['attached'];
-        if ($togge['attached']) {
+        if ($toggle['attached']) {
 
 
             return back()->with('success', "Agregado a la lista de deseos correctamente.");
