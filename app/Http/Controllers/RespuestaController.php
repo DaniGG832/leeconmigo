@@ -104,6 +104,8 @@ class RespuestaController extends Controller
     {
         //return $respuesta;
 
+        /* borrar comentario usuarios */
+
         $respuesta->delete();
 
         return Redirect()->back()->with('success','Respuesta borrada correctamente.');

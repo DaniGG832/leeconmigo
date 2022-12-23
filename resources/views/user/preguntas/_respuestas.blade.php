@@ -35,6 +35,7 @@
           @endif
 
 
+          {{-- borrar respuestas usuarios --}}
           {{-- @if (Auth::user()) --}}
           @if (Auth::user() && ($respuesta->user->id==Auth::id() || Auth::user()->rol_id!= 1) )
 
