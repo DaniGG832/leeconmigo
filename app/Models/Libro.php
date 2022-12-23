@@ -219,4 +219,14 @@ public function criticas()
         }
 
     }
+
+    /**
+     * The deseos that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function deseoUsuarios()
+    {
+        return $this->belongsToMany(User::class, 'deseos', 'libro_id', 'user_id');
+    }
 }
