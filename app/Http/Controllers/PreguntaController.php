@@ -95,12 +95,12 @@ class PreguntaController extends Controller
     public function destroy(Pregunta $pregunta)
     {
 
-        return $pregunta;
-        //$pregunta->respuestas->each->delete();
+        //return $pregunta;
+        $pregunta->respuestas->each->delete();
 
         $pregunta->delete();
 
-        return back();
+        return redirect()->back()->with('success', "Pregunta borrada correctamente.");
 
     }
 }

@@ -49,11 +49,11 @@
                 <div>
                   @if (Auth::user() /* && ($respuesta->user->id==Auth::id() || Auth::user()->rol_id!= 1) */)
 
-                  <form id="{{$pregunta->id}}" action="{{route('preguntas.destroy', $pregunta)}}" method="post">
+                  <form x-on:submit="enviarFormulario" id="{{$pregunta->id}}" action="{{route('preguntas.destroy', $pregunta)}}" method="post">
                     @csrf
                     @method('DELETE')
 
-                    <button  x-on:click.prevent="enviar" class="p-2">
+                    <button  type="submit" class="p-2">
                       <svg class="h-6 w-6 text-red-400 hover:text-red-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="3 6 5 6 21 6" />
                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />

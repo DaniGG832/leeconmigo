@@ -34,7 +34,7 @@
       {{$critica->critica}}
     </p>
 
-    <div x-data class="flex justify-end">
+    <div class="flex justify-end">
 
       {{-- {{$critica->user }} --}}
       {{-- {{Auth::user() }} --}}
@@ -54,7 +54,7 @@
       @if (Auth::user() && ($critica->user->id==Auth::id() || Auth::user()->rol_id!= 1) )
 
 
-      <form action="{{route('criticas.destroy',$critica)}}" method="post">
+      <form x-on:submit="enviarFormulario" action="{{route('criticas.destroy',$critica)}}" method="post">
         @csrf
         @method('DELETE')
         <button class="p-2">

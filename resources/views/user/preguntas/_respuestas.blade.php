@@ -39,7 +39,7 @@
           @if (Auth::user() && ($respuesta->user->id==Auth::id() || Auth::user()->rol_id!= 1) )
 
 
-          <form  action="{{route('respuestas.destroy',[$respuesta,$pregunta])}}" method="post">
+          <form x-on:submit="enviarFormulario" action="{{route('respuestas.destroy',[$respuesta,$pregunta])}}" method="post">
             @csrf
             @method('DELETE')
             <button class="p-2">

@@ -63,7 +63,7 @@
           <div class="container mx-auto">
             {{ $criticas->links() }}
 
-            <div class="flex flex-col -mx-4  p-5" style="min-height: 20em">
+            <div x-data="critica" class="flex flex-col -mx-4  p-5" style="min-height: 20em">
 
               @foreach ($criticas as $critica)
 

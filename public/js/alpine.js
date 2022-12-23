@@ -80,19 +80,19 @@ document.addEventListener("alpine:init", () => {
             }
         },
 
-        /* enviar(e) {
-            //e.preventDefault();
-            //alert (e);
-            form = document.getElementById(e.target.parentNode.parentNode.id);
+         enviarFormulario(e) {
+            
+            confirmar = confirm('¿ Esta seguro que desea borrar ?');
 
-        
+            console.log(confirmar);
 
-            form.addEventListener('submit', function(e) {
+            if (!confirmar) {
+
+                console.log('cancelado');
                 e.preventDefault();
             }
-            );
-            //console.log(e.target.parentNode.parentNode.id);
-        }, */
+
+        }, 
 
         abrirModal() {
             this.show = true;
@@ -129,4 +129,22 @@ document.addEventListener("alpine:init", () => {
             //console.log(e);
         },
     }));
+
+    Alpine.data("critica", () => ({
+        enviarFormulario(e) {
+            
+            confirmar = confirm('¿ Esta seguro que desea borrar ?');
+
+            console.log(confirmar);
+
+            if (!confirmar) {
+
+                console.log('cancelado');
+                e.preventDefault();
+            }
+
+        }, 
+    }));
+
+
 });
