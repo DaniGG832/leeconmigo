@@ -94,6 +94,13 @@ class PreguntaController extends Controller
      */
     public function destroy(Pregunta $pregunta)
     {
-        //
+
+        return $pregunta;
+        //$pregunta->respuestas->each->delete();
+
+        $pregunta->delete();
+
+        return back();
+
     }
 }
