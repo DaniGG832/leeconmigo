@@ -1,6 +1,4 @@
 document.addEventListener("alpine:init", () => {
-
-
     /* editar perfil */
     Alpine.data("avatar", () => ({
         open: true,
@@ -8,14 +6,12 @@ document.addEventListener("alpine:init", () => {
         file: "",
         mensaje: document.getElementById("mensaje"),
         alIniciar: function () {
-
             /* console.log(mensaje.value);
             console.log(mensaje.value.length); */
             if (mensaje.value.length) {
                 console.log("si");
-                this.open =!this.open;
+                this.open = !this.open;
             }
-            
         },
 
         init: () => {
@@ -39,27 +35,26 @@ document.addEventListener("alpine:init", () => {
                 console.log(this.file);
                 console.log(input.files[0].size);
 
-                    console.log("si");
-                    var reader = new FileReader();
+                console.log("si");
+                var reader = new FileReader();
 
-                    reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]);
 
-                    //console.log(reader);
+                //console.log(reader);
 
-                    reader.onload = function (e) {
-                        //console.log(e.target.result);
+                reader.onload = function (e) {
+                    //console.log(e.target.result);
 
-                        console.log(imgAvatar.src);
+                    console.log(imgAvatar.src);
 
-                        imgAvatar.src = e.target.result;
+                    imgAvatar.src = e.target.result;
 
-                        /*   pre.innerHTML =
+                    /*   pre.innerHTML =
                                               "<img id='pre' class='rounded-full h-32 w-32 mx-auto' src=" +
                                               e.target.result +
                                               " alt='user avatar'/>" +
                                               "<span class='text-gray-500 px-4'>click para cambiar </span>"; */
-                    };
-                
+                };
             } else {
                 console.log("no");
                 console.log(this.UserAvatar);
@@ -72,13 +67,10 @@ document.addEventListener("alpine:init", () => {
         }, */
     }));
 
-/* index foro  (abril modal si hay errores del servidor)*/
-
+    /* index foro  (abril modal si hay errores del servidor)*/
 
     Alpine.data("newPregunta", () => ({
-        show : false,
-
-        
+        show: false,
 
         alIniciar(condicion = 0) {
             console.log(condicion);
@@ -88,11 +80,23 @@ document.addEventListener("alpine:init", () => {
             }
         },
 
-        abrirModal (){
-            this.show=true;
+         enviarFormulario(e) {
+            
+            confirmar = confirm('¿ Esta seguro que desea borrar ?');
+
+            console.log(confirmar);
+
+            if (!confirmar) {
+
+                console.log('cancelado');
+                e.preventDefault();
+            }
+
+        }, 
+
+        abrirModal() {
+            this.show = true;
             document.body.scrollIntoView();
-
-
         },
         /* abrirVentana(){
 
@@ -114,21 +118,33 @@ document.addEventListener("alpine:init", () => {
         }, */
     }));
 
-
-    /* enviar el formulario al cambiar el select 
+    /* enviar el formulario al cambiar el select
      */
-    Alpine.data('ordenar', () => ({
-
-
-        form: document.querySelector('#ordenar'),
+    Alpine.data("ordenar", () => ({
+        form: document.querySelector("#ordenar"),
 
         ordenar() {
-          //alert(this);
-          this.form.submit();
-          //console.log(e);
-        }
+            //alert(this);
+            this.form.submit();
+            //console.log(e);
+        },
+    }));
 
+    Alpine.data("critica", () => ({
+        enviarFormulario(e) {
+            
+            confirmar = confirm('¿ Esta seguro que desea borrar ?');
 
-      }))
+            console.log(confirmar);
+
+            if (!confirmar) {
+
+                console.log('cancelado');
+                e.preventDefault();
+            }
+
+        }, 
+    }));
+
 
 });

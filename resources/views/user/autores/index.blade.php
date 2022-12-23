@@ -18,9 +18,11 @@
 
                         <div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/4 lg:w-1/4 2xl:1/6 p-4 bg-blue-50 bg-blue-50 rounded-md border">
                             <a href="{{route('autores.show',$autor)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-                            <div class="relative pb-56 overflow-hidden">
+                            <div class="relative h-36 md:h-56 overflow-hidden flex justify-center">
                               {{-- <div class="rounded-full absolute z-50 bg-red-600">7.5</div> --}}
-                              <img class="absolute inset-0 h-56 w-full object-cover" src="{{$autor->img ? asset($autor->img) : asset('img/el-principito.jpg')}}" alt="">
+                              <img class=" inset-0 object-cover w-full aspect-square hover:scale-110 transition duration-300 ease-in-out
+                              {{-- object-cover  --}}
+                              " src="{{$autor->img ? asset($autor->img) : asset('img/el-principito.jpg')}}" alt="">
                             </div>
                         </a>
                             <div class="p-4 text-center">
