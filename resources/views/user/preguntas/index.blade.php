@@ -47,7 +47,7 @@
                 </div>
 
                 <div>
-                  @if (Auth::user() /* && ($respuesta->user->id==Auth::id() || Auth::user()->rol_id!= 1) */)
+                  @if (Auth::user()  && Auth::user()->rol_id!= 1 )
 
                   <form x-on:submit="enviarFormulario" id="{{$pregunta->id}}" action="{{route('preguntas.destroy', $pregunta)}}" method="post">
                     @csrf
