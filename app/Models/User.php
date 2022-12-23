@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
-        
+
     ];
 
     /**
@@ -65,12 +65,34 @@ class User extends Authenticatable
     }
 
     /**
- * Get all of the criticas for the Libro
- *
- * @return \Illuminate\Database\Eloquent\Relations\HasMany
- */
-public function criticas()
-{
-    return $this->hasMany(Critica::class, 'user_id', 'id');
-}
+     * Get all of the criticas for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function criticas()
+    {
+        return $this->hasMany(Critica::class, 'user_id', 'id');
+    }
+
+
+    /**
+     * The deseos that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function listaDeseos()
+    {
+        return $this->belongsToMany(Libro::class, 'deseos', 'user_id', 'libro_id');
+    }
+
+
+    
+    public function isdeseo($libro)
+    {
+
+        return $this->listaDeseos->find($libro->id);
+
+    }
+
+
 }

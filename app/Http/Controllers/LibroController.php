@@ -22,6 +22,75 @@ use Illuminate\Support\Facades\Storage as FacadesStorage;
 class LibroController extends Controller
 {
 
+
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deseos()
+    {
+
+        $user = auth()->user();
+
+        $listaDeseos = $user->listaDeseos;
+
+        //return $user->listaDeseos;
+
+        return view('user.deseos.index', compact('user', 'listaDeseos'));
+    }
+
+
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Libro  $libro
+     * @return \Illuminate\Http\Response
+     */
+    public function deseosAgregar(Libro $libro)
+    {
+
+
+        $user = auth()->user();
+
+        /* if ($user->isdeseo($libro)) {
+            return $user->isdeseo($libro);
+        }
+        return 'false'; */
+
+
+        //return $user->has('listaDeseos')->find($libro->id);
+
+        $togge = $user->listaDeseos()->toggle($libro->id);
+
+        //return $togge['attached'];
+        if ($togge['attached']) {
+
+
+            return back()->with('success', "Agregado a la lista de deseos correctamente.");
+            # code...
+        } else {
+            # code...
+            return back()->with('success', "eliminado de la lista de deseos correctamente.");
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Libro  $libro
+     * @return \Illuminate\Http\Response
+     */
+    public function deseosQuitar(Libro $libro)
+    {
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -36,18 +105,17 @@ class LibroController extends Controller
         $search = $request->search;
         //return $request->sortBy;
 
-        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones','voto')->buscar($request->all())->ordenar($request->all())->paginate(15,['*'],'pagina');
-        
+        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones', 'voto')->buscar($request->all())->ordenar($request->all())->paginate(15, ['*'], 'pagina');
+
         //return $libros;
-        
+
         if ($request->all()) {
-            
+
             //return 1;
         }
 
 
-        return view('user.libros.index', compact('libros','sortBy','search'));
-        
+        return view('user.libros.index', compact('libros', 'sortBy', 'search'));
     }
 
     /**
@@ -60,7 +128,6 @@ class LibroController extends Controller
 
 
         return view('user.libros.show', compact('libro'));
-        
     }
 
 
@@ -77,7 +144,7 @@ class LibroController extends Controller
         $totalUsuarios = User::all()->count();
         $totalLibros = Libro::all()->count();
 
-        return view('admin.libros.index', compact(['libros', 'totalUsuarios','totalLibros']));
+        return view('admin.libros.index', compact(['libros', 'totalUsuarios', 'totalLibros']));
     }
 
     /**
@@ -128,10 +195,10 @@ class LibroController extends Controller
 
         $libro = new Libro($request->validated());
 
-        if (isset( $request->validated()['img'])) {
-            
-            $imagen =$request->validated()['img']->store('public/imagenes/libros');
-            
+        if (isset($request->validated()['img'])) {
+
+            $imagen = $request->validated()['img']->store('public/imagenes/libros');
+
             $url = FacadesStorage::url($imagen);
 
             $libro->img = $url;
@@ -140,7 +207,7 @@ class LibroController extends Controller
 
         $libro->save();
 
-        
+
         $libro->temas()->sync($request->validated()['temas']);
 
         return back()->with('success', "Ficha de $libro->titulo creada correctamente");
@@ -154,7 +221,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-         //return Tema::find(1);
+        //return Tema::find(1);
         //return $libro->temas->contains(Tema::find(1));
 
         /* if ($libro->temas->contains(Tema::find(1))) {
@@ -175,7 +242,7 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        
+
         $temas = Tema::all();
         $libros = libro::all();
         $autores = Autor::all();
@@ -215,15 +282,15 @@ class LibroController extends Controller
         $libro->fill($request->validated());
 
 
-        if (isset( $request->validated()['img'])) {
-            
-            $imagen =$request->validated()['img']->store('public/imagenes/libros');
-            
+        if (isset($request->validated()['img'])) {
+
+            $imagen = $request->validated()['img']->store('public/imagenes/libros');
+
             $url = FacadesStorage::url($imagen);
 
             $libro->img = $url;
         }
-        
+
 
         $libro->save();
 
@@ -247,6 +314,5 @@ class LibroController extends Controller
         $libro->delete();
 
         return redirect()->route('admin.libros.index')->with('success', 'Libro borrado correctamente');
-
     }
 }

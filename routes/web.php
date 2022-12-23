@@ -76,6 +76,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('foro/respuestas/{respuesta}/delete/{pregunta}', [RespuestaController::class, 'destroy'])->name('respuestas.destroy');
 
 
+    /* lista de deseos */
+    Route::get('lista-deseos', [LibroController::class, 'deseos'])->name('libros.deseos');
+    Route::get('agregar-lista-deseos/{libro}', [LibroController::class, 'deseosAgregar'])->name('libros.deseos.agregar');
+    Route::get('quitar-lista-deseos/{libro}', [LibroController::class, 'deseosQuitar'])->name('libros.deseos.quitar');
+
 
     /* Rutas para las criticas */
     Route::get('criticas/{libro}/create', [CriticaController::class, 'create'])->name('criticas.create');

@@ -80,7 +80,13 @@
             </x-dropdown-link>
             <x-dropdown-link :href="route('votaciones')">
 
-              {{ __('Mis Votaciones') }}
+              {{ __('Mis votaciones') }}
+    
+            </x-dropdown-link>
+
+            <x-dropdown-link :href="route('libros.deseos')">
+
+              {{ __('Lista de deseos') }}
     
             </x-dropdown-link>
 
@@ -178,7 +184,13 @@
         </x-dropdown-link>
         <x-dropdown-link :href="route('votaciones')">
 
-          {{ __('Mis Votaciones') }}
+          {{ __('Mis votaciones') }}
+
+        </x-dropdown-link>
+      ibros.deseos
+        <x-dropdown-link :href="route('libros.deseos')">
+
+          {{ __('Lista de deseos') }}
 
         </x-dropdown-link>
         @if (auth()->check() && Auth::user()->rol_id!=1)
