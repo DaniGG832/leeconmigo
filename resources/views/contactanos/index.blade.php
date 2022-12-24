@@ -14,14 +14,9 @@
 
 
           <div class=" pb-4 ">
-            <a href="{{-- {{route('libros.show',$libro)}} --}}" class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+            <a href="{{route('libros')}}" class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
 
-              Volver a la ficha
-            </a>
-
-            <a href="{{-- {{route('criticas',$libro)}} --}}" class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
-
-              Volver a las críticas
+              Volver a inicio
             </a>
 
 
