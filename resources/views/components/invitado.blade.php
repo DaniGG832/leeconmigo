@@ -16,7 +16,7 @@
   <script src="{{asset("js/alpine.js")}}"></script>
 </head>
 <body class="font-sans antialiased">
-  <div class="min-h-screen bg-gray-100">
+  <div class="min-h-screen bg-blue-100">
 
     <x-nav></x-nav>
 
@@ -40,7 +40,7 @@
 
     <!-- Page Heading -->
     @if (isset($header))
-    <header class="bg-white shadow  border-2 border-blue-200 bg-blue-100">
+    <header class="bg-white shadow  border-2 border-blue-400 bg-blue-300">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         {{ $header }}
       </div>
@@ -50,7 +50,9 @@
     <main class="fondo">
       <x-session></x-session>
       {{ $slot }}
+    
     </main>
+    <x-footer></x-footer>
   </div>
 </body>
 

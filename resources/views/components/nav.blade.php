@@ -187,7 +187,7 @@
           {{ __('Mis votaciones') }}
 
         </x-dropdown-link>
-      ibros.deseos
+      
         <x-dropdown-link :href="route('libros.deseos')">
 
           {{ __('Lista de deseos') }}
