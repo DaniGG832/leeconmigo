@@ -1,4 +1,4 @@
-<div class="bg-blue-50 mb-5 border border-blue-300 rounded-t">
+<div class="mb-5 border border-blue-100 rounded-t">
 
   {{-- <div class="flex">
     <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
@@ -8,7 +8,7 @@
     </div>
   </div> --}}
   {{-- header --}}
-  <div class="flex items-start justify-between p-5 border border-blue-100 rounded-t">
+  <div class="flex items-start justify-between p-5  rounded-t">
     <img class="rounded-full h-12 w-12  object-cover" src="{{$critica->user->avatar ? asset($critica->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
 
     <h3 class="text-gray-900 text-sm md:text-l font-semibold ml-3">
