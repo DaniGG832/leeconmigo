@@ -1,5 +1,5 @@
-<div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-4 ">
-  <div class="rounded-md border border-blue-200 p-2 m-1">
+<div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-1">
+  <div class="rounded-md border border-blue-200 p-1">
 
   <a href="{{route('libros.show',$libro)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
   <div class="relative pb-56 overflow-hidden">
