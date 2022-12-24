@@ -1,4 +1,4 @@
-<div class="bg-blue-50 mb-5 border border-blue-300 rounded-t">
+<div class=" mb-5 border border-blue-300 rounded-t">
   <div class="flex items-start  justify-around p-5 border border-blue-100 rounded-t flex-col md:flex-row">
 <a href="{{route('libros.show',$votacion->libro)}}">
 
@@ -31,7 +31,7 @@
     </div>
 </div>
 
-    <div class="text-gray-400 rounded-lg   p-1.5 ml-auto inline-flex items-center flex-col border">
+    <div class="text-gray-400 rounded-lg   p-1.5 ml-auto inline-flex items-center flex-col">
 
       <div class="text-gray-400 rounded-lg  p-1.5 ml-auto inline-flex items-center">
         <p class="text-2xl text-red-500  p-3 border border-blue-400 rounded-lg">{{$votacion->voto}}</p>

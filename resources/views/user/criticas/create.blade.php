@@ -63,7 +63,7 @@
 
             <div class="flex flex-col -mx-4  p-5" style="min-height: 20em">
 
-              <div class="bg-blue-50 mb-5 border border-blue-300 rounded-t p-5">
+              <div class="mb-5 px-5">
 
 
                 <form action="{{route('criticas.store',$libro)}}" method="post">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutorController;
+use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\CriticaController;
 use App\Http\Controllers\EdadController;
 use App\Http\Controllers\EditorialController;
@@ -61,6 +62,10 @@ Route::get('criticas/{libro}', [CriticaController::class, 'index'])->name('criti
 Route::get('foro', [PreguntaController::class, 'index'])->name('preguntas.index');
 Route::get('foro/{pregunta}/show', [PreguntaController::class, 'show'])->name('preguntas.show');
 
+/* Email de contactanos */
+
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
 
 
