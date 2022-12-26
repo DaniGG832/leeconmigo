@@ -37,6 +37,11 @@
           </x-nav-link>
         </div>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('librerias.index')" :active="request()->routeIs('librerias.index')">
+            {{ __('Librerias ') }}
+          </x-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('preguntas.index')" :active="request()->routeIs('preguntas.index')">
             {{ __('Foro ') }}
           </x-nav-link>

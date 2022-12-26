@@ -8,6 +8,7 @@ use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\ForoController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IlustradorController;
+use App\Http\Controllers\LibreriaController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\RespuestaController;
@@ -66,6 +67,12 @@ Route::get('foro/{pregunta}/show', [PreguntaController::class, 'show'])->name('p
 
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
+
+
+/* Librerias */
+
+Route::get('librerias', [LibreriaController::class, 'index'])->name('librerias.index');
+
 
 
 
