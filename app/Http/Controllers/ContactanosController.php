@@ -49,7 +49,7 @@ class ContactanosController extends Controller
         Mail::to('daniel.gonzalez.garcia@iesdonana.org')->send(new ContactanosMailable($request->validated()));
 
 
-        return Redirect(route('libros'))->with('success','Mensaje enviado correctamente.');
+        return Redirect()->route('libros')->with('success','Mensaje enviado correctamente.');
     }
 
     /**
