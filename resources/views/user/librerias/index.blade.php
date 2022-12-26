@@ -19,6 +19,10 @@
 
 
 
+          <h1>JnjSite.com: Javascript Geolocation</h1>
+          <p>Your current location is latitude <span id="spanLatitude"></span> degrees and longitude <span id="spanLongitude"></span> degrees.</p>
+          <p id="theError"></p>
+
         </div>
       </div>
     </div>
@@ -50,8 +54,68 @@
 
         init: function() {
 
+
+          function positionSuccess(position) {
+            console.log(position);
+            //map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 9);
+
+            console.log(map);
+             map.fitBounds([
+              [position.coords.latitude, position.coords.longitude]
+            ]).setZoom(9);
+
+
+
+            alert('SUCCESS');
+            document.getElementById('spanLatitude').innerHTML = position.coords.latitude;
+            document.getElementById('spanLongitude').innerHTML = position.coords.longitude;
+            console.log(position);
+          }
+
+          function positionError(error) {
+            //alert('ERROR');
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                document.getElementById('theError').innerHTML = "User denied the request for Geolocation."
+                break;
+              case error.POSITION_UNAVAILABLE:
+                document.getElementById('theError').innerHTML = "Location information is unavailable."
+                break;
+              case error.TIMEOUT:
+                document.getElementById('theError').innerHTML = "The request to get user location timed out."
+                break;
+              case error.UNKNOWN_ERROR:
+                document.getElementById('theError').innerHTML = "An unknown error occurred."
+                break;
+            }
+          }
+          /* window.onload = () => {
+                  if (navigator.geolocation) {
+                    alert('Browser has Geolocation');
+                      navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+
+                      console.log(positionSuccess);
+                  } else {
+                      alert('Browser do not support Geoloation');
+                  }
+              };
+ */
+
+
+      var map = L.map('map').setView([40.4165000, -3.7025600], 9);
+
+          if (navigator.geolocation) {
+            alert('Browser has Geolocation');
+            navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+
+
+          } else {
+            alert('Browser do not support Geoloation');
+
+          }
+
           console.log(this.librerias);
-          map = L.map('map').setView([40.4165000, -3.7025600], 6);
+          /* map = L.map('map').setView([40.4165000, -3.7025600], 9); */
 
 
           function name() {
@@ -75,7 +139,7 @@
           /* marker de manera dinamica */
           this.librerias.map(point => {
             console.log(point);
-            marker = L.marker([point.lat, point.lng]).addTo(map).bindPopup(point.id+' '+point.name);
+            marker = L.marker([point.lat, point.lng]).addTo(map).bindPopup(point.id + ' ' + point.name);
 
 
             marker.on('click', function() {
@@ -89,12 +153,11 @@
 
 
           /* centrar mapa al pasarles los puntos */
-          console.log(...this.librerias.map(point => [point.lat, point.lng]));
+          /* console.log(...this.librerias.map(point => [point.lat, point.lng]));
 
           map.fitBounds([
             ...this.librerias.map(point => [point.lat, point.lng])
-          ]);
-
+          ]); */
 
           /*   map.fitBounds([
               [marker.getLatLng().lat, marker.getLatLng().lng]
@@ -102,15 +165,15 @@
 
           //marker.addEventListener('click', name);
 
-          circle = L.circle([40.4165000, -3.7095600], {
-            color: 'blue'
-            , fillColor: '#f03'
-            , fillOpacity: 0.4
-            , radius: 500
-          }).addTo(map);
+          /*   circle = L.circle([40.4165000, -3.7095600], {
+              color: 'blue'
+              , fillColor: '#f03'
+              , fillOpacity: 0.4
+              , radius: 500
+            }).addTo(map); */
 
           //marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-          circle.bindPopup("I am a circle.");
+          /* circle.bindPopup("I am a circle."); */
 
         }
 
@@ -120,7 +183,6 @@
 
       }));
     });
-
 
   </script>
 </x-invitado>
