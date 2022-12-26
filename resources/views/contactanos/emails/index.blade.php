@@ -18,7 +18,7 @@
   <h2><span>Nombre:</span>  {{$informacion['nombre']}}</h2>
 
   <h3><span>Email:</span> {{$informacion['email']}}</h3>
-  <h3><span>Asunto:</span> {{$informacion['nombre']}}</h3>
+  <h3><span>Asunto:</span> {{$informacion['asunto']}}</h3>
 
   <h4>mensaje: </h4>
   <p>
