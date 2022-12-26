@@ -114,7 +114,7 @@
 
           }
 
-          console.log(this.librerias);
+          //console.log(this.librerias);
           /* map = L.map('map').setView([40.4165000, -3.7025600], 9); */
 
 
@@ -122,6 +122,7 @@
             alert(this);
             console.log(this);
           }
+
           L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19
             , attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -143,7 +144,7 @@
 
 
             marker.on('click', function() {
-              console.log(point);
+              console.log(point.id);
             })
             /* marker.on('mouseover', function() {
               marker.openPopup();
