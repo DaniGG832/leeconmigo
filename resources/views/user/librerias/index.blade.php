@@ -17,7 +17,7 @@
             <div class="w-96 h-96 m-3" id="map"></div>
           </div>
 
-{{$librerias}}
+{{-- {{$librerias}} --}}
 
           <h1>JnjSite.com: Javascript Geolocation</h1>
           <p>Your current location is latitude <span id="spanLatitude"></span> degrees and longitude <span id="spanLongitude"></span> degrees.</p>
@@ -106,8 +106,8 @@
           }
 
 
-          marker = L.marker([40.4165000, -3.7025600]).addTo(map);
-          marker2 = L.marker([41.4165000, -4.7025600]).addTo(map);
+          /* marker = L.marker([40.4165000, -3.7025600]).addTo(map);
+          marker2 = L.marker([41.4165000, -4.7025600]).addTo(map); */
 
           //console.log(marker.getLatLng().lat);
           //console.log(marker.getLatLng().lng);
@@ -119,6 +119,7 @@
               `<h1 class="bg-blue-200">${point.nombre}</h1>`
               );
 
+            marker.bindTooltip('libreria '+point.nombre,{opacity:0.5,direction :'top'  }).addTo(map);
 
             marker.on('click', function() {
               console.log(point.id);
