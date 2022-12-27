@@ -15,7 +15,8 @@ class LibreriaController extends Controller
      */
     public function index()
     {
-        return view('user.librerias.index');
+        $librerias = Libreria::all();
+        return view('user.librerias.index',compact('librerias'));
     }
 
     /**

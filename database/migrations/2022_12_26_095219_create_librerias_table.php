@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('librerias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->decimal('latitude', 10, 8); 
-            $table->decimal('longitude', 11, 8);
-            $table->string('email');
-            $table->string('web');
-            $table->string('img');
-            $table->string('ciudad');
-            $table->string('direccion');
-            $table->string('codigo postal');
+            $table->decimal('lat', 10, 8); 
+            $table->decimal('lng', 11, 8);
+            $table->string('email')->nullable();
+            $table->string('web')->nullable();
+            $table->string('img')->nullable();
+            $table->string('ciudad')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('codigo postal')->nullable();
             $table->foreignId('provincia_id')->constrained('provincias');
             $table->softDeletes();
             $table->timestamps();

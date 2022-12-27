@@ -2,7 +2,7 @@
 <footer class="p-4 bg-blue-300  shadow md:px-6 md:py-8 dark:bg-gray-900">
   <div class="sm:flex sm:items-center sm:justify-between">
       <a href="/" class="flex items-center mb-4 sm:mb-0">
-          <img src="{{asset('img/logo/logo3.png')}}" class="mr-3 h-8" alt="Flowbite Logo" />
+          <img src="{{asset('img/logo/logo3.png')}}" class="mr-3 h-8" alt="LeeConmigo Logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LeeConmigo</span>
       </a>
       <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-600 sm:mb-0 dark:text-gray-400">

@@ -17,7 +17,7 @@
             <div class="w-96 h-96 m-3" id="map"></div>
           </div>
 
-
+{{$librerias}}
 
           <h1>JnjSite.com: Javascript Geolocation</h1>
           <p>Your current location is latitude <span id="spanLatitude"></span> degrees and longitude <span id="spanLongitude"></span> degrees.</p>
@@ -32,44 +32,28 @@
       Alpine.data("librerias", () => ({
 
 
-        librerias: [{
-            id: 1
-            , name: "libreria1"
-            , lat: 40.4167000
-            , lng: -3.7025600
-          }
-          , {
-            id: 2
-            , name: "libreria2"
-            , lat: 40.4165000
-            , lng: -3.7026600
-          }
-          , {
-            id: 3
-            , name: "libreria3"
-            , lat: 40.4165000
-            , lng: -3.7025600
-          }
-        , ],
+        librerias: {!!$librerias!!},
+            
 
         init: function() {
 
-
           function positionSuccess(position) {
             console.log(position);
-            //map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 9);
-
-            console.log(map);
-             map.fitBounds([
+            
+            map.fitBounds([
               [position.coords.latitude, position.coords.longitude]
             ]).setZoom(9);
+            
+            var Posicionlat = position.coords.latitude;
+            const Posicionlng = position.coords.latitude;
 
-
-
-            alert('SUCCESS');
+            
+            
+            console.log('SUCCESS');
             document.getElementById('spanLatitude').innerHTML = position.coords.latitude;
             document.getElementById('spanLongitude').innerHTML = position.coords.longitude;
             console.log(position);
+            
           }
 
           function positionError(error) {
@@ -89,31 +73,13 @@
                 break;
             }
           }
-          /* window.onload = () => {
-                  if (navigator.geolocation) {
-                    alert('Browser has Geolocation');
-                      navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+        
 
-                      console.log(positionSuccess);
-                  } else {
-                      alert('Browser do not support Geoloation');
-                  }
-              };
- */
 
 
       var map = L.map('map').setView([40.4165000, -3.7025600], 9);
 
-          if (navigator.geolocation) {
-            alert('Browser has Geolocation');
-            navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
-
-
-          } else {
-            alert('Browser do not support Geoloation');
-
-          }
-
+          
           //console.log(this.librerias);
           /* map = L.map('map').setView([40.4165000, -3.7025600], 9); */
 
@@ -129,6 +95,15 @@
           }).addTo(map);
 
 
+          if (navigator.geolocation) {
+            console.log('Browser has Geolocation');
+            navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+
+
+          } else {
+            console.log('Browser do not support Geoloation');
+
+          }
 
 
           marker = L.marker([40.4165000, -3.7025600]).addTo(map);
@@ -140,7 +115,9 @@
           /* marker de manera dinamica */
           this.librerias.map(point => {
             console.log(point);
-            marker = L.marker([point.lat, point.lng]).addTo(map).bindPopup(point.id + ' ' + point.name);
+            marker = L.marker([point.lat, point.lng]).addTo(map).bindPopup(
+              `<h1 class="bg-blue-200">${point.nombre}</h1>`
+              );
 
 
             marker.on('click', function() {
