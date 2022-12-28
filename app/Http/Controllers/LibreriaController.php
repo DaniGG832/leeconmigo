@@ -6,6 +6,7 @@ use App\Http\Requests\StoreLibreriaRequest;
 use App\Http\Requests\UpdateLibreriaRequest;
 use App\Models\Libreria;
 use App\Models\Libro;
+use App\Models\Provincia;
 use App\Models\User;
 
 class LibreriaController extends Controller
@@ -55,7 +56,16 @@ class LibreriaController extends Controller
      */
     public function create()
     {
-        //
+        $libreria = new Libreria();
+        $provincias = Provincia::all();
+
+        return view(
+            'admin.librerias.create',
+            compact(
+                'libreria',
+                'provincias',
+            )
+        );
     }
 
     /**

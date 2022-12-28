@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->string('ciudad')->nullable();
             $table->string('direccion')->nullable();
-            $table->string('codigo postal')->nullable();
+            $table->string('cod_postal')->nullable();
             $table->foreignId('provincia_id')->constrained('provincias');
             $table->softDeletes();
             $table->timestamps();

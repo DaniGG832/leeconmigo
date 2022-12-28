@@ -50,8 +50,8 @@
                         <tr>
                           <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Nombre </th>
                           <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Ubicación </th>
-                          <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Autor </th>
-                          <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Año </th>
+                          <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Contacto </th>
+                          <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> web </th>
                           <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                           <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                           <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
@@ -74,8 +74,12 @@
                             <div class="text-sm leading-5 text-gray-900">{{$libreria->ciudad}}</div>
                             <div class="text-sm leading-5 text-gray-500">{{$libreria->provincia->nombre}}</div>
                           </td>
-                          <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$libreria->autor}}</td>
-                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">{{$libreria->year}}</td>
+                          <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                            <div class="text-sm leading-5 text-gray-900">{{$libreria->telefono}}</div>
+                            <div class="text-sm leading-5 text-gray-500">{{$libreria->email}}</div>
+                          </td>
+                          {{-- <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">{{$libreria->telefono}}</td> --}}
+                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">{{$libreria->web}}</td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('admin.librerias.show',$libreria)}}" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="{{route('admin.librerias.edit',$libreria)}}" class="text-green-600 hover:text-green-900">Editar</a></td>
                           <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
