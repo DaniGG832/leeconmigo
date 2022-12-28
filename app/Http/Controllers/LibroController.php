@@ -309,6 +309,14 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
+
+        $imagen = public_path().$libro->img;
+        //return $mi_imagen;
+        if (@getimagesize($imagen)) {
+        
+            unlink($imagen);
+        }
+
         $libro->temas()->detach();
 
         $libro->delete();
