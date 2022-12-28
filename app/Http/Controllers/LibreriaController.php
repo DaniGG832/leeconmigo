@@ -140,6 +140,15 @@ class LibreriaController extends Controller
      */
     public function destroy(Libreria $libreria)
     {
-        //
+        $imagen = public_path().$libreria->img;
+        //return $mi_imagen;
+        if (@getimagesize($imagen)) {
+        
+            unlink($imagen);
+        }
+        
+        $libreria->delete();
+
+        return redirect()->route('admin.librerias.index')->with('success', 'Librería borrada correctamente');
     }
 }
