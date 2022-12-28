@@ -13,7 +13,7 @@ class StoreLibreriaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class StoreLibreriaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'img'=> 'nullable|image',
+            'nombre' => 'required',
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
+            'telefono' => 'string',
+            'web' => 'string',
+            'email' => 'email',
+            'direccion' => 'string',
+            'ciudad' => 'string',
+            'cod_postal' => 'numeric',
+            'provincia_id' => 'required|integer',
+
+
         ];
     }
 }

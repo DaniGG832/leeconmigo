@@ -32,6 +32,11 @@
       </x-link-admin>
     </div>
     <div class="">
+      <x-link-admin :href="route('admin.librerias.index')" :active="request()->routeIs('admin.librerias.index')">
+        {{ __('Librerias') }}
+      </x-link-admin>
+    </div>
+    <div class="">
       <x-link-admin :href="route('admin.autores.index')" :active="request()->routeIs('admin.autores.index')">
         {{ __('Autores') }}
       </x-link-admin>
