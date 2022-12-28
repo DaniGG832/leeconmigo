@@ -17,7 +17,7 @@
             <div class="w-96 h-96 m-3" id="map"></div>
           </div>
 
-{{-- {{$librerias}} --}}
+          {{-- {{$librerias}} --}}
 
           <h1>JnjSite.com: Javascript Geolocation</h1>
           <p>Your current location is latitude <span id="spanLatitude"></span> degrees and longitude <span id="spanLongitude"></span> degrees.</p>
@@ -33,27 +33,40 @@
 
 
         librerias: {!!$librerias!!},
-            
+
+        urlIcono: "{!!asset('img/icon/icon-libro4.png')!!}",
 
         init: function() {
 
+
+          /* icono personalizado */
+          console.log(this.urlIcono);
+          var iconoLibreria = L.icon({
+            iconUrl: this.urlIcono
+            , iconSize: [40, 50]
+            , iconAnchor: [20, 50]
+            , popupAnchor: [0, -30]
+            
+          });
+
+
           function positionSuccess(position) {
             console.log(position);
-            
+
             map.fitBounds([
               [position.coords.latitude, position.coords.longitude]
             ]).setZoom(9);
-            
+
             var Posicionlat = position.coords.latitude;
             const Posicionlng = position.coords.latitude;
 
-            
-            
+
+
             console.log('SUCCESS');
             document.getElementById('spanLatitude').innerHTML = position.coords.latitude;
             document.getElementById('spanLongitude').innerHTML = position.coords.longitude;
             console.log(position);
-            
+
           }
 
           function positionError(error) {
@@ -73,13 +86,13 @@
                 break;
             }
           }
-        
 
 
 
-      var map = L.map('map').setView([40.4165000, -3.7025600], 9);
 
-          
+          var map = L.map('map').setView([40.4165000, -3.7025600], 9);
+
+
           //console.log(this.librerias);
           /* map = L.map('map').setView([40.4165000, -3.7025600], 9); */
 
@@ -115,11 +128,15 @@
           /* marker de manera dinamica */
           this.librerias.map(point => {
             console.log(point);
-            marker = L.marker([point.lat, point.lng]).addTo(map).bindPopup(
+            marker = L.marker([point.lat, point.lng], {icon: iconoLibreria}).addTo(map).bindPopup(
               `<h1 class="bg-blue-200">${point.nombre}</h1>`
-              );
+            );
 
-            marker.bindTooltip('libreria '+point.nombre,{opacity:0.5,direction :'top'  }).addTo(map);
+            marker.bindTooltip('libreria ' + point.nombre, {
+              opacity: 0.8
+              , direction: 'center'
+              , sticky: true
+            }).addTo(map);
 
             marker.on('click', function() {
               console.log(point.id);
@@ -130,7 +147,14 @@
           });
 
 
+          /* ubicar el mapa en la localizacion del navegador */
 
+           map.locate({
+            setView: true
+            , maxZoom: 10
+          }); 
+
+          
           /* centrar mapa al pasarles los puntos */
           /* console.log(...this.librerias.map(point => [point.lat, point.lng]));
 
@@ -144,15 +168,9 @@
 
           //marker.addEventListener('click', name);
 
-          /*   circle = L.circle([40.4165000, -3.7095600], {
-              color: 'blue'
-              , fillColor: '#f03'
-              , fillOpacity: 0.4
-              , radius: 500
-            }).addTo(map); */
+        
 
-          //marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-          /* circle.bindPopup("I am a circle."); */
+        
 
         }
 
