@@ -5,9 +5,26 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLibreriaRequest;
 use App\Http\Requests\UpdateLibreriaRequest;
 use App\Models\Libreria;
+use App\Models\Libro;
+use App\Models\User;
 
 class LibreriaController extends Controller
 {
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function userIndex()
+    {
+        $librerias = Libreria::all();
+        return view('user.librerias.index', compact('librerias'));
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +32,21 @@ class LibreriaController extends Controller
      */
     public function index()
     {
+
+
+
+        $libros = Libro::all();
         $librerias = Libreria::all();
-        return view('user.librerias.index',compact('librerias'));
+        $libros = $libros->sortByDesc('year');
+        $totalUsuarios = User::all()->count();
+        $totalLibros = Libro::all()->count();
+
+        //return $librerias[0]->provincia->librerias;
+
+        $librerias = Libreria::all();
+        return view('admin.librerias.index', compact(['librerias', 'libros', 'totalUsuarios', 'totalLibros']));
     }
+
 
     /**
      * Show the form for creating a new resource.

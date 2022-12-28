@@ -71,7 +71,7 @@ Route::post('contactanos', [ContactanosController::class, 'store'])->name('conta
 
 /* Librerias */
 
-Route::get('librerias', [LibreriaController::class, 'index'])->name('librerias.index');
+Route::get('librerias', [LibreriaController::class, 'userIndex'])->name('librerias.index');
 
 
 
@@ -172,6 +172,9 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
         Route::resource('edades', EditorialController::class)->parameters([
             'edades' => 'edad'
         ]);
+
+        Route::resource('librerias', LibreriaController::class);
+
 
 
         //Route::get('libro/create', [LibroController::class, 'create'])->name('libro.create');

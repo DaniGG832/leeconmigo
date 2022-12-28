@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->decimal('lat', 10, 8); 
             $table->decimal('lng', 11, 8);
+            $table->string('telefono')->nullable();
             $table->string('email')->nullable();
             $table->string('web')->nullable();
             $table->string('img')->nullable();
