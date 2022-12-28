@@ -106,7 +106,9 @@ class LibreriaController extends Controller
      */
     public function show(Libreria $libreria)
     {
-        //
+
+        return view('admin.librerias.show', compact('libreria'));
+
     }
 
     /**
@@ -117,7 +119,16 @@ class LibreriaController extends Controller
      */
     public function edit(Libreria $libreria)
     {
-        //
+        
+        $provincias = Provincia::all();
+
+        return view(
+            'admin.librerias.edit',
+            compact(
+                'provincias',
+                'libreria',
+            )
+        );
     }
 
     /**
@@ -129,7 +140,28 @@ class LibreriaController extends Controller
      */
     public function update(UpdateLibreriaRequest $request, Libreria $libreria)
     {
-        //
+        //return $request->validated();
+        //return $libreria;
+
+        $libreria->fill($request->validated());
+
+
+        if (isset($request->validated()['img'])) {
+
+            $imagen = $request->validated()['img']->store('public/imagenes/libros');
+
+            $url = FacadesStorage::url($imagen);
+
+            $libreria->img = $url;
+        }
+
+
+        $libreria->save();
+
+        return redirect()->route('admin.librerias.index')->with('success', "Librería $libreria->nombre editada correctamente");
+
+
+
     }
 
     /**

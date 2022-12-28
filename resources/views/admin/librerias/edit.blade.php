@@ -47,11 +47,11 @@
 
                           <label class="block mb-2 text-md font-medium text-gray-900" for="Imagen">Selecionar Imagen</label>
                           <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer " id="Imagen" type="file" name="img" accept="image/*" style="display: none" value="{{old('img',$libreria->img)}}">
+                      
                           <div id="pre" class="h-32 flex items-center ">
-                            <label class="block mb-2 text-md font-medium text-gray-600 w-36 h-28 mt-1 pt-1 pl-1 bg-gray-50 rounded-lg border border-gray-300" for="Imagen">Click aquí.</label>
-                            {{-- <label class="block text-md font-medium text-gray-900" for="Imagen">click en la imagen para seleccionar otra.</label> --}}
+                            <label for='Imagen'><img class='rounded-lg' src="{{$libreria->img ? asset($libreria->img) : asset('img/img-edit-form.png')}}" style='height: 7rem' for='Imagen' /></label>
+                            <br><label class="block mb-2 text-md font-medium text-gray-800 ml-2 " for="Imagen">Click en la imagen para seleccionar otra.</label>
                           </div>
-
 
                     </x-form-librerias>
 

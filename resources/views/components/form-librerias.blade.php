@@ -40,7 +40,7 @@
 
   <div class="mb-6 ">
     <label for="lng" class="block mb-2 text-sm font-medium text-gray-900">Longitud</label>
-    <input required type="text" id="lng" name="lng" value="{{old('lng',$libreria->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="lng" name="lng" value="{{old('lng',$libreria->lng)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('lng')
     <p class="text-red-500 text-sm mt-1">
@@ -58,7 +58,7 @@
 
   <div class="mb-6 ">
     <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900">Teléfono</label>
-    <input required type="text" id="telefono" name="telefono" value="{{old('telefono',$libreria->lat)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="telefono" name="telefono" value="{{old('telefono',$libreria->telefono)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('telefono')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -70,7 +70,7 @@
 
   <div class="mb-6 ">
     <label for="web" class="block mb-2 text-sm font-medium text-gray-900">Web</label>
-    <input required type="text" id="web" name="web" value="{{old('web',$libreria->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="web" name="web" value="{{old('web',$libreria->web)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('web')
     <p class="text-red-500 text-sm mt-1">
@@ -88,7 +88,7 @@
 
   <div class="mb-6 ">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-    <input required type="text" id="email" name="email" value="{{old('email',$libreria->lat)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="email" name="email" value="{{old('email',$libreria->email)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('email')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -100,7 +100,7 @@
 
   <div class="mb-6 ">
     <label for="direccion" class="block mb-2 text-sm font-medium text-gray-900">Dirección</label>
-    <input required type="text" id="direccion" name="direccion" value="{{old('direccion',$libreria->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="direccion" name="direccion" value="{{old('direccion',$libreria->direccion)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('direccion')
     <p class="text-red-500 text-sm mt-1">
@@ -117,7 +117,7 @@
 
   <div class="mb-6 ">
     <label for="ciudad" class="block mb-2 text-sm font-medium text-gray-900">Ciudad</label>
-    <input required type="text" id="ciudad" name="ciudad" value="{{old('ciudad',$libreria->lat)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="ciudad" name="ciudad" value="{{old('ciudad',$libreria->ciudad)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('ciudad')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -129,7 +129,7 @@
 
   <div class="mb-6 ">
     <label for="cod_postal" class="block mb-2 text-sm font-medium text-gray-900">Código postal</label>
-    <input required type="text" id="cod_postal" name="cod_postal" value="{{old('cod_postal',$libreria->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="cod_postal" name="cod_postal" value="{{old('cod_postal',$libreria->cod_postal)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('cod_postal')
     <p class="text-red-500 text-sm mt-1">
