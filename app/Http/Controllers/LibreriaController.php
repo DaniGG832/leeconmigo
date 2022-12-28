@@ -9,6 +9,8 @@ use App\Models\Libro;
 use App\Models\Provincia;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+
 class LibreriaController extends Controller
 {
 
@@ -76,7 +78,24 @@ class LibreriaController extends Controller
      */
     public function store(StoreLibreriaRequest $request)
     {
-        //
+        //return $request->validated();
+
+        $libreria = new Libreria($request->validated());
+
+        if (isset($request->validated()['img'])) {
+
+            $imagen = $request->validated()['img']->store('public/imagenes/librerias');
+
+            $url = FacadesStorage::url($imagen);
+
+            $libreria->img = $url;
+        }
+        //return $libro;
+
+        $libreria->save();
+
+
+        return back()->with('success', "Libreria $libreria->nombre añadida correctamente");
     }
 
     /**

@@ -9,6 +9,19 @@ class Libreria extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'img',
+        'nombre',
+        'lat',
+        'lng',
+        'telefono',
+        'web',
+        'email',
+        'direccion',
+        'ciudad',
+        'cod_postal',
+        'provincia_id',
+    ];
 
     /**
      * Get the provincia that owns the Libreria
