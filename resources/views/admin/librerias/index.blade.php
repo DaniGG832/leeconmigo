@@ -86,7 +86,7 @@
                             <form action="{{route('admin.librerias.destroy', $libreria, true )}}" method="post">
                               @csrf
                               @method('DELETE')
-                              <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar el libro')">Borrar</button>
+                              <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar la libreria')">Borrar</button>
 
                             </form>
                           </td>
