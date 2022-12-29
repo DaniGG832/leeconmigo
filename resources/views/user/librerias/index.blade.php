@@ -22,22 +22,32 @@
                 <div class="w-full pr-2">
                   <div class="relative flex flex-col min-w-0 break-words w-full mb-4 shadow-lg rounded 
                   bg-blue-700 text-white">
+                  {{-- <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                      <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
+                        <h3 class="font-semibold text-lg text-white">Librerias </h3>
+                      </div>
+                    </div>
+                  </div> --}}
                     <div class="block w-full overflow-x-auto rounded-t">
                       <table class="items-center w-full bg-transparent border-collapse">
                         <thead>
                           <tr>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">Nombre</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">Direccion</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">ciudad</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">Código postal</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">Provincia</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Nombre</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Direccion</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">ciudad</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Código postal</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Provincia</th>
                           </tr>
                         </thead>
                 
                         <tbody>
 
+                          {{-- {{$librerias->sortBy('provincia_id.provincia.nombre')}} --}}
+                          {{--  {{$librerias->groupBy('provincia_id')}} --}}
                           @foreach ($librerias as $libreria)
-                          <tr>
+                      {{--   {{$libreria}} --}}
+                          <tr class="mt-1 border">
                             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                               <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
                               <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
@@ -52,15 +62,10 @@
                               {{$libreria->provincia->nombre}}
                             </td>
                             
-                            
-                        
                           </tr>
-
-
                           @endforeach
-                        
+
                 
-                          
                 
                         </tbody>
                       </table>
@@ -73,7 +78,7 @@
 
               
             </div>
-            <div class="xl:w-1/3 w-full h-96 xl:h-auto flex flex-col">
+            <div class="xl:w-1/3 w-full h-96 xl:h-auto flex flex-col" style="max-height: 45em">
 
               <div class=" w-full h-full" id="map"></div>
               <div class="flex flex-col text-center">
