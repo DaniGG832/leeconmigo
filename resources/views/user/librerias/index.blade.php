@@ -34,10 +34,10 @@
                         <thead>
                           <tr>
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Nombre</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Direccion</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">ciudad</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Código postal</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Provincia</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">teléfono</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Email</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Web</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Dirección</th>
                           </tr>
                         </thead>
                 
@@ -51,20 +51,19 @@
                             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                               <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
                               <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->direccion}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->telefono}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                              {{$libreria->ciudad}}
+                              <p>{{$libreria->direccion}} - {{$libreria->cod_postal}}</p>
+                            <p>{{$libreria->ciudad}}( {{$libreria->provincia->nombre}} )</p>
                             </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                              {{$libreria->cod_postal}}
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                              {{$libreria->provincia->nombre}}
-                            </td>
+                            
                             
                           </tr>
                           @endforeach
 
+                {{-- TODO: Comunicacion ventanas para mostrar la libreria --}}
                 
                 
                         </tbody>
@@ -197,10 +196,14 @@
           this.librerias.map(point => {
             console.log(point);
             marker = L.marker([point.lat, point.lng], {icon: iconoLibreria}).addTo(map).bindPopup(
-              `<h1 class="bg-blue-200">${point.nombre}</h1>`
+              `<div class="flex flex-col justify-center">
+              <h1 class="w-44 text-blue-800 text-center italic font-medium">${point.nombre}</h1>
+              <img src="${point.img}" class=" h-44 bg-white rounded-t" alt="Imagen Librería">
+              </div>
+              `
             );
 
-            marker.bindTooltip('libreria ' + point.nombre, {
+            marker.bindTooltip(`<h1 class="text-blue-800 italic font-medium">${point.nombre}</h1>`, {
               opacity: 0.8
               , direction: 'center'
               , sticky: true
