@@ -200,7 +200,7 @@
             marker = L.marker([point.lat, point.lng], {icon: iconoLibreria}).addTo(map).bindPopup(
               `<div class="flex flex-col justify-center">
               <h1 class="w-44 text-blue-800 text-center italic font-medium">${point.nombre}</h1>
-              <img src="${point.img}" class=" h-44 bg-white rounded-t" alt="Imagen Librería">
+              <img src="${point.img ?? 'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}" class=" h-44 bg-white rounded-t" alt="Imagen Librería">
               </div>
               `
             );
