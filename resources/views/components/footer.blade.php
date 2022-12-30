@@ -5,18 +5,18 @@
           <img src="{{asset('img/logo/logo3.png')}}" class="mr-3 h-8" alt="LeeConmigo Logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LeeConmigo</span>
       </a>
-      <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-600 sm:mb-0 dark:text-gray-400">
+      <ul x-data="footer" class="flex flex-wrap items-center mb-6 text-sm text-gray-600 sm:mb-0 dark:text-gray-400">
           <li>
               <a href="{{route('contactanos.index')}}" class="mr-4 hover:underline md:mr-6 ">Contáctanos</a>
           </li>
           <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">Política de privacidad</a>
+              <button id="privacidad" x-on:click="privacidad('hola como estas')" class="mr-4 hover:underline md:mr-6">Política de privacidad</button>
           </li>
           <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6 ">Licencia</a>
+              <button id="licencia" x-on:click="licencia" class="mr-4 hover:underline md:mr-6 ">Licencia</button>
           </li>
           <li>
-              <a href="#" class="hover:underline">Sobre Nosotros</a>
+              <button id="nosotros" x-on:click="nosotros" class="hover:underline">Sobre Nosotros</button>
           </li>
       </ul>
   </div>
