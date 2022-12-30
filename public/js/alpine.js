@@ -147,4 +147,54 @@ document.addEventListener("alpine:init", () => {
     }));
 
 
+    
+    Alpine.data("footer", () => ({
+        privacidad(pp) {
+            
+            window.open("");
+        
+        }, 
+        licencia(e) {
+            console.log(e);
+            alert(e);
+        }, 
+        nosotros(e) {
+            console.log(e);
+            alert(e);
+        }, 
+    }));
+
+    Alpine.data("libreria", () => ({
+        ventanaEmergente(datos,provincia) {
+
+            console.log(provincia);
+            parametros = "scrollbars=yes,resizable=yes,top=200,left=300,width=400,height=400";
+            console.log(datos);
+            myWindow = window.open("","_blank",parametros);
+            myWindow.document.write(`
+            <script src="https://cdn.tailwindcss.com"></script>
+            
+            <div class="bg-blue-100 h-screem text-blue-800 flex flex-col  justify-items-center">
+            <h1 class="text-center">${datos.nombre} </h1>
+            <div class="border w-screen flex justify-center">
+            <img src="${datos.img}" class="h-auto w-40">
+            </div>
+            <p class="text-center">Telefono: ${datos.telefono}</p>
+            <p class="text-center">Email: ${datos.email}</p>
+            <p class="text-center">web: ${datos.webd}</p>
+            <p class="text-center">direccion: ${datos.direccion}</p>
+            <p class="text-center">ciudad: ${datos.ciudad}</p>
+            <p class="text-center">provincia: ${provincia}</p>
+        
+            
+            </div>
+
+            `);
+        }, 
+        
+    }));
+
+
+
+
 });

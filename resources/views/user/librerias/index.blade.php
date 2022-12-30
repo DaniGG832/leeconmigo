@@ -41,13 +41,13 @@
                           </tr>
                         </thead>
                 
-                        <tbody>
+                        <tbody x-data="libreria">
 
                           {{-- {{$librerias->sortBy('provincia_id.provincia.nombre')}} --}}
                           {{--  {{$librerias->groupBy('provincia_id')}} --}}
                           @foreach ($librerias as $libreria)
                       {{--   {{$libreria}} --}}
-                          <tr class="mt-1 border">
+                          <tr x-on:click="ventanaEmergente({{$libreria}},'{{$libreria->provincia->nombre}}')" class="mt-1 border">
                             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                               <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
                               <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
