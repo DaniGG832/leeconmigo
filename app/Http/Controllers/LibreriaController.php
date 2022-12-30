@@ -22,7 +22,10 @@ class LibreriaController extends Controller
      */
     public function userIndex()
     {
-        $librerias = Libreria::all();
+        $librerias = Libreria::orderBy('provincia_id')->get();
+        //$librerias2 = $librerias->groupBy('provincia_id');
+
+        //return $librerias;
         return view('user.librerias.index', compact('librerias'));
     }
 

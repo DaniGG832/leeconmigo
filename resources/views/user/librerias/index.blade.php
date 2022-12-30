@@ -12,17 +12,84 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200" style="min-height: 25em">
 
-          <div x-data="librerias" class="flex flex-row">
-            <div class="w-96 h-96 m-3 border bg-blue-200"></div>
-            <div class="w-96 h-96 m-3" id="map"></div>
-          </div>
 
+          <p id="theError"></p>
+          <div x-data="librerias" class="flex xl:flex-row flex-col-reverse" style="min-height: 25em">
+            
+            <div class="xl:w-2/3">
+
+              <section class="relative bg-blueGray-50 ">
+                <div class="w-full pr-2">
+                  <div class="relative flex flex-col min-w-0 break-words w-full mb-4 shadow-lg rounded 
+                  bg-blue-700 text-white">
+                  {{-- <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                      <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
+                        <h3 class="font-semibold text-lg text-white">Librerias </h3>
+                      </div>
+                    </div>
+                  </div> --}}
+                    <div class="block w-full overflow-x-auto rounded-t">
+                      <table class="items-center w-full bg-transparent border-collapse">
+                        <thead>
+                          <tr>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Nombre</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">teléfono</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Email</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Web</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Dirección</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+
+                          {{-- {{$librerias->sortBy('provincia_id.provincia.nombre')}} --}}
+                          {{--  {{$librerias->groupBy('provincia_id')}} --}}
+                          @foreach ($librerias as $libreria)
+                      {{--   {{$libreria}} --}}
+                          <tr class="mt-1 border">
+                            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                              <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
+                              <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->telefono}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                              <p>{{$libreria->direccion}} - {{$libreria->cod_postal}}</p>
+                            <p>{{$libreria->ciudad}}( {{$libreria->provincia->nombre}} )</p>
+                            </td>
+                            
+                            
+                          </tr>
+                          @endforeach
+
+                {{-- TODO: Comunicacion ventanas para mostrar la libreria --}}
+                
+                
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                    
+                </section>
+
+
+              
+            </div>
+            <div class="xl:w-1/3 w-full h-96 xl:h-auto flex flex-col" style="max-height: 45em">
+
+              <div class=" w-full h-full" id="map"></div>
+              <div class="flex flex-col text-center">
+    
+                <p class="text-xs">Su ubicación actual es <span id="spanLatitude"></span>, <span id="spanLongitude"></span> grados.</p>
+              </div>
+            </div>
+          </div>
+          
           {{-- {{$librerias}} --}}
 
-          <h1>JnjSite.com: Javascript Geolocation</h1>
-          <p>Your current location is latitude <span id="spanLatitude"></span> degrees and longitude <span id="spanLongitude"></span> degrees.</p>
-          <p id="theError"></p>
-
+          
         </div>
       </div>
     </div>
@@ -129,10 +196,14 @@
           this.librerias.map(point => {
             console.log(point);
             marker = L.marker([point.lat, point.lng], {icon: iconoLibreria}).addTo(map).bindPopup(
-              `<h1 class="bg-blue-200">${point.nombre}</h1>`
+              `<div class="flex flex-col justify-center">
+              <h1 class="w-44 text-blue-800 text-center italic font-medium">${point.nombre}</h1>
+              <img src="${point.img}" class=" h-44 bg-white rounded-t" alt="Imagen Librería">
+              </div>
+              `
             );
 
-            marker.bindTooltip('libreria ' + point.nombre, {
+            marker.bindTooltip(`<h1 class="text-blue-800 italic font-medium">${point.nombre}</h1>`, {
               opacity: 0.8
               , direction: 'center'
               , sticky: true
