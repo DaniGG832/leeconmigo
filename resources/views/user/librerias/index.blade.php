@@ -81,7 +81,7 @@
             </div>
             <div class="xl:w-1/3 w-full h-96 xl:h-auto flex flex-col" style="max-height: 45em">
 
-              <div class=" w-full h-full" id="map"></div>
+              <div class="z-10 w-full h-full" id="map"></div>
               <div class="flex flex-col text-center">
     
                 <p class="text-xs">Su ubicación actual es <span id="spanLatitude"></span>, <span id="spanLongitude"></span> grados.</p>
