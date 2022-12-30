@@ -176,15 +176,15 @@ document.addEventListener("alpine:init", () => {
             
             <div class="h-screem text-blue-900 flex flex-col  justify-items-center">
             <div class=" w-screen flex justify-center my-2">
-            <img src="${datos.img}" class="h-auto w-40">
+            <img src="${datos.img ?? 'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}" class="h-auto w-40">
             </div>
             <h1 class="text-center">${datos.nombre} </h1>
-            <p class="text-center"><span class="text-blue-400">Telefono: </span> ${datos.telefono}</p>
-            <p class="text-center"><span class="text-blue-400">Email: </span> ${datos.email}</p>
-            <p class="text-center"><span class="text-blue-400">web: </span> ${datos.web}</p>
+            <p class="text-center"><span class="text-blue-400">Telefono: </span> ${datos.telefono ?? '...'}</p>
+            <p class="text-center"><span class="text-blue-400">Email: </span> ${datos.email ?? '...'}</p>
+            <p class="text-center"><span class="text-blue-400">web: </span> ${datos.webs ?? '...'}</p>
             <p class="text-center"><span class="text-blue-400">Dirección: </span></p>
-            <p class="text-center">${datos.direccion} - ${datos.cod_postal}</p>
-            <p class="text-center">${datos.ciudad} ( ${provincia} )</p>
+            <p class="text-center">${datos.direccion ?? '...'} - ${datos.cod_postal  ?? '...'}</p>
+            <p class="text-center">${datos.ciudad} ( ${provincia} ?? '...' )</p>
         
             
             </div>
