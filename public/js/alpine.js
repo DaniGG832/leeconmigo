@@ -168,26 +168,27 @@ document.addEventListener("alpine:init", () => {
         ventanaEmergente(datos,provincia) {
 
             console.log(provincia);
-            parametros = "scrollbars=yes,resizable=yes,top=200,left=300,width=400,height=400";
+            parametros = "scrollbars=yes,resizable=yes,top=200,left=300,width=400,height=500";
             console.log(datos);
-            myWindow = window.open("","_blank",parametros);
+            myWindow = window.open("","",parametros);
             myWindow.document.write(`
             <script src="https://cdn.tailwindcss.com"></script>
             
-            <div class="bg-blue-100 h-screem text-blue-800 flex flex-col  justify-items-center">
-            <h1 class="text-center">${datos.nombre} </h1>
-            <div class="border w-screen flex justify-center">
+            <div class="h-screem text-blue-900 flex flex-col  justify-items-center">
+            <div class=" w-screen flex justify-center my-2">
             <img src="${datos.img}" class="h-auto w-40">
             </div>
-            <p class="text-center">Telefono: ${datos.telefono}</p>
-            <p class="text-center">Email: ${datos.email}</p>
-            <p class="text-center">web: ${datos.webd}</p>
-            <p class="text-center">direccion: ${datos.direccion}</p>
-            <p class="text-center">ciudad: ${datos.ciudad}</p>
-            <p class="text-center">provincia: ${provincia}</p>
+            <h1 class="text-center">${datos.nombre} </h1>
+            <p class="text-center"><span class="text-blue-400">Telefono: </span> ${datos.telefono}</p>
+            <p class="text-center"><span class="text-blue-400">Email: </span> ${datos.email}</p>
+            <p class="text-center"><span class="text-blue-400">web: </span> ${datos.web}</p>
+            <p class="text-center"><span class="text-blue-400">Dirección: </span></p>
+            <p class="text-center">${datos.direccion} - ${datos.cod_postal}</p>
+            <p class="text-center">${datos.ciudad} ( ${provincia} )</p>
         
             
             </div>
+            
 
             `);
         }, 

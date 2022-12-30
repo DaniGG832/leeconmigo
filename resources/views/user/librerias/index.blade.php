@@ -36,8 +36,8 @@
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Nombre</th>
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">teléfono</th>
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Email</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Web</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Dirección</th>
+                            {{-- <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Web</th> --}}
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700"></th>
                           </tr>
                         </thead>
                 
@@ -47,16 +47,18 @@
                           {{--  {{$librerias->groupBy('provincia_id')}} --}}
                           @foreach ($librerias as $libreria)
                       {{--   {{$libreria}} --}}
-                          <tr x-on:click="ventanaEmergente({{$libreria}},'{{$libreria->provincia->nombre}}')" class="mt-1 border">
+                          <tr class="mt-1 border">
                             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                              <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
+                              <button x-on:click="ventanaEmergente({{$libreria}},'{{$libreria->provincia->nombre}}')">
+                                <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
+                              </button>
                               <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->telefono}}</td>
                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                              <p>{{$libreria->direccion}} - {{$libreria->cod_postal}}</p>
-                            <p>{{$libreria->ciudad}}( {{$libreria->provincia->nombre}} )</p>
+                            {{-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->web}}</td> --}}
+                            <td class="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                              <button class="hover:underline" x-on:click="ventanaEmergente({{$libreria}},'{{$libreria->provincia->nombre}}')">Mas información.</button>
+                            
                             </td>
                             
                             

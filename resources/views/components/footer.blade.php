@@ -23,15 +23,4 @@
   <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
   <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="/" class="hover:underline">LeeConmigo™</a>. Todos los derechos reservados.
   </span>
-
 </footer>
-<div class="w-96 h-96" style="width=400;height=400">
-
-    <div class="bg-blue-100 flex flex-col  justify-items-center">
-        <h1 class="text-center">nombre </h1>
-        <div class="border w-screen flex justify-center">
-            <img src="https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800" class="h-auto w-40">
-        </div>
-        
-    </div>
-</div>
