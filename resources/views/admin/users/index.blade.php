@@ -12,6 +12,7 @@
 
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 min-h-screen">
           <div class="container mx-auto px-6 py-8">
+            <x-session />
             <div>
               <h3 class="text-3xl font-medium text-gray-700">Usuarios</h3>
               <div class="mt-4">
@@ -54,7 +55,7 @@
                         {{-- <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"> Comentarios </th> --}}
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                        {{-- <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th> --}}
                         
                       </tr>
                     </thead>
@@ -126,10 +127,17 @@
                         @endif --}}
 
 
-                        <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td>
+                        {{-- <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-indigo-600 hover:text-indigo-900">Mostrar</a></td> --}}
 
                         <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-green-600 hover:text-green-900">Editar</a></td>
-                        <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"><a href="#" class="text-red-600 hover:text-red-900">Borrar</a></td>
+                        <td class="px-3 py-2 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
+                          <form action="{{route('admin.users.destroy', $user, true )}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Desea borrar al usuario')">Borrar</button>
+
+                          </form>
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

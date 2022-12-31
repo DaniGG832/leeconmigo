@@ -4,13 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes ;
 
     /**
      * The attributes that are mass assignable.
@@ -63,6 +64,27 @@ class User extends Authenticatable
     {
         return $this->hasMany(Votacion::class, 'user_id', 'id');
     }
+
+    /**
+     * Get all of the preguntas for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function preguntas()
+    {
+        return $this->hasMany(Pregunta::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get all of the respuestas for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function respuestas()
+    {
+        return $this->hasMany(Respuesta::class, 'user_id', 'id');
+    }
+
 
     /**
      * Get all of the criticas for the Libro
