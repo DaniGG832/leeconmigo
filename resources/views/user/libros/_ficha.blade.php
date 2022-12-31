@@ -49,7 +49,7 @@
 
               @auth
 
-
+              @if (Auth::user()->email_verified_at)
               <div>
 
                 <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>
@@ -68,8 +68,10 @@
                 </select>
 
               </div>
+
+              @endif
               @endauth
-              
+
               @if (Auth::user())
               <div>
                 <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('libros.deseos.agregar',$libro)}}">
@@ -80,7 +82,7 @@
                   <span>Quitar de</span>
                   @endif
                   deseos
-                  
+
                   <span class="text-xl rounded-full no-underline"></span>
                 </a>
               </div>
