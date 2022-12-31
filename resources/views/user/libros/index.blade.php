@@ -70,7 +70,9 @@
 
     </div>
         <div class="p-6 bg-white border-b border-gray-200">
-          {!! $libros->appends(["sortBy" => $sortBy,"search" => $search,]) !!}
+          {{ $libros->appends(["sortBy" => $sortBy,"search" => $search,])->links() }}
+          {{-- {!! $libros->appends(["sortBy" => $sortBy,"search" => $search,]) !!} 
+           {{ $libros->links('paginate',["libros"=>$libros, "sortBy" => $sortBy,"search" => $search,]) }}  --}}
 
           <div class="container mx-auto">
             <div class="flex flex-wrap -mx-4">
