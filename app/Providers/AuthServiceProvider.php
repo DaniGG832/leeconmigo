@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('solo-superadmin', function (User $user) {
-            return $user->rol->id == 5 ?
+            return $user->rol->id == 3 ?
                 Response::allow() :
                 Response::deny('Sólo el super administrador puede entrar.');
         });
