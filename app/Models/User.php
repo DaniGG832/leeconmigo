@@ -66,6 +66,27 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all of the preguntas for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function preguntas()
+    {
+        return $this->hasMany(Pregunta::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get all of the respuestas for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function respuestas()
+    {
+        return $this->hasMany(Respuesta::class, 'user_id', 'id');
+    }
+
+
+    /**
      * Get all of the criticas for the Libro
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

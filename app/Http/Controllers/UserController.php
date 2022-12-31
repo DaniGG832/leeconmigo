@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Libro;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 
@@ -135,6 +136,39 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
+        //return Auth::user()->rol_id ;
+
+        if ($user->rol_id != 3 && Auth::user()->rol_id == 3) {
+            
+            $user->votaciones->each->delete();
+
+            foreach($user->preguntas as $pregunta){
+
+                $pregunta->respuestas->each->delete(); 
+            }
+            
+            $user->preguntas->each->delete();
+            $user->respuestas->each->delete();
+            $user->criticas->each->delete();
+            $user->listaDeseos()->detach();
+            
+
+
+
+            $user->delete();
+            return back()->with('success','Usuario borrado correctamente');
+
+        }elseif(Auth::user()->rol_id == 3){
+
+            return back()->with('error','No se puede borrar un usuario administrados.');
+
+
+        }else{
+
+            return back()->with('error','No tienes permisos para borrar usuarios.');
+
+        }
+
     }
 }
