@@ -76,7 +76,7 @@ Route::get('librerias', [LibreriaController::class, 'userIndex'])->name('libreri
 
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     
     
     /* rutas foro para usuaro autentificado */
@@ -139,7 +139,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::middleware(['auth', 'can:solo-admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'can:solo-admin' ])->group(function () {
 
     Route::get('/admin', [RolController::class, 'index'])->name('admin');
 
@@ -189,7 +189,7 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 });
 
 
-Route::middleware(['auth','can:solo-superadmin'])->group(function () {
+Route::middleware(['auth', 'verified','can:solo-superadmin'])->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
 
