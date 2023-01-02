@@ -11,7 +11,7 @@ use App\Models\Encuadernacion;
 use App\Models\Idioma;
 use App\Models\Ilustrador;
 use App\Models\Libro;
-
+use Illuminate\Pagination\Paginator;
 
 use App\Models\Tema;
 use App\Models\User;
@@ -99,13 +99,20 @@ class LibroController extends Controller
     public function userIndex(Request $request)
     {
 
+        Paginator::defaultView('paginate');
+        
 
         //return $request;
         $sortBy = $request->sortBy;
         $search = $request->search;
         //return $request->sortBy;
 
-        $libros = Libro::with('autor')->withCount('votaciones')->withAvg('votaciones', 'voto')->buscar($request->all())->ordenar($request->all())->paginate(15, ['*'], 'pagina');
+        $libros = Libro::with('autor')
+            ->withCount('votaciones')
+            ->withAvg('votaciones', 'voto')
+            ->buscar($request->all())
+            ->ordenar($request->all())
+            ->paginate(1, ['*'], 'pagina');
 
         //return $libros;
 
@@ -310,10 +317,10 @@ class LibroController extends Controller
     public function destroy(Libro $libro)
     {
 
-        $imagen = public_path().$libro->img;
+        $imagen = public_path() . $libro->img;
         //return $mi_imagen;
         if (@getimagesize($imagen)) {
-        
+
             unlink($imagen);
         }
 
