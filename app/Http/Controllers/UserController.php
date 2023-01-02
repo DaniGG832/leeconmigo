@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Libro;
+use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,7 +92,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+
+        $roles = Rol::all();
+
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**
@@ -103,19 +107,22 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        //return $request;
 
         if ($user->rol_id != 3) {
             $validated =  $request->validate([
                 'comentar' => 'required|boolean',
+                'rol_id' => 'required|exists:roles,id',
             ]);
-            //return $validated['comentar'];
+            //return $validated;
             $user->comentar = $validated['comentar'];
+            $user->rol_id = $validated['rol_id'];
             $user->save();
 
             return redirect()->route('admin.users.index')->with('success', 'Usuario editado Correctamente');
         }
 
-        return redirect()->back()->with('error', 'No se puede bloquear a un usuario superAdmin');
+        return redirect()->back()->with('error', 'No se puede bloquear, ni cambiar el rol a un usuario superAdmin');
 
 
     }
