@@ -203,7 +203,10 @@ Route::middleware(['auth', 'verified','can:solo-superadmin'])->group(function ()
         
         //Route::resource('users', UserController::class);
 
+        Route::get('prueba/{libro}/pdf', [LibroController::class, 'pruebasPdf'])->name('pruebasPdf');
         Route::get('prueba', [RolController::class, 'index'])->name('prueba');
+
+
     });
 });
 

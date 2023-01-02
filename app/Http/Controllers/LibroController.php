@@ -36,8 +36,8 @@ class LibroController extends Controller
 
         //$pdf = App::make('dompdf.wrapper');
         //$pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream('Ficha de '. $libro->titulo);
-        //return $pdf->stream('Ficha de '. $libro->titulo );
+        return $pdf->stream();
+        //return $pdf->stream();
         
         return view('user.libros.pdf', compact('libro'));
     }
@@ -347,5 +347,13 @@ class LibroController extends Controller
         $libro->delete();
 
         return redirect()->route('admin.libros.index')->with('success', 'Libro borrado correctamente');
+    }
+
+
+    /* pruebas pdf */
+
+    public function pruebasPdf(Libro $libro)
+    {
+        return view('user.libros.pdf', compact('libro'));
     }
 }
