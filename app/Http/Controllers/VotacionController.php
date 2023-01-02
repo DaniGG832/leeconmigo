@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Votacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Pagination\Paginator;
 
 class VotacionController extends Controller
 {
@@ -95,7 +96,7 @@ class VotacionController extends Controller
      */
     public function votosUsuario(User $user, Libro $libro)
     {
-
+        Paginator::defaultView('paginate');
         //$votaciones = auth()->user()->votaciones->sortByDesc('voto');
         //$votaciones = $user->votaciones;
 

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCriticaRequest;
 use App\Models\Critica;
 use App\Models\Libro;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 
 class CriticaController extends Controller
 {
@@ -17,7 +18,8 @@ class CriticaController extends Controller
      */
     public function index(Libro $libro)
     {
-        
+        Paginator::defaultView('paginate');
+
         /* $c = $libro->criticas[0]->user;
         return $c; */
         $criticas = Critica::orderBy('created_at', 'desc')->where('libro_id',$libro->id)->paginate(8);

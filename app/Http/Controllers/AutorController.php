@@ -9,6 +9,7 @@ use App\Models\Libro;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Illuminate\Pagination\Paginator;
 
 
 class AutorController extends Controller
@@ -20,6 +21,9 @@ class AutorController extends Controller
      */
     public function userIndex()
     {
+
+        Paginator::defaultView('paginate');
+
         $autores = Autor::paginate(15);
 
 

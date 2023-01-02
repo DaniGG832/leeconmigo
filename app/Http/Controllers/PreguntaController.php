@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePreguntaRequest;
 use App\Http\Requests\UpdatePreguntaRequest;
 use App\Models\Pregunta;
+use Illuminate\Pagination\Paginator;
 
 class PreguntaController extends Controller
 {
@@ -15,6 +16,10 @@ class PreguntaController extends Controller
      */
     public function index()
     {
+
+        Paginator::defaultView('paginate');
+
+
         $preguntas = Pregunta::paginate(10);
         //return $preguntas[0]->user;
 
