@@ -44,6 +44,11 @@ require __DIR__ . '/auth.php';
 
 /* rutas publicas */
 
+/* PDF */
+
+Route::get('libros/{libro}/pdf', [LibroController::class, 'pdf'])->name('libros.pdf');
+
+
 Route::get('libros', [LibroController::class, 'userIndex'])->name('libros');
 Route::get('libros/{libro}', [LibroController::class, 'libroShow'])->name('libros.show');
 

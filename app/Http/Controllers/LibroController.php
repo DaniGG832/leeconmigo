@@ -16,13 +16,31 @@ use Illuminate\Pagination\Paginator;
 use App\Models\Tema;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
-
+use PDF;
 
 class LibroController extends Controller
 {
 
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pdf(Libro $libro)
+    {
 
+        $pdf = PDF::loadview('user.libros.pdf',compact('libro'));
+
+
+        //$pdf = App::make('dompdf.wrapper');
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream('Ficha de '. $libro->titulo);
+        //return $pdf->stream('Ficha de '. $libro->titulo );
+        
+        return view('user.libros.pdf', compact('libro'));
+    }
 
 
     /**
