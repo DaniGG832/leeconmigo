@@ -9,12 +9,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Illuminate\Pagination\Paginator;
 
 
 class UserController extends Controller
 {
 
- /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +27,7 @@ class UserController extends Controller
         return view('user.profiles.profile',compact('user'));
     } */
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,7 +39,7 @@ class UserController extends Controller
         $totalUsuarios = User::all()->count();
 
         //return $users;
-        return view('admin.users.index', compact(['users', 'totalUsuarios','totalLibros']));
+        return view('admin.users.index', compact(['users', 'totalUsuarios', 'totalLibros']));
     }
 
     /**
@@ -48,10 +49,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        
-
-        
-
     }
 
     /**
@@ -66,7 +63,7 @@ class UserController extends Controller
 
         //return $user;
 
-        return view('user.profiles.profile',compact('user'));
+        return view('user.profiles.profile', compact('user'));
     }
 
     /**
@@ -79,8 +76,12 @@ class UserController extends Controller
     {
         $user = User::find(Auth()->id());
         //return $user;
-        return view('user.profiles.show',compact('user'));
+        return view('user.profiles.show', compact('user'));
     }
+
+
+
+    /* Editar  */
 
     /**
      * Show the form for editing the specified resource.
@@ -90,7 +91,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -100,7 +101,35 @@ class UserController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, User $user)
+    {
+
+        if ($user->rol_id != 3) {
+            $validated =  $request->validate([
+                'comentar' => 'required|boolean',
+            ]);
+            //return $validated['comentar'];
+            $user->comentar = $validated['comentar'];
+            $user->save();
+
+            return redirect()->route('admin.users.index')->with('success', 'Usuario editado Correctamente');
+        }
+
+        return redirect()->back()->with('error', 'No se puede bloquear a un usuario superAdmin');
+
+
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateUserRequest  $request
+     * @param  \App\Models\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function userUpdate(UpdateUserRequest $request, User $user)
     {
 
         /* TODO: guardar la imagen en la base de datos */
@@ -108,10 +137,10 @@ class UserController extends Controller
 
         //return $user;
 
-        if (isset( $request->validated()['avatar'])) {
-            
-            $avatar =$request->validated()['avatar']->store('public/imagenes/avatar');
-            
+        if (isset($request->validated()['avatar'])) {
+
+            $avatar = $request->validated()['avatar']->store('public/imagenes/avatar');
+
             $url = FacadesStorage::url($avatar);
 
             $user->avatar = $url;
@@ -140,35 +169,30 @@ class UserController extends Controller
         //return Auth::user()->rol_id ;
 
         if ($user->rol_id != 3 && Auth::user()->rol_id == 3) {
-            
+
             $user->votaciones->each->delete();
 
-            foreach($user->preguntas as $pregunta){
+            foreach ($user->preguntas as $pregunta) {
 
-                $pregunta->respuestas->each->delete(); 
+                $pregunta->respuestas->each->delete();
             }
-            
+
             $user->preguntas->each->delete();
             $user->respuestas->each->delete();
             $user->criticas->each->delete();
             $user->listaDeseos()->detach();
-            
+
 
 
 
             $user->delete();
-            return back()->with('success','Usuario borrado correctamente');
+            return back()->with('success', 'Usuario borrado correctamente');
+        } elseif (Auth::user()->rol_id == 3) {
 
-        }elseif(Auth::user()->rol_id == 3){
+            return back()->with('error', 'No se puede borrar un usuario administrados.');
+        } else {
 
-            return back()->with('error','No se puede borrar un usuario administrados.');
-
-
-        }else{
-
-            return back()->with('error','No tienes permisos para borrar usuarios.');
-
+            return back()->with('error', 'No tienes permisos para borrar usuarios.');
         }
-
     }
 }

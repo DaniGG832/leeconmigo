@@ -76,7 +76,7 @@ Route::get('librerias', [LibreriaController::class, 'userIndex'])->name('libreri
 
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
     
     
     /* rutas foro para usuaro autentificado */
@@ -118,7 +118,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('profile', [UserController::class, 'show'])->name('profile');
 
-    Route::put('profile/edit/{user}', [UserController::class, 'update'])->name('user.edit');
+    Route::put('profile/edit/{user}', [UserController::class, 'userUpdate'])->name('user.edit');
 
 
 
@@ -139,7 +139,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-Route::middleware(['auth', 'verified', 'can:solo-admin' ])->group(function () {
+Route::middleware(['auth', 'verified', 'can:solo-admin', 'can:bloqueado' ])->group(function () {
 
     Route::get('/admin', [RolController::class, 'index'])->name('admin');
 
@@ -174,6 +174,7 @@ Route::middleware(['auth', 'verified', 'can:solo-admin' ])->group(function () {
         ]);
 
         Route::resource('librerias', LibreriaController::class);
+
 
 
 

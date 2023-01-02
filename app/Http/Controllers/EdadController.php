@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEdadRequest;
 use App\Http\Requests\UpdateEdadRequest;
 use App\Models\Edad;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Illuminate\Pagination\Paginator;
 
 
 class EdadController extends Controller
@@ -19,6 +20,9 @@ class EdadController extends Controller
      */
     public function userIndex()
     {
+
+        Paginator::defaultView('paginate');
+
         $edades = Edad::paginate(15);
 
 
@@ -34,6 +38,9 @@ class EdadController extends Controller
      */
     public function userShow(Edad $edad)
     {
+
+        Paginator::defaultView('paginate');
+
         $libros =$edad->libros()->paginate(15) ;
 
         //return $libros;

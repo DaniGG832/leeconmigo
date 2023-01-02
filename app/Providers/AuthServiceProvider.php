@@ -40,5 +40,11 @@ class AuthServiceProvider extends ServiceProvider
                 Response::allow() :
                 Response::deny('Sólo el super administrador puede entrar.');
         });
+
+        Gate::define('bloqueado', function (User $user) {
+            return $user->comentar == 1 ?
+                Response::allow() :
+                Response::deny('Este usuario esta bloqueado.');
+        });
     }
 }

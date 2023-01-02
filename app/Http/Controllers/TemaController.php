@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 use Iluminate\Support\Facades\storage;
+use Illuminate\Pagination\Paginator;
 
 class TemaController extends Controller
 {
@@ -24,6 +25,8 @@ class TemaController extends Controller
      */
     public function userIndex()
     {
+        Paginator::defaultView('paginate');
+
         $temas = Tema::paginate(15);
 
 
@@ -39,6 +42,9 @@ class TemaController extends Controller
      */
     public function userShow(Tema $tema)
     {
+
+        Paginator::defaultView('paginate');
+
         $libros =$tema->libros()->paginate(15) ;
 
         //return $libros;
@@ -56,6 +62,9 @@ class TemaController extends Controller
      */
     public function index()
     {
+        Paginator::defaultView('paginate');
+
+
         $temas = Tema::paginate(12);
         $totalLibros = Libro::all()->count();
         $totalUsuarios = User::all()->count();
