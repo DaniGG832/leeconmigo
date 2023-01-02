@@ -118,7 +118,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('profile', [UserController::class, 'show'])->name('profile');
 
-    Route::put('profile/edit/{user}', [UserController::class, 'update'])->name('user.edit');
+    Route::put('profile/edit/{user}', [UserController::class, 'userUpdate'])->name('user.edit');
 
 
 
@@ -174,6 +174,7 @@ Route::middleware(['auth', 'verified', 'can:solo-admin' ])->group(function () {
         ]);
 
         Route::resource('librerias', LibreriaController::class);
+
 
 
 

@@ -82,6 +82,10 @@ class UserController extends Controller
         return view('user.profiles.show',compact('user'));
     }
 
+
+
+    /* Editar  */
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -90,8 +94,23 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit',compact('user'));
     }
+
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateUserRequest  $request
+     * @param  \App\Models\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+
+
+    }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -100,7 +119,7 @@ class UserController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function userUpdate(UpdateUserRequest $request, User $user)
     {
 
         /* TODO: guardar la imagen en la base de datos */
