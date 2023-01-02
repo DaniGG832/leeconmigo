@@ -49,7 +49,7 @@
 
               @auth
 
-              @if (Auth::user()->email_verified_at)
+              @if (Auth::user()->email_verified_at && Auth::user()->comentar)
               <div>
 
                 <label for="nota" class="block mb-2 text-sm font-medium text-gray-900"></label>

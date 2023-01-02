@@ -49,16 +49,22 @@
                           <h3 class="block mb-2 text-sm font-medium text-gray-900 ">Bloquear usuario</h3>
                           <div class="flex flex-col">
 
+                            <div class="flex items-center mr-4 mb-1">
+                                <input id="comentar" @checked($user->comentar) type="radio" value="1" name="comentar" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500">
+                                <label for="comentar" class="ml-2 text-sm font-medium text-green-600">Activo</label>
+                            </div>
                             <div class="flex items-center mr-4">
-                                <input id="red-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500">
+                                <input id="red-radio" {{-- {{!$user->comentar ?? 'checked'}}  --}} @checked(!$user->comentar) type="radio" value="0" name="comentar" class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500">
                                 <label for="red-radio" class="ml-2 text-sm font-medium text-red-800">Boqueado</label>
                             </div>
-                            <div class="flex items-center mr-4">
-                                <input id="green-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500">
-                                <label for="green-radio" class="ml-2 text-sm font-medium text-green-600">Desboqueado</label>
-                            </div>
                             
+                            @error('comentar')
+                              <p class="text-red-500 text-sm mt-1">
+                                {{ $message }}
+                              </p>
+                              @enderror
                         </div>
+                        
                         
                         </div>
                       
@@ -103,6 +109,8 @@
                       <button type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                         Guardar
                       </button>
+
+                      </form>
                   </div>
                 </div>
               </div>
