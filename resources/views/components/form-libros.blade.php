@@ -37,7 +37,7 @@
 
 <div class="mb-6">
   <label for="ISBN10" class="block mb-2 text-sm font-medium text-gray-900">ISBN (10)</label>
-  <input maxlength="10" type="text" id="ISBN10" name="ISBN10" value="{{old('ISBN10',$libro->ISBN10)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="0000000000">
+  <input maxlength="10" type="text" pattern="[0-9]{10}" title="Solo se permite 10 digitos"  id="ISBN10" name="ISBN10" value="{{old('ISBN10',$libro->ISBN10)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="0000000000">
 
   @error('ISBN10')
   <p class="text-red-500 text-sm mt-1">
@@ -50,7 +50,7 @@
 
 <div class="mb-6">
   <label for="ISBN13" class="block mb-2 text-sm font-medium text-gray-900">ISBN (13)</label>
-  <input type="text" id="ISBN13" name="ISBN13" maxlength="13" value="{{old('ISBN13',$libro->ISBN13)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="0000000000000">
+  <input type="text" id="ISBN13" name="ISBN13" maxlength="13" pattern="[0-9]{13}" title="Solo se permite 13 digitos" value="{{old('ISBN13',$libro->ISBN13)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="0000000000000">
   @error('ISBN13')
   <p class="text-red-500 text-sm mt-1">
     {{ $message }}
@@ -65,7 +65,7 @@
 
   <div class="mb-6 ">
     <label for="year" class="block mb-2 text-sm font-medium text-gray-900">Año</label>
-    <input required type="text" id="year" name="year" value="{{old('year',$libro->year)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required maxlength="4" pattern="[0-9]{4}" title="Debe contener 4 digitos" type="text" id="year" name="year" value="{{old('year',$libro->year)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('year')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -77,7 +77,7 @@
 
   <div class="mb-6 ">
     <label for="n_pag" class="block mb-2 text-sm font-medium text-gray-900">Páginas</label>
-    <input required type="text" id="n_pag" name="n_pag" value="{{old('n_pag',$libro->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="number" id="n_pag" name="n_pag" value="{{old('n_pag',$libro->n_pag)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('n_pag')
     <p class="text-red-500 text-sm mt-1">
@@ -92,7 +92,7 @@
 {{-- sinopsis --}}
 <div class="mb-6 ">
   <label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-900 ">Sinopsis</label>
-  <textarea required id="sinopsis" name="sinopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$libro->sinopsis)}}</textarea>
+  <textarea required id="sinopsis" name="sinopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('sinopsis',$libro->sinopsis)}}</textarea>
   @error('sinopsis')
   <p class="text-red-500 text-sm mt-1">
     {{ $message }}
@@ -111,6 +111,7 @@
     {{ $message }}
   </p>
   @enderror
+  
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-3">
@@ -124,7 +125,7 @@
 
       @foreach ($autores as $autor)
 
-      <option value="{{$autor->id}}" {{$libro->autor_id==$autor->id ? 'selected' : ''}}>{{$autor->name}}</option>
+      <option value="{{$autor->id}}" {{old('autor_id')==$autor->id || $libro->autor_id==$autor->id ? 'selected' : ''}}>{{$autor->name}}</option>
 
       @endforeach
 
@@ -135,7 +136,7 @@
       {{ $message }}
     </p>
     @enderror
-
+{{-- {{old('autor_id')}} --}}
 
   </div>
 
@@ -147,7 +148,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($ilustradores as $ilustrador)
-      <option value="{{$ilustrador->id}}" {{$libro->ilustrador_id==$ilustrador->id ? 'selected' : ''}}>{{$ilustrador->name}}</option>
+      <option value="{{$ilustrador->id}}" {{old('ilustrador_id')==$ilustrador->id ||$libro->ilustrador_id==$ilustrador->id ? 'selected' : ''}}>{{$ilustrador->name}}</option>
 
       @endforeach
 
@@ -167,7 +168,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($editoriales as $editorial)
-      <option value="{{$editorial->id}}" {{$libro->editorial_id==$editorial->id ? 'selected' : ''}}>{{$editorial->name}}</option>
+      <option value="{{$editorial->id}}" {{old('editorial_id')==$editorial->id ||$libro->editorial_id==$editorial->id ? 'selected' : ''}}>{{$editorial->name}}</option>
 
       @endforeach
 
@@ -189,7 +190,7 @@
 
 
       @foreach ($edades as $edad)
-      <option value="{{$edad->id}}" {{$libro->edad_id==$edad->id ? 'selected' : ''}}>{{$edad->descripcion}}</option>
+      <option value="{{$edad->id}}" {{old('edad_id')==$edad->id ||$libro->edad_id==$edad->id ? 'selected' : ''}}>{{$edad->descripcion}}</option>
 
       @endforeach
 
@@ -209,7 +210,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($idiomas as $idioma)
-      <option value="{{$idioma->id}}" {{$libro->idioma_id==$idioma->id ? 'selected' : ''}}>{{$idioma->descripcion}} - {{$idioma->name}}</option>
+      <option value="{{$idioma->id}}" {{old('idioma_id')==$idioma->id ||$libro->idioma_id==$idioma->id ? 'selected' : ''}}>{{$idioma->descripcion}} - {{$idioma->name}}</option>
 
       @endforeach
 
@@ -229,7 +230,7 @@
       <option value="" class="text-red-900">Selecione una opción</option>
 
       @foreach ($encuadernaciones as $encuadernacion)
-      <option value="{{$encuadernacion->id}}" {{$libro->encuadernacion_id==$encuadernacion->id ? 'selected' : ''}}>{{$encuadernacion->name}}</option>
+      <option value="{{$encuadernacion->id}}" {{old('encuadernacion_id')==$encuadernacion->id ||$libro->encuadernacion_id==$encuadernacion->id ? 'selected' : ''}}>{{$encuadernacion->name}}</option>
 
       @endforeach
 
@@ -242,7 +243,6 @@
   </div>
 
 </div>
-
 
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
 
