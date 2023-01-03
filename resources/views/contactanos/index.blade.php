@@ -29,7 +29,7 @@
             <div class=" mb-5 rounded-t p-5">
 
 
-              <form action="{{route('contactanos.store')}} " method="post">
+              <form id="form-contacto" action="{{route('contactanos.store')}} " method="post">
                 @csrf
                 @method('post')
 
@@ -79,7 +79,7 @@
                 @enderror
                 <div class="flex justify-center">
 
-                  <button type="submit" class=" mt-4  border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+                  <button type="submit" class="g-recaptcha mt-4  border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" data-sitekey="{{env('reCAPTCHA_site_key')}}" data-callback='onSubmit' data-action='submit'>
                     Enviar
                   </button>
                 </div>
@@ -97,5 +97,14 @@
       </div>
     </div>
   </div>
+
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
+  <script>
+    function onSubmit(token) {
+      document.getElementById("form-contacto").submit();
+    }
+
+  </script>
 
 </x-invitado>

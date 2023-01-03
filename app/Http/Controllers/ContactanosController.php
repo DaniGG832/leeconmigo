@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateContactanosRequest;
 use App\Mail\ContactanosMailable;
 use App\Models\Contactanos;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+
 
 class ContactanosController extends Controller
 {
@@ -23,7 +25,7 @@ class ContactanosController extends Controller
         $email = $user->email ?? '';
         $nombre = $user->name ?? '';
 
-        return view('contactanos.index',compact('email','nombre'));
+        return view('contactanos.index', compact('email', 'nombre'));
     }
 
     /**
@@ -44,12 +46,28 @@ class ContactanosController extends Controller
      */
     public function store(StoreContactanosRequest $request)
     {
-        //return $request->validated();
 
-        Mail::to('daniel.gonzalez.garcia@iesdonana.org')->send(new ContactanosMailable($request->validated()));
+        $response = Http::asForm()->post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            [
+                'secret' => env('reCAPTCHA_secret'),
+                'response' => $request->input('g-recaptcha-response')
+            ]
+        )->object();
 
+        if ($response->success && $response->score > 0.7) {
 
-        return Redirect()->route('libros')->with('success','Mensaje enviado correctamente.');
+            //return $request->input('g-recaptcha-response');
+    
+            Mail::to('daniel.gonzalez.garcia@iesdonana.org')->send(new ContactanosMailable($request->validated()));
+    
+    
+            return Redirect()->route('libros')->with('success', 'Mensaje enviado correctamente.');
+
+        }
+
+        return Redirect()->back()->with('error', 'No ha pasado la verificación reCaptcha.');
+
     }
 
     /**
