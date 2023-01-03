@@ -36,10 +36,10 @@ class LibroController extends Controller
 
         //$pdf = App::make('dompdf.wrapper');
         //$pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
-        //return $pdf->stream();
+        //return $pdf->download("Ficha de ".$libro->titulo.".pdf");
+        return $pdf->stream("Ficha de ".$libro->titulo);
         
-        return view('user.libros.pdf', compact('libro'));
+        //return view('user.libros.pdf', compact('libro'));
     }
 
 
