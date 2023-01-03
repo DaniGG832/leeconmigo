@@ -28,7 +28,7 @@
 
   <div class="mb-6 ">
     <label for="lat" class="block mb-2 text-sm font-medium text-gray-900">Latitud</label>
-    <input required type="text" id="lat" name="lat" value="{{old('lat',$libreria->lat)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="lat" name="lat" pattern="^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$" title="La Latitud va desde -90 a 90 grados" value="{{old('lat',$libreria->lat)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('lat')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -40,7 +40,7 @@
 
   <div class="mb-6 ">
     <label for="lng" class="block mb-2 text-sm font-medium text-gray-900">Longitud</label>
-    <input required type="text" id="lng" name="lng" value="{{old('lng',$libreria->lng)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="lng" name="lng" pattern="^[\-\+]?(0(\.\d{1,10})?|([1-9](\d)?)(\.\d{1,10})?|1[0-7]\d{1}(\.\d{1,10})?|180\.0{1,10})$" title="La Longitud va desde -180 a 180 grados" value="{{old('lng',$libreria->lng)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('lng')
     <p class="text-red-500 text-sm mt-1">
@@ -58,7 +58,7 @@
 
   <div class="mb-6 ">
     <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900">Teléfono</label>
-    <input required type="text" id="telefono" name="telefono" value="{{old('telefono',$libreria->telefono)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="telefono" minlength="9" pattern="/^([0-9\s\-\+\(\)]*)$/" title="Introduce un número de teléfono válido" name="telefono" value="{{old('telefono',$libreria->telefono)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('telefono')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -129,7 +129,7 @@
 
   <div class="mb-6 ">
     <label for="cod_postal" class="block mb-2 text-sm font-medium text-gray-900">Código postal</label>
-    <input required type="text" id="cod_postal" name="cod_postal" value="{{old('cod_postal',$libreria->cod_postal)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="number" id="cod_postal" name="cod_postal" value="{{old('cod_postal',$libreria->cod_postal)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 
     @error('cod_postal')
     <p class="text-red-500 text-sm mt-1">
@@ -153,7 +153,7 @@
 
       @foreach ($provincias as $provincia)
 
-      <option value="{{$provincia->id}}" {{$libreria->provincia_id==$provincia->id ? 'selected' : ''}}>{{$provincia->nombre}}</option>
+      <option value="{{$provincia->id}}" {{old('provincia_id')== $provincia->id || $libreria->provincia_id==$provincia->id ? 'selected' : ''}}>{{$provincia->nombre}}</option>
 
       @endforeach
 
