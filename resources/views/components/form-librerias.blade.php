@@ -58,7 +58,7 @@
 
   <div class="mb-6 ">
     <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900">Teléfono</label>
-    <input required type="text" id="telefono" minlength="9" pattern="/^([0-9\s\-\+\(\)]*)$/" title="Introduce un número de teléfono válido" name="telefono" value="{{old('telefono',$libreria->telefono)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <input required type="text" id="telefono" minlength="9" pattern="^([0-9\s\-\+\(\)]*)$" title="Introduce un número de teléfono válido" name="telefono" value="{{old('telefono',$libreria->telefono)}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     @error('telefono')
     <p class="text-red-500 text-sm mt-1">
       {{ $message }}
