@@ -34,7 +34,7 @@
 
 
                     <label for="descripcion" class="block mt-6 mb-2 text-sm font-medium text-gray-900 ">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" rows="10" required class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$respuesta->descripcion)}}</textarea>
+                    <textarea required id="descripcion" name="descripcion" rows="10" required class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Escriba aquí...">{{old('descripcion',$respuesta->descripcion)}}</textarea>
 
                     @error('descripcion')
                     <p class="text-red-500 text-sm mt-1">

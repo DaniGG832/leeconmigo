@@ -23,7 +23,7 @@ use PDF;
 class LibroController extends Controller
 {
 
-/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -31,14 +31,14 @@ class LibroController extends Controller
     public function pdf(Libro $libro)
     {
 
-        $pdf = PDF::loadview('user.libros.pdf',compact('libro'));
+        $pdf = PDF::loadview('user.libros.pdf', compact('libro'));
 
 
         //$pdf = App::make('dompdf.wrapper');
         //$pdf->loadHTML('<h1>Test</h1>');
         //return $pdf->download("Ficha de ".$libro->titulo.".pdf");
-        return $pdf->stream("Ficha de ".$libro->titulo);
-        
+        return $pdf->stream("Ficha de " . $libro->titulo);
+
         //return view('user.libros.pdf', compact('libro'));
     }
 
@@ -118,7 +118,7 @@ class LibroController extends Controller
     {
 
         Paginator::defaultView('paginate');
-        
+
 
         //return $request;
         $sortBy = $request->sortBy;
@@ -130,7 +130,7 @@ class LibroController extends Controller
             ->withAvg('votaciones', 'voto')
             ->buscar($request->all())
             ->ordenar($request->all())
-            ->paginate(1, ['*'], 'pagina');
+            ->paginate(15, ['*'], 'pagina');
 
         //return $libros;
 
@@ -232,8 +232,11 @@ class LibroController extends Controller
 
         $libro->save();
 
+        if (isset($request->validated()['temas'])) {
 
-        $libro->temas()->sync($request->validated()['temas']);
+            $libro->temas()->sync($request->validated()['temas']);
+        }
+
 
         return back()->with('success', "Ficha de $libro->titulo creada correctamente");
     }
@@ -319,8 +322,11 @@ class LibroController extends Controller
 
         $libro->save();
 
-        $libro->temas()->sync($request->validated()['temas']);
+        if (isset($request->validated()['temas'])) {
 
+
+            $libro->temas()->sync($request->validated()['temas']);
+        }
 
 
         return redirect()->route('admin.libros.index')->with('success', "libro $libro->name editado correctamente");

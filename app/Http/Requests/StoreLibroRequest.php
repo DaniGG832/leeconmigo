@@ -24,22 +24,23 @@ class StoreLibroRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo'=> 'required|',
-            'titulo_original'=> '',
-            'ISBN10'=> 'nullable|unique:libros,ISBN10',
-            'ISBN13'=> 'nullable|unique:libros,ISBN13', 
-            'year'=> 'required',
-            'n_pag'=> 'required',
-            'img'=> 'nullable|image',
-            'descripcion'=> '',
-            'sinopsis'=> 'required',
-            'editorial_id'=> 'required',
-            'ilustrador_id'=> 'required',
-            'edad_id'=> 'required', 
-            'idioma_id'=> 'required', 
-            'autor_id'=> 'required',
-            'encuadernacion_id'=> 'required',
+            'titulo'=> 'required',
+            'titulo_original'=> 'nullable',
+            'ISBN10'=> 'nullable|numeric|unique:libros,ISBN10|digits:10',
+            'ISBN13'=> 'nullable|numeric|unique:libros,ISBN13|digits:13', 
+            'year'=> 'required|numeric|digits:4',
+            'n_pag'=> 'required|numeric',
+            'img'=> 'required|image',
+            'descripcion'=> 'nullable|min:3',
+            'sinopsis'=> 'required|min:3',
+            'editorial_id'=> 'required|exists:editoriales,id',
+            'ilustrador_id'=> 'required|exists:ilustradores,id',
+            'edad_id'=> 'required|exists:edades,id', 
+            'idioma_id'=> 'required|exists:idiomas,id', 
+            'autor_id'=> 'required|exists:autores,id',
+            'encuadernacion_id'=> 'required|exists:encuadernaciones,id',
             'temas'=>'',
+            
         ];
     }
 }

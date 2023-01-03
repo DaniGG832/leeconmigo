@@ -24,9 +24,9 @@ class UpdateIdiomaRequest extends FormRequest
     public function rules()
     {
         return [
-            'img'=>'',
-            'name'=>'',
-            'descripcion'=>'',
+            'img'=>'image|mimes:jpg,jpeg,png|max:10240',
+            'name'=>'required|min:3|max:255',
+            'descripcion'=>'required|min:3',
         ];
     }
 }

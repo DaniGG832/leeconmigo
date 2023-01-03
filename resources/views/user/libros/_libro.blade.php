@@ -1,5 +1,5 @@
 <div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-1">
-  <div class="rounded-md border border-blue-200 p-1">
+  <div class="h-full rounded-md border border-blue-200 p-1">
 
   <a href="{{route('libros.show',$libro)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
   <div class="relative pb-56 overflow-hidden">
@@ -31,7 +31,7 @@
     <a href="{{route('edades.show',$libro->edad)}}"><span class="ml-2">{{$libro->edad->descripcion}}</span></a>
   </div>
   
-  <div class="p-4 border-t border-b text-xs text-gray-700">
+  <div class="p-4 border-t text-xs text-gray-700">
     
       @foreach ($libro->temas as $tema)
       <a class="no-underline hover:underline hover:text-blue-700" href="{{route('temas.show',$tema)}}">
