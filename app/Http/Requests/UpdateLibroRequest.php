@@ -26,22 +26,24 @@ class UpdateLibroRequest extends FormRequest
     {
         /* OJO: muy importante la coma dentro de las comillas para el 'unique:libros,ISBN13,'.$this->libro->id, (ISBN13 , '.$this) */
         return [
-            'titulo'=> 'required|',
-            'titulo_original'=> '',
-            'ISBN10'=> 'nullable|unique:libros,ISBN10,'.$this->libro->id,
-            'ISBN13'=> 'nullable|unique:libros,ISBN13,'.$this->libro->id, 
-            'year'=> 'required',
-            'n_pag'=> 'required',
+            'titulo'=> 'required',
+            'titulo_original'=> 'nullable',
+            'ISBN10'=> 'nullable|numeric|digits:10|unique:libros,ISBN10,'.$this->libro->id,
+            'ISBN13'=> 'nullable|numeric|digits:13|unique:libros,ISBN13,'.$this->libro->id, 
+            'year'=> 'required|numeric|digits:4',
+            'n_pag'=> 'required|numeric',
             'img'=> 'nullable|image',
-            'descripcion'=> '',
-            'sinopsis'=> 'required',
-            'editorial_id'=> 'required',
-            'ilustrador_id'=> 'required',
-            'edad_id'=> 'required', 
-            'idioma_id'=> 'required', 
-            'autor_id'=> 'required',
-            'encuadernacion_id'=> 'required',
+            'descripcion'=> 'nullable|min:3',
+            'sinopsis'=> 'required|min:3',
+            'editorial_id'=> 'required|exists:editoriales,id',
+            'ilustrador_id'=> 'required|exists:ilustradores,id',
+            'edad_id'=> 'required|exists:edades,id', 
+            'idioma_id'=> 'required|exists:idiomas,id', 
+            'autor_id'=> 'required|exists:autores,id',
+            'encuadernacion_id'=> 'required|exists:encuadernaciones,id',
             'temas'=>'',
+            
+            
         ];
     }
 }

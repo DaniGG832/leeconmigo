@@ -26,15 +26,15 @@ class StoreLibreriaRequest extends FormRequest
         return [
             'img'=> 'nullable|image',
             'nombre' => 'required',
-            'lat' => 'required|numeric',
-            'lng' => 'required|numeric',
-            'telefono' => 'string',
+            'lat' => ['required','numeric','min:-90','max:90'],
+            'lng' => ['required','numeric','min:-180','max:180'],
+            'telefono' => ['regex:/^([0-9\s\-\+\(\)]*)$/','min:9'],
             'web' => 'string',
             'email' => 'email',
             'direccion' => 'string',
             'ciudad' => 'string',
             'cod_postal' => 'numeric',
-            'provincia_id' => 'required|integer',
+            'provincia_id' => 'required|integer|exists:provincias,id',
 
 
         ];
