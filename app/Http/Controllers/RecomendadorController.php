@@ -50,6 +50,8 @@ class RecomendadorController extends Controller
     public function data(Request $request)
     {
 
+        log:info($request);
+        return $request;
         
 
         $librosRecomendados = Libro::all();

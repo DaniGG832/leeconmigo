@@ -15,7 +15,7 @@
           <div x-data="recomendador">
 
             <h2>Selecciona los aspectos mas importantes para poder recomendar la mejor opción</h2>
-            <form x-on:submit="event.preventDefault();" x-on:change="formChange" action="{{route('recomendador')}}" method="post">
+            <form id="formdata" x-on:submit="event.preventDefault();" x-on:change="formChange" action="{{route('recomendador')}}" method="post">
               @csrf
               @method("post")
 
@@ -183,19 +183,28 @@
           //e.preventDefault();
           console.log("{{ csrf_token() }}");
 
+          let data = {
+            autor_id: document.getElementById('autor').value,
+            ilustrador_id: document.getElementById('ilustrador').value,
+            editorial_id: document.getElementById('editorial').value,
+            edad_id: document.getElementById('edad').value,
+            idioma_id: document.getElementById('idioma').value,
+            encuadernacion_id: document.getElementById('encuadernacion').value,
+            tema_id: document.getElementById('tema').value,
+        };
+
+
           let response = await fetch(this.url, {
 
             method: 'POST'
             , mode: 'cors'
             , headers: {
               'X-CSRF-TOKEN': "{{ csrf_token() }}"
-               //,'Content-Type': 'application/json'
-               ,'Content-Type': 'application/x-www-form-urlencoded',
+               ,'Content-Type': 'application/json'
+               //,'Content-Type': 'application/x-www-form-urlencoded',
             }
-            , body: JSON.stringify({
-              nota: 8
-              , libro: " $libro->id "
-            , }),
+            , body: JSON.stringify(
+              data ),
 
           })
 
