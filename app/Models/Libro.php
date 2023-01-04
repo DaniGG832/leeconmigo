@@ -229,4 +229,21 @@ public function criticas()
     {
         return $this->belongsToMany(User::class, 'deseos', 'libro_id', 'user_id');
     }
+
+
+    /* scopes para el recomendador */
+
+    public function scopeAutor($query, $data){
+
+        
+        if (isset($data['search'])) {
+            
+            //dd($data['search']);
+
+            $query->where('titulo','ILIKE','%'.$data['search'].'%');
+        
+        }
+
+    }
+
 }
