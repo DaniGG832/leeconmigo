@@ -101,8 +101,43 @@
   <script src="https://www.google.com/recaptcha/api.js"></script>
 
   <script>
+    
     function onSubmit(token) {
-      document.getElementById("form-contacto").submit();
+      let nombre = document.getElementById('nombre');
+      let email = document.getElementById('email');
+      let asunto = document.getElementById('asunto');
+      let mensaje = document.getElementById('mensaje');
+     
+      console.log(mensaje.value.length > 5);
+      
+      if (!nombre.value) {
+      nombre.reportValidity();
+
+      }else if(!email.value){
+      email.reportValidity();
+
+      }else if (!asunto.value){
+      asunto.reportValidity(); 
+
+      }else if (!mensaje.value){
+      
+        
+        mensaje.reportValidity();
+
+      }else if(mensaje.value.length < 5){
+
+        mensaje.setCustomValidity('El mensaje debe tener al menos 5 caracteres');
+        mensaje.reportValidity();
+        
+      }else{
+        mensaje.setCustomValidity('');
+        document.getElementById("form-contacto").submit();
+      }
+
+
+      console.log(token);
+
+      //document.getElementById("form-contacto").submit();
     }
 
   </script>
