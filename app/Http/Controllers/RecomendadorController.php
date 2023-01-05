@@ -46,20 +46,34 @@ class RecomendadorController extends Controller
     }
 
 
-    
+
     public function data(Request $request)
     {
 
-        log:info($request);
-        return $request;
-        
+        /* return $request->tema_id;
 
-        $librosRecomendados = Libro::all();
-        
-        
+        return $request['tema_id']; */
+
+        $temaId = $request->tema_id;
+
+        if ($request['tema_id']) {
+            $librosRecomendados = Libro::withAvg('votaciones', 'voto')
+                ->orderBy('votaciones_avg_voto')
+                ->withWhereHas('temas', function ($query) use ($temaId) {
+                    $query->where('id', $temaId);
+                })->recomendar($request)
+                ->get();
+        } else {
+            $librosRecomendados = Libro::withAvg('votaciones', 'voto')
+                ->orderBy('votaciones_avg_voto')
+                ->recomendar($request)
+                ->get();
+        }
+
+
+
+
         return $librosRecomendados;
-
-
     }
 
 

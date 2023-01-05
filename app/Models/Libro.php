@@ -114,15 +114,15 @@ class Libro extends Model
         return $this->belongsTo(Encuadernacion::class, 'encuadernacion_id', 'id');
     }
 
-/**
- * Get all of the criticas for the Libro
- *
- * @return \Illuminate\Database\Eloquent\Relations\HasMany
- */
-public function criticas()
-{
-    return $this->hasMany(Critica::class, 'libro_id', 'id');
-}
+    /**
+     * Get all of the criticas for the Libro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function criticas()
+    {
+        return $this->hasMany(Critica::class, 'libro_id', 'id');
+    }
 
     public function voto()
     {
@@ -207,17 +207,16 @@ public function criticas()
         }
     }
 
-    public function scopeBuscar($query, $data){
+    public function scopeBuscar($query, $data)
+    {
 
-        
+
         if (isset($data['search'])) {
-            
+
             //dd($data['search']);
 
-            $query->where('titulo','ILIKE','%'.$data['search'].'%');
-        
+            $query->where('titulo', 'ILIKE', '%' . $data['search'] . '%');
         }
-
     }
 
     /**
@@ -233,17 +232,35 @@ public function criticas()
 
     /* scopes para el recomendador */
 
-    public function scopeAutor($query, $data){
+    public function scopeRecomendar($query, $data)
+    {
 
-        
-        if (isset($data['search'])) {
-            
+
+        if (isset($data->autor_id)) {
+
             //dd($data['search']);
+            $query->where('autor_id', $data->autor_id);
 
-            $query->where('titulo','ILIKE','%'.$data['search'].'%');
-        
-        }
+        } if ($data->ilustrador_id) {
 
+            $query->where('ilustrador_id', $data->ilustrador_id);
+
+        }  if ($data->editorial_id) {
+
+            $query->where('editorial_id', $data->editorial_id);
+
+        }  if ($data->edad_id) {
+
+            $query->where('edad_id', $data->edad_id);
+
+        }  if ($data->idioma_id) {
+
+            $query->where('idioma_id', $data->idioma_id);
+
+        }  if ($data->encuadernacion_id) {
+
+            $query->where('encuadernacion_id', $data->encuadernacion_id);
+
+        }  
     }
-
 }
