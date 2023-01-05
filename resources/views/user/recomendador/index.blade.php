@@ -142,6 +142,20 @@
 
                 </div>
 
+                <div>
+
+                  <label for="ordenar" class="block mb-2 text-sm font-medium text-gray-900 ">Ordenar por:</label>
+                  <select id="ordenar" name="ordenar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+
+                    
+                    <option value="votaciones_avg_voto">Nota mas alta</option>
+                    <option value="votaciones_count">Mas votos</option>
+                    <option value="titulo">Ordenar por titulo</option>
+
+                  </select>
+
+
+                </div>
               </div>
 
 
@@ -224,6 +238,8 @@
             idioma_id: document.getElementById('idioma').value,
             encuadernacion_id: document.getElementById('encuadernacion').value,
             tema_id: document.getElementById('tema').value,
+            ordenar: document.getElementById('ordenar').value,
+
         };
 
 
