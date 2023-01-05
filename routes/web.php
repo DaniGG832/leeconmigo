@@ -11,6 +11,7 @@ use App\Http\Controllers\IlustradorController;
 use App\Http\Controllers\LibreriaController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PreguntaController;
+use App\Http\Controllers\RecomendadorController;
 use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TemaController;
@@ -47,6 +48,11 @@ require __DIR__ . '/auth.php';
 /* PDF */
 
 Route::get('libros/{libro}/pdf', [LibroController::class, 'pdf'])->name('libros.pdf');
+
+/* recomendar libro (ajax) */
+
+Route::get('recomendar', [RecomendadorController::class, 'index'])->name('recomendador');
+Route::post('recomendar', [RecomendadorController::class, 'data'])->name('recomendador');
 
 
 Route::get('libros', [LibroController::class, 'userIndex'])->name('libros');
