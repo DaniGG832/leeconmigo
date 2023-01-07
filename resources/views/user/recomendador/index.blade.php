@@ -163,10 +163,10 @@
 
 
 
-              {{-- <button x-on:click="formRecomendar" type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+              {{--  <button x-on:click="formRecomendar" type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                 Mostrar Resultados
-              </button> --}}
-
+              </button>
+ --}}
             </form>
           
 
@@ -195,37 +195,7 @@
         },
 
         async formRecomendar(e) {
-            //e.preventDefault();
-            //console.log("{{ csrf_token() }}");
-
-            /* let data = {
-            autor_id: document.getElementById('autor').value,
-            ilustrador_id: document.getElementById('ilustrador').value,
-            editorial_id: document.getElementById('editorial').value,
-            edad_id: document.getElementById('edad').value,
-            idioma_id: document.getElementById('idioma').value,
-            encuadernacion_id: document.getElementById('encuadernacion').value,
-            tema_id: document.getElementById('tema').value,
-        };
-
-
-          let response = await fetch(this.url, {
-
-            method: 'POST'
-            , mode: 'cors'
-            , headers: {
-              'X-CSRF-TOKEN': "{{ csrf_token() }}"
-               ,'Content-Type': 'application/json'
-               //,'Content-Type': 'application/x-www-form-urlencoded',
-            }
-            , body: JSON.stringify(
-              data ),
-
-          })
-
-          console.log(await response.json()); */
-            //console.log(await response);
-
+            this.formChange();
           }
 
 
@@ -275,7 +245,8 @@
                         <div class="m-1 border border-blue-200 rounded-md " style="width: 15em;">
                           <div class="px-3 pt-3 w-42 h-auto flex justify-center">
                             <a href="/libros/${dato.id}">
-                              <img class="rounded-md w-42 h-52 object-cover" src="${dato.img}" alt="imagen libro">
+                              <img class="rounded-md w-42 h-52 object-cover hover:scale-110 transition duration-300 ease-in-out
+                              " src="${dato.img}" alt="imagen libro">
                             </a>
                           </div>
                           <div class="text-center">
