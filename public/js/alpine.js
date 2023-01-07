@@ -196,6 +196,49 @@ document.addEventListener("alpine:init", () => {
     }));
 
 
+/* loading */
 
+Alpine.data("loading", () => ({
+
+    open :false
+
+}));
+
+/* cookies */
+
+Alpine.data("AceptarCookies", () => ({
+
+    open :true,
+
+
+    compobarCookie(){
+
+        if (localStorage.getItem('AceptarCookies') == 'true') {
+            this.open = false;
+        }else{
+            this.open = true;
+
+        }
+        console.log(localStorage.getItem('AceptarCookies'));
+    },
+
+    aceptarCookie(){
+
+        //console.log(1);
+        this.open = false;
+
+        
+        localStorage.setItem('AceptarCookies', 'true');
+    },
+
+    cancelarCookie(){
+
+    
+        //console.log(2);
+        this.open = false;
+        //sessionStorage.setItem('cookies', 'true');
+    }
+
+}));
 
 });
