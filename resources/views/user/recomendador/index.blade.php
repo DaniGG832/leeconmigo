@@ -14,7 +14,7 @@
 
           <div x-data="recomendador">
 
-            <h2>Selecciona los aspectos mas importantes para poder recomendar la mejor opción.</h2>
+            <h2 class="font-bold">Selecciona los aspectos mas importantes para poder recomendar la mejor opción.</h2>
             <form id="formdata" x-on:submit="event.preventDefault();" x-on:change="formChange" action="{{route('recomendador')}}" method="post">
               @csrf
               @method("post")
@@ -142,6 +142,20 @@
 
                 </div>
 
+                <div>
+
+                  <label for="ordenar" class="block mb-2 text-sm font-medium text-gray-900 ">Ordenar por:</label>
+                  <select id="ordenar" name="ordenar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+
+
+                    <option value="votaciones_avg_voto">Nota mas alta</option>
+                    <option value="votaciones_count">Mas votos</option>
+                    <option value="titulo">Ordenar por titulo</option>
+
+                  </select>
+
+
+                </div>
               </div>
 
 
@@ -149,17 +163,18 @@
 
 
 
-              {{-- <button x-on:click="formRecomendar" type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+              {{--  <button x-on:click="formRecomendar" type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                 Mostrar Resultados
-              </button> --}}
-
+              </button>
+ --}}
             </form>
+          
 
-            <div class="resultados">
+            <div x-html="resultado" class="mt-5 border-t">
 
-              {{-- {{$libros}} --}}
+
+
             </div>
-
           </div>
         </div>
       </div>
@@ -171,8 +186,8 @@
       /* editar perfil */
       Alpine.data("recomendador", () => ({
 
-        url: "{{ route('recomendador') }}",
-
+        url: "{{ route('recomendador') }}"
+        , resultado: '',
 
 
         init: () => {
@@ -180,51 +195,23 @@
         },
 
         async formRecomendar(e) {
-          //e.preventDefault();
-          //console.log("{{ csrf_token() }}");
-
-          /* let data = {
-            autor_id: document.getElementById('autor').value,
-            ilustrador_id: document.getElementById('ilustrador').value,
-            editorial_id: document.getElementById('editorial').value,
-            edad_id: document.getElementById('edad').value,
-            idioma_id: document.getElementById('idioma').value,
-            encuadernacion_id: document.getElementById('encuadernacion').value,
-            tema_id: document.getElementById('tema').value,
-        };
-
-
-          let response = await fetch(this.url, {
-
-            method: 'POST'
-            , mode: 'cors'
-            , headers: {
-              'X-CSRF-TOKEN': "{{ csrf_token() }}"
-               ,'Content-Type': 'application/json'
-               //,'Content-Type': 'application/x-www-form-urlencoded',
-            }
-            , body: JSON.stringify(
-              data ),
-
-          })
-
-          console.log(await response.json()); */
-          //console.log(await response);
-
-        }
+            this.formChange();
+          }
 
 
         , async formChange(e) {
 
           let data = {
-            autor_id: document.getElementById('autor').value,
-            ilustrador_id: document.getElementById('ilustrador').value,
-            editorial_id: document.getElementById('editorial').value,
-            edad_id: document.getElementById('edad').value,
-            idioma_id: document.getElementById('idioma').value,
-            encuadernacion_id: document.getElementById('encuadernacion').value,
-            tema_id: document.getElementById('tema').value,
-        };
+            autor_id: document.getElementById('autor').value
+            , ilustrador_id: document.getElementById('ilustrador').value
+            , editorial_id: document.getElementById('editorial').value
+            , edad_id: document.getElementById('edad').value
+            , idioma_id: document.getElementById('idioma').value
+            , encuadernacion_id: document.getElementById('encuadernacion').value
+            , tema_id: document.getElementById('tema').value
+            , ordenar: document.getElementById('ordenar').value,
+
+          };
 
 
           let response = await fetch(this.url, {
@@ -233,17 +220,63 @@
             , mode: 'cors'
             , headers: {
               'X-CSRF-TOKEN': "{{ csrf_token() }}"
-               ,'Content-Type': 'application/json'
-               //,'Content-Type': 'application/x-www-form-urlencoded',
+              , 'Content-Type': 'application/json'
+              //,'Content-Type': 'application/x-www-form-urlencoded',
             }
             , body: JSON.stringify(
-              data ),
+              data),
 
           })
 
           datos = await response.json();
           console.log(datos);
           console.log(datos.length);
+
+
+          libros = `<p class="my-2">Total de resultados: <span>${datos.length}</span></p>`;
+          libros += `<div class = "flex flex-wrap">`;
+
+          for (const dato of datos) {
+
+            console.log(dato.titulo);
+
+            libros += ` 
+                      
+                        <div class="m-1 border border-blue-200 rounded-md " style="width: 15em;">
+                          <div class="px-3 pt-3 w-42 h-auto flex justify-center">
+                            <a href="/libros/${dato.id}">
+                              <img class="rounded-md w-42 h-52 object-cover hover:scale-110 transition duration-300 ease-in-out
+                              " src="${dato.img}" alt="imagen libro">
+                            </a>
+                          </div>
+                          <div class="text-center">
+                            <h2 class=" my-1 font-bold">${dato.titulo}</h2>
+                          </div>
+                          <div class="flex flex-col p-3">
+                            <div class="text-center inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+                              <p>Nota media:
+                                <span class="font-bold text-xl">
+                                  {{-- obtiene la nota media --}}
+                                  ${Number(dato.votaciones_avg_voto)}
+                                </span>
+                              </p>
+                            </div>
+                            <div class="text-center mt-1 inline-block px-2 py-1 leading-none bg-blue-200 text-blue-800 rounded-full font-semibold uppercase tracking-wide text-xs">Total votos:
+                              <span class="font-bold text-xl">
+                                {{-- obtiene mi voto --}}
+                                ${dato.votaciones_count}
+                                          
+                            </span>
+                          </div>
+                        </div>
+                        </div>
+                                            
+          `;
+
+          }
+        
+          libros += "</div>";
+          this.resultado = libros;
 
         },
 
