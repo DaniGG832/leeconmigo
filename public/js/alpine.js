@@ -181,7 +181,7 @@ document.addEventListener("alpine:init", () => {
             <h1 class="text-center">${datos.nombre} </h1>
             <p class="text-center"><span class="text-blue-400">Telefono: </span> ${datos.telefono ?? '...'}</p>
             <p class="text-center"><span class="text-blue-400">Email: </span> ${datos.email ?? '...'}</p>
-            <p class="text-center"><span class="text-blue-400">web: </span> ${datos.webs ?? '...'}</p>
+            <p class="text-center"><span class="text-blue-400">web: </span> ${datos.web ?? '...'}</p>
             <p class="text-center"><span class="text-blue-400">Dirección: </span></p>
             <p class="text-center">${datos.direccion ?? '...'} - ${datos.cod_postal  ?? '...'}</p>
             <p class="text-center">${datos.ciudad} ( ${provincia ?? '...'} )</p>
