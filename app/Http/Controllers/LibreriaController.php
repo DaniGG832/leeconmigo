@@ -8,7 +8,7 @@ use App\Models\Libreria;
 use App\Models\Libro;
 use App\Models\Provincia;
 use App\Models\User;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class LibreriaController extends Controller
@@ -20,13 +20,20 @@ class LibreriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function userIndex()
+    public function userIndex(Request $request)
     {
-        $librerias = Libreria::orderBy('provincia_id')->get();
-        //$librerias2 = $librerias->groupBy('provincia_id');
+
+        //return $request->provincia;
+
+        $provincias = Provincia::has('librerias')->get();
+
+        //$librerias = Libreria::orderBy('provincia_id')->get();
+        $librerias = Libreria::mostrarProvincia($request->provincia)->orderBy('provincia_id')->get();
+        //$librerias = $librerias->groupBy('provincia_id');
 
         //return $librerias;
-        return view('user.librerias.index', compact('librerias'));
+        //return $provincias;
+        return view('user.librerias.index', compact('librerias','provincias'));
     }
 
 

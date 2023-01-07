@@ -32,4 +32,14 @@ class Libreria extends Model
     {
         return $this->belongsTo(Provincia::class, 'provincia_id', 'id');
     }
+
+    public function scopeMostrarProvincia($query, $data)
+    {
+        
+        if (isset($data)) {
+            
+            $query->where('provincia_id', $data);
+
+        } 
+    }
 }

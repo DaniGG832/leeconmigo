@@ -12,30 +12,63 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200" style="min-height: 25em">
 
+          <div x-data="provinciasMap" class="pb-5 ">
 
-          <p id="theError"></p>
+            {{-- {{Request::getQueryString()}} --}}
+            {{-- {{Request::input('sortBy')}} --}}
+            {{-- {{isset($_GET["sortBy"])}} --}}
+  
+            <form id="provincias" action="{{route('librerias.index')}}">
+  
+            
+              <select x-on:change="enviarFormulario" name="provincia" id="provincia" class="px-12 border border-blue-200 text-gray-900 text-sm rounded-lg focus:ring-blue-300 focus:border-blue-300 block  p-2.5 ">
+  
+  
+                <option selected disabled value="">Seleccionar Provincia :</option>
+
+                <option value="">Todas</option>
+
+                @foreach ($provincias as $provincia)
+                <option {{Request::input('provincia')==$provincia->id ? 'selected' : ''}} value="{{$provincia->id}}">{{$provincia->nombre}}</option>
+                    
+                @endforeach
+              
+              </select>
+  
+            </form>
+  
+          </div>
+
+          {{-- <p id="theError"></p> --}}
           <div x-data="librerias" class="flex xl:flex-row flex-col-reverse" style="min-height: 25em">
             
             <div class="xl:w-2/3">
 
+
+              
               <section class="relative bg-blueGray-50 ">
+
                 <div class="w-full pr-2">
                   <div class="relative flex flex-col min-w-0 break-words w-full mb-4 shadow-lg rounded 
                   bg-blue-700 text-white">
-                  {{-- <div class="rounded-t mb-0 px-4 py-3 border-0">
-                    <div class="flex flex-wrap items-center">
+                  <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center mb-3">
                       <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                        <h3 class="font-semibold text-lg text-white">Librerias </h3>
+                        <h3 class="font-semibold text-lg text-white">Librerias 
+                        
+                        <span>de: Cadiz</span>
+
+                      </h3>
                       </div>
                     </div>
-                  </div> --}}
+                  </div> 
                     <div class="block w-full overflow-x-auto rounded-t">
                       <table class="items-center w-full bg-transparent border-collapse">
                         <thead>
                           <tr>
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Nombre</th>
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">teléfono</th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Email</th>
+                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Ubicación</th>
                             {{-- <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700">Web</th> --}}
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-300 text-blue-800 border-blue-700"></th>
                           </tr>
@@ -54,7 +87,7 @@
                               </button>
                               <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->telefono}}</td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->email}}</td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->ciudad}} ({{$libreria->provincia->nombre}})</td>
                             {{-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->web}}</td> --}}
                             <td class="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                               <button class="hover:underline" x-on:click="ventanaEmergente({{$libreria}},'{{$libreria->provincia->nombre}}')">Mas información.</button>
@@ -98,6 +131,17 @@
   </div>
   <script>
     document.addEventListener("alpine:init", () => {
+
+      Alpine.data("provinciasMap", () => ({
+        
+        enviarFormulario(e) {
+            //alert(this);
+            e.target.parentNode.submit();
+            console.log(e.target.parentNode);
+        },
+    }));
+
+
       Alpine.data("librerias", () => ({
 
 
@@ -124,7 +168,7 @@
 
             map.fitBounds([
               [position.coords.latitude, position.coords.longitude]
-            ]).setZoom(9);
+            ]).setZoom(9); 
 
             var Posicionlat = position.coords.latitude;
             const Posicionlng = position.coords.latitude;
@@ -222,10 +266,10 @@
 
           /* ubicar el mapa en la localizacion del navegador */
 
-           map.locate({
+          /*  map.locate({
             setView: true
-            , maxZoom: 10
-          }); 
+            , maxZoom: 9
+          });  */
 
           
           /* centrar mapa al pasarles los puntos */
