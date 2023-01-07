@@ -197,5 +197,11 @@ document.addEventListener("alpine:init", () => {
 
 
 
+Alpine.data("loading", () => ({
+
+    open :false
+    
+}));
+
 
 });
