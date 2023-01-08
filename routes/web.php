@@ -31,9 +31,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,6 +44,9 @@ require __DIR__ . '/auth.php';
 
 
 /* rutas publicas */
+
+Route::get('/', [LibroController::class, 'principal'])->name('principal');
+
 
 /* PDF */
 

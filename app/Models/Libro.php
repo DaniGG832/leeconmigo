@@ -164,16 +164,16 @@ class Libro extends Model
             switch ($data['sortBy']) {
                 case 1:
                     /* nota mas alta a mas baja*/
-                    $query->orderByDesc('votaciones_avg_voto');
+                    $query->orderByRaw('votaciones_avg_voto DESC NULLS LAST');
                     //dd($data['sortBy']);
                     break;
                 case 2:
                     /* nota mas baja a mas alta */
-                    $query->orderBy('votaciones_avg_voto');
+                    $query->orderByRaw('votaciones_avg_voto NULLS LAST');
                     //dd($data['sortBy']);
                     break;
                 case 3:
-                    /* mas recientes */
+                    /* Valoracion mas alta */
                     $query->orderByDesc('votaciones_count');
                     //dd($data['sortBy']);
                     break;

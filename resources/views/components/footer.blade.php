@@ -1,9 +1,10 @@
 
 <footer class="p-4 bg-blue-300  shadow md:px-6 md:py-8">
-  <div class="sm:flex sm:items-center sm:justify-between">
+  <div class="sm:flex sm:items-center sm:justify-between ">
+
       <a href="/" class="flex items-center mb-4 sm:mb-0">
-          <img src="{{asset('img/logo/logo3.png')}}" class="mr-3 h-8" alt="LeeConmigo Logo" />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">LeeConmigo</span>
+          <img src="{{asset('img/logo/leeconmigo.png')}}" class="mr-3 h-16 bg-blue-50 rounded-lg px-2" alt="LeeConmigo Logo" />
+          {{-- <span class="self-center text-2xl font-semibold whitespace-nowrap">LeeConmigo</span> --}}
       </a>
       <ul x-data="footer" class="flex flex-wrap items-center mb-6 text-sm text-gray-600 sm:mb-0">
           <li>
