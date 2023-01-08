@@ -11,7 +11,7 @@
   <a href="{{route('libros.show',$libro)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
   <div class="relative pb-56 overflow-hidden">
    
-    <img class="absolute inset-0 h-56 w-full object-cover" src="{{$libro->img ? asset($libro->img) : asset('img/el-principito.jpg')}}" alt="">
+    <img class="absolute inset-0 h-56 w-full object-cover" src="{{$libro->img ? asset($libro->img) : asset('img/book-1977235_960_720.webp')}}" alt="">
   </div>
 </a>
   <div class="p-4 text-center ">

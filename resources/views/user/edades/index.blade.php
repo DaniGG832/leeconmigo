@@ -21,7 +21,7 @@
                             <a href="{{route('edades.show',$edad)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
                             <div class="relative pb-56 overflow-hidden">
                               {{-- <div class="rounded-full absolute z-50 bg-red-600">7.5</div> --}}
-                              <img class="absolute inset-0 h-56 w-full object-cover" src="{{$edad->img ? asset($edad->img) : asset('img/el-principito.jpg')}}" alt="">
+                              <img class="absolute inset-0 h-56 w-full object-cover" src="{{$edad->img ? asset($edad->img) : asset('img/book-1977235_960_720.webp')}}" alt="">
                             </div>
                         </a>
                             <div class="p-4 text-center">

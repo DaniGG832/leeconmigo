@@ -83,7 +83,7 @@
                           <tr class="mt-1 border">
                             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                               <button x-on:click="ventanaEmergente({{$libreria}},'{{$libreria->provincia->nombre}}')">
-                                <img src="{{$libreria->img ? asset($libreria->img) : asset('img/el-principito.jpg')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
+                                <img src="{{$libreria->img ? asset($libreria->img) : asset('img/book-1977235_960_720.webp')}}" class="h-12 w-12 bg-white rounded-t border" alt="...">
                               </button>
                               <span class="ml-3 font-bold text-white"> {{$libreria->nombre}} </span></th>
                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{$libreria->telefono}}</td>
