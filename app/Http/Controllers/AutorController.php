@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateAutorRequest;
 use App\Models\Autor;
 use App\Models\Libro;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 use Illuminate\Pagination\Paginator;
@@ -14,21 +16,36 @@ use Illuminate\Pagination\Paginator;
 
 class AutorController extends Controller
 {
+
+    public function scopeBuscar($query, $data)
+    {
+
+
+        if (isset($data['search'])) {
+
+            //dd($data['search']);
+
+            $query->where('titulo', 'ILIKE', '%' . $data['search'] . '%');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function userIndex()
+    public function userIndex(Request $request)
     {
+
+        $search = $request->search;
 
         Paginator::defaultView('paginate');
 
-        $autores = Autor::paginate(15);
+        $autores = Autor::where('name', 'ILIKE', '%' . $request->search . '%')->orderBy('name')->paginate(1);
 
 
         //return $users;
-        return view('user.autores.index', compact('autores'));
+        return view('user.autores.index', compact('autores','search'));
     }
 
     /**
