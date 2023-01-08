@@ -23,7 +23,7 @@
 
             </div>
 
-            <div class="border-t border-blue-100 mt-5">
+            <div class=" mt-5">
               <p class="m-3 text-2xl">Libros mejor valorados</p>
 
               <div class="flex flex-wrap justify-center">

@@ -55,6 +55,7 @@ class RecomendadorController extends Controller
 
         if ($request['tema_id']) {
             $librosRecomendados = Libro::withAvg('votaciones', 'voto')
+                ->withcount('votaciones')
                 ->orderBy($request->ordenar, $request->ordenar!='titulo' ? 'desc' : 'asc')
                 ->has('votaciones','>',0)
                 ->withWhereHas('temas', function ($query) use ($temaId) {
