@@ -23,6 +23,45 @@ use PDF;
 class LibroController extends Controller
 {
 
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function principal()
+    {
+
+
+         $masValorados = Libro::with('autor')
+         ->withCount('votaciones')
+         ->withAvg('votaciones', 'voto')
+         ->orderByRaw('votaciones_avg_voto DESC NULLS LAST')
+         ->take(8)->get();
+
+         //return $masValorados;
+
+        $masVotados = Libro::with('autor')
+        ->withCount('votaciones')
+        ->withAvg('votaciones', 'voto')
+        ->orderByDesc('votaciones_count')
+        ->take(8)->get();
+        
+        //return $masVotados;
+
+        $novedades = Libro::with('autor')
+        ->withCount('votaciones')
+        ->withAvg('votaciones', 'voto')
+        ->orderByDesc('created_at')
+        ->take(8)->get();
+        
+        //return $novedades;
+
+        return view('welcome', compact('masValorados', 'masVotados', 'novedades'));
+    }
+
+    
+
+
     /**
      * Display a listing of the resource.
      *
