@@ -2,7 +2,7 @@
   <div class="px-3 pt-3 w-42 h-auto flex justify-center">
     <a href="{{route('libros.show',$libro)}}">
       <img class="rounded-md w-42 h-52 object-cover hover:scale-110 transition duration-300 ease-in-out
-      " src="{{asset($libro->img)}}" alt="imagen libro">
+      " src="{{$libro->img ? asset($libro->img) : asset('img/book-1977235_960_720.webp')}}" alt="imagen libro">
     </a>
   </div>
   <div class="text-center">

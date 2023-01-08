@@ -57,7 +57,7 @@
             <div class="border-t border-blue-100 mt-5">
               <p class="m-3 text-2xl">Novedades</p>
               <div class="flex flex-wrap justify-center">
-                @foreach ($masValorados as $libro)
+                @foreach ($novedades as $libro)
 
 
                 <x-libroWelcome :libro=$libro></x-libroWelcome>
