@@ -66,7 +66,7 @@
 
                           @empty
                       
-                          <p>" No se ha encontrado ninguna coincidencia. "</p>
+                          <p class="m-3 text-xl text-gray-700">"No se ha encontrado ninguna coincidencia."</p>
 
                           @endforelse
 

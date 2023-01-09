@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePreguntaRequest;
 use App\Http\Requests\UpdatePreguntaRequest;
 use App\Models\Pregunta;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
 class PreguntaController extends Controller
@@ -14,17 +15,22 @@ class PreguntaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
+        //return $request->search;
         Paginator::defaultView('paginate');
 
+        $search = $request->search;
+        //return $search;
 
-        $preguntas = Pregunta::paginate(10);
+        $preguntas = Pregunta::where('titulo', 'ILIKE', '%' . $request->search . '%')
+        ->orwhere('descripcion', 'ILIKE', '%' . $request->search . '%')
+        ->orderByDesc('id')
+        ->paginate(15);
         //return $preguntas[0]->user;
 
 
-        return view('user.preguntas.index', compact('preguntas'));
+        return view('user.preguntas.index', compact('preguntas','search'));
     }
 
     /**

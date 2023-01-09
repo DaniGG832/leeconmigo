@@ -11,7 +11,7 @@
 
         <div class="flex flex-col justify-between md:flex-row  my-1 ">
 
-        <div x-data="ordenar" class="px-5 ">
+        <div x-data="ordenar" class="px-5  mt-5">
 
           {{-- {{Request::getQueryString()}} --}}
           {{-- {{Request::input('sortBy')}} --}}
@@ -47,7 +47,7 @@
           </form>
 
         </div>
-<div class="mx-1">
+<div class="mx-1 mt-5">
 
   <form id="formSearch" action="{{route('libros')}}"> 
     
@@ -58,11 +58,11 @@
       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
       </div>
-      <input value="{{Request::input('search')}}" name="search" type="search" id="search" class="mt-1 block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-300 focus:border-blue-300"  placeholder="Search ">
+      <input value="{{-- {{Request::input('search')}} --}}" name="search" type="search" id="search" class="mt-1 block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-300 focus:border-blue-300"  placeholder="Buscar ">
       {{-- <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> --}}
       <button type="submit" class="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-blue-400 rounded-r-lg border border-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
         <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <span class="sr-only">Search</span>
+        <span class="sr-only">Buscar</span>
       </button>
     </div>
   </form>
@@ -70,6 +70,13 @@
 
     </div>
         <div class="p-6 bg-white border-b border-gray-200">
+
+          @if (Request::input('search'))
+
+              <p class="text-gray-400 mb-2">Busqueda: <span class="text-gray-700">" {{Request::input('search')}} "</span></p>
+                  
+              @endif
+
           {{ $libros->appends(["sortBy" => $sortBy,"search" => $search,])->links() }}
           {{-- {!! $libros->appends(["sortBy" => $sortBy,"search" => $search,]) !!} 
            {{ $libros->links('paginate',["libros"=>$libros, "sortBy" => $sortBy,"search" => $search,]) }}  --}}
@@ -77,7 +84,8 @@
           <div class="container mx-auto">
             <div class="flex flex-wrap -mx-4">
 
-              @foreach ($libros as $libro)
+
+              @forelse ($libros as $libro)
 
               {{-- {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1,) }} --}}
               {{-- {{number_format($libro->votaciones->avg('voto'), 1,)}} --}}
@@ -85,7 +93,11 @@
               @include('user.libros._libro')
 
 
-              @endforeach
+              @empty
+                  
+              <p class="m-3 text-xl text-gray-700">"No se ha encontrado ninguna coincidencia."</p>
+
+              @endforelse
 
 
 
