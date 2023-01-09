@@ -13,9 +13,9 @@
           <li>
               <button id="privacidad" x-on:click="privacidad('hola como estas')" class="mr-4 hover:underline md:mr-6">Política de privacidad</button>
           </li>
-          <li>
+         {{--  <li>
               <button id="licencia" x-on:click="licencia" class="mr-4 hover:underline md:mr-6 ">Licencia</button>
-          </li>
+          </li> --}}
           <li>
               <button id="nosotros" x-on:click="nosotros" class="hover:underline">Sobre Nosotros</button>
           </li>

@@ -47,14 +47,17 @@
 
               </div>
 
-              @foreach ($pregunta->respuestas as $respuesta)
+              
+               @forelse ($pregunta->respuestas as $respuesta)
 
               @include('user.preguntas._respuestas')
 
-              @endforeach
+              @empty
+              <p class="m-3 text-xl text-gray-700">"no hay ninguna respuesta."</p>  
+              @endforelse
 
               @auth
-              <div class="flex justify-end">
+              <div class="flex justify-end mt-2">
 
                 <button x-on:click="abrirModal"  class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
                   Añadir respuesta {{-- {{$errors->any()}} --}}
