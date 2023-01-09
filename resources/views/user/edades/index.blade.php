@@ -16,7 +16,7 @@
 
                         @foreach ($edades as $edad)
 
-                        <div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/4 lg:w-1/4 2xl:1/6 ">
+                        <div class="p-1 w-96">
                           <div class="m-1 border-blue-100 rounded-md border p-2">
                             <a href="{{route('edades.show',$edad)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
                             <div class="relative pb-56 overflow-hidden">
