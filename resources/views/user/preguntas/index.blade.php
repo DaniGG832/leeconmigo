@@ -16,7 +16,8 @@
         <div class="p-6 bg-white border-b border-gray-200">
 
 
-
+          {{-- los errores que vienen del servidor --}}
+          {{-- {{$errors->any()}} --}}
 
           <div x-data="newPregunta" x-init="alIniciar({{$errors->any()}})" class="p-6 bg-white border-b border-gray-200">
             <div class="flex md:flex-row justify-between flex-col-reverse">
@@ -54,7 +55,7 @@
                 @auth
 
                 <button @click="abrirModal" class=" border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
-                  Crear tema {{$errors->any()}}
+                  Crear tema
                 </button>
 
                 @endauth
