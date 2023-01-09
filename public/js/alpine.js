@@ -241,4 +241,29 @@ Alpine.data("AceptarCookies", () => ({
 
 }));
 
+
+/* hamburguesa */
+Alpine.data("hamburguesa", () => ({
+
+    open: false, 
+
+    mostrarMenu() {
+        console.log(1);
+        this.open = !this.open;
+        MenuAdmin = document.getElementById("MenuAdmin");
+        ModoUsuario = document.getElementById("modoUsuario")
+
+        MenuAdmin.classList.toggle("hidden");
+        MenuAdmin.classList.toggle("flex");
+        
+        ModoUsuario.classList.toggle("hidden");
+
+        console.log(MenuAdmin);
+
+    },
+    
+
+}));
+
+
 });

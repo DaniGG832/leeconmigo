@@ -8,7 +8,7 @@
 
       <div class="flex-1 flex flex-col overflow-hidden">
 
-        <x-header-admin></x-header-admin>
+     <x-header-admin></x-header-admin> 
 
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 min-h-screen">
           <div class="container mx-auto px-6 py-8">
