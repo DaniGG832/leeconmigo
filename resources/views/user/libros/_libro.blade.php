@@ -15,7 +15,7 @@
 
       </span>
     </span>
-    <span class=" mt-1 inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Total Votos: 
+    <span class=" mt-1 inline-block px-2 py-1 leading-none bg-blue-200 text-blue-800 rounded-full font-semibold uppercase tracking-wide text-xs">Total Votos: 
       <span class="font-bold text-xl">
         {{-- obtiene total votos --}}
         {{$libro->votaciones->count()}} 
