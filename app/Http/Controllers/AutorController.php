@@ -41,7 +41,7 @@ class AutorController extends Controller
 
         Paginator::defaultView('paginate');
 
-        $autores = Autor::where('name', 'ILIKE', '%' . $request->search . '%')->orderBy('name')->paginate(1);
+        $autores = Autor::where('name', 'ILIKE', '%' . $request->search . '%')->orderBy('name')->paginate(15);
 
 
         //return $users;
