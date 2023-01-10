@@ -246,6 +246,7 @@ Alpine.data("AceptarCookies", () => ({
 Alpine.data("hamburguesa", () => ({
 
     open: false, 
+    desplegar :false,
 
     mostrarMenu() {
         console.log(1);
@@ -261,6 +262,12 @@ Alpine.data("hamburguesa", () => ({
         console.log(MenuAdmin);
 
     },
+
+    mostrarMenuUser(){
+        console.log('menuUser');
+        this.open = !this.open;
+        this.desplegar = !this.desplegar;
+    }
     
 
 }));

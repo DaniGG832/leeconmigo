@@ -58,24 +58,26 @@
     @endif
     @endif
 
-    <header class="bg-white shadow  border-2 border-blue-600 bg-blue-400 p-1">
+    <header class="bg-white shadow h-16 border-2 border-blue-500 bg-blue-400 p-1">
     
       <x-nav-principal></x-nav-principal>
     
     </header>
 
 
-    <!-- Page Heading -->
-    {{-- @if (isset($header))
-    <header class="bg-white shadow  border-2 border-blue-400 bg-blue-300">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        {{ $header }}
-      </div>
-    </header>
-    @endif --}}
+    
     <!-- Page Content -->
     <main class="fondo bg-blue-100">
+      <!-- Page Heading -->
+      @if (isset($header))
+      <div class="bg-white shadow  border-b border-blue-50 bg-white">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-gray-600">
+          {{ $header }}
+        </div>
+      </div>
+      @endif
       <x-session></x-session>
+      
       {{ $slot }}
 
     </main>
