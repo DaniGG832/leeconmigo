@@ -37,14 +37,14 @@
     </div>
 
   </div>
-  <div class="min-h-screen bg-blue-100">
+  <div class=" bg-blue-100">
 
     <x-nav></x-nav>
 
     @if (!auth()->check())
 
     @if (Route::has('login'))
-    <div class="hidden absolute top-0 right-0 px-6 py-4 sm:block">
+    <div class=" sm:absolute relative top-0 right-0 px-6 py-4 sm:block">
       @auth
       <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700  underline">Dashboard</a>
       @else
@@ -58,15 +58,21 @@
     @endif
     @endif
 
+    <header class="bg-white shadow  border-2 border-blue-600 bg-blue-400 p-1">
+    
+      <x-nav-principal></x-nav-principal>
+    
+    </header>
+
 
     <!-- Page Heading -->
-    @if (isset($header))
+    {{-- @if (isset($header))
     <header class="bg-white shadow  border-2 border-blue-400 bg-blue-300">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         {{ $header }}
       </div>
     </header>
-    @endif
+    @endif --}}
     <!-- Page Content -->
     <main class="fondo">
       <x-session></x-session>

@@ -1,5 +1,5 @@
 
-<div id="MenuAdmin" class="hidden  lg:flex	">
+<div id="MenuAdmin" class="hidden  lg:flex">
   <div class="block fixed "></div>
   <div class="w-46  bg-gray-900 items-center flex-col p-2">
     <div class="flex items-center justify-center mt-8 ">
