@@ -16,7 +16,7 @@
 
                         @foreach ($temas as $tema)
 
-                        <div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-1">
+                        <div class="p-1 w-56">
                           <div class="rounded-md border border-blue-100 p-2 ">
                             <a href="{{route('temas.show',$tema)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
                             <div class="relative pb-56 overflow-hidden">

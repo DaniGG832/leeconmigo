@@ -10,7 +10,13 @@
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border-2 border-blue-400">
             
               <div class="p-6 bg-white border-b border-gray-200">
-                
+                <div class="mb-5">
+    
+                  <a href="{{route('edades.index')}}" class="  border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+    
+                    Volver atras
+                  </a>
+                </div>
                 {{ $libros->links() }}
                 
                 <div class="container mx-auto">

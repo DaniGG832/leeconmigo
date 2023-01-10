@@ -82,7 +82,7 @@
            {{ $libros->links('paginate',["libros"=>$libros, "sortBy" => $sortBy,"search" => $search,]) }}  --}}
 
           <div class="container mx-auto">
-            <div class="flex flex-wrap -mx-4">
+            <div class="flex flex-wrap mx-4">
 
 
               @forelse ($libros as $libro)

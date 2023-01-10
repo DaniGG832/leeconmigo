@@ -9,10 +9,18 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border-2 border-blue-400">
             
-              <div class="p-6 bg-white border-b border-gray-200">
+            <div class="p-6 bg-white border-b border-gray-200">
+                <div class="mb-5">
+    
+                  <a href="{{route('autores.index')}}" class="  border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+    
+                    Volver atras
+                  </a>
+                </div>
 
                 <div class=" p-2 mb-4 border-blue-50 border bg-blue-50 rounded-md"  style="min-height: 11em">
 
+            
                   <img src="{{$autor->img}}" alt="" class="h-36 float-left m-2 rounded-lg">
                   <p class="p-4">{{$autor->descripcion}}</p>
                 </div>

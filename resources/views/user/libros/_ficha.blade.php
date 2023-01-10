@@ -185,9 +185,9 @@
           <div class="flex items-center h-16 border-l-4 border-blue-600">
             <span class="text-lg text-blue-600 px-4">Temas</span>
           </div>
-          <div class="flex h-auto items-center h-16 border-l-4 border-gray-400">
+          <div class="flex flex-wrap h-auto items-center h-16 border-l-4 border-gray-400">
             @foreach ($libro->temas as $tema)
-            <div class="flex ml-2">
+            <div class="flex ml-1">
               <a class="no-underline hover:underline hover:text-blue-700" href="{{ route('temas.show', $tema) }}">
                 <span class=" m-1">
                   #{{ $tema->name }}

@@ -1,4 +1,4 @@
-<div class="w-1/2 sm:w-1/2 md:w-1/3 xl:w-1/5 lg:w-1/4 2xl:1/6 p-1">
+<div class="p-1 w-56">
   <div class="h-full rounded-md border border-blue-200 p-1">
 
   <a href="{{route('libros.show',$libro)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
@@ -13,6 +13,12 @@
         {{-- obtiene la nota media --}}
         {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1) }} 
 
+      </span>
+    </span>
+    <span class=" mt-1 inline-block px-2 py-1 leading-none bg-blue-200 text-blue-800 rounded-full font-semibold uppercase tracking-wide text-xs">Total Votos: 
+      <span class="font-bold text-xl">
+        {{-- obtiene total votos --}}
+        {{$libro->votaciones->count()}} 
       </span>
     </span>
     <h2 class="mt-2 mb-2  font-bold">{{$libro->titulo}}</h2>

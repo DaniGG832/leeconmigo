@@ -1,8 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
   <!-- Primary Navigation Menu -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex">
+    <div class="w-full  h-16">
+      <div class="flex justify-between">
         <!-- Logo -->
         <div class="shrink-0 flex items-center">
           <a href="/">
@@ -10,48 +10,6 @@
           </a>
         </div>
 
-        <!-- Navigation Links -->
-         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('principal')" :active="request()->routeIs('principal')">
-            {{ __('Home') }}
-          </x-nav-link>
-        </div> 
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('libros')" :active="request()->routeIs('libros')">
-            {{ __('Libros ') }}
-          </x-nav-link>
-        </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('autores.index')" :active="request()->routeIs('autores.index')">
-            {{ __('Autores ') }}
-          </x-nav-link>
-        </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('temas.index')" :active="request()->routeIs('temas.index')">
-            {{ __('Temas ') }}
-          </x-nav-link>
-        </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('edades.index')" :active="request()->routeIs('edades.index')">
-            {{ __('Edades ') }}
-          </x-nav-link>
-        </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('librerias.index')" :active="request()->routeIs('librerias.index')">
-            {{ __('Librerias ') }}
-          </x-nav-link>
-        </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('preguntas.index')" :active="request()->routeIs('preguntas.index')">
-            {{ __('Foro ') }}
-          </x-nav-link>
-        </div>
-        {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('votaciones')" :active="request()->routeIs('votaciones')">
-            {{ __('mis Votaciones ') }}
-          </x-nav-link>
-        </div> --}}
-      </div>
 
 
 
@@ -60,11 +18,11 @@
  @if (!request()->routeIs('admin.*'))
 
       <!-- Settings Dropdown -->
-      <div class="hidden sm:flex sm:items-center sm:ml-6">
+      <div class="flex items-center sm:ml-6">
         <x-dropdown align="right" width="48">
           <x-slot name="trigger">
             @if (auth()->check())
-            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+            <button class="flex items-center text-lg font-medium text-blue-900 hover:text-blue-500 hover:border-gray-300 focus:outline-none focus:text-blue-900 focus:border-gray-300 transition duration-150 ease-in-out">
               <div>{{ Auth::user()->name }}</div>
 
               <div class="ml-1">
@@ -121,14 +79,14 @@
       </div>
 
       <!-- Hamburger -->
-      <div class="-mr-2 flex items-center sm:hidden">
+      {{-- <div class="-mr-2 flex items-center sm:hidden">
         <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
           <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
             <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-      </div>
+      </div> --}}
 
       @endif
 
