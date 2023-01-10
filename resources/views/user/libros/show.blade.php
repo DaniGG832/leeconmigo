@@ -14,10 +14,52 @@
      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg  border-2 border-blue-400">
          <div class="p-6 bg-white border-b border-gray-200">
+          <div class="mb-5">
+    
+            <a href=" {{URL::previous()}}"class="  border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
 
+              Volver atras
+            </a>
+          </div>
+
+          <div class=" bg-blue-200 flex flex-row flex-wrap" >
+
+            @if (Auth::user())
+            <div>
+              <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('libros.deseos.agregar',$libro)}}">
+
+                @if (!Auth::user()->isdeseo($libro))
+                <span>Añadir a </span>
+                @else
+                <span>Quitar de</span>
+                @endif
+                deseos
+
+                <span class="text-xl rounded-full no-underline"></span>
+              </a>
+            </div>
+            @endif
+
+            <div>
+              <a class=" mt-5 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide " href="{{route('criticas',$libro)}}">Criticas
+                <span class="text-xl rounded-full no-underline">[ {{$libro->criticas->count()}} ]</span>
+              </a>
+            </div>
+            <div>
+              <a class="mt-2 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide" href="{{route('criticas.create',$libro)}}">Escribe tu crítica
+                <span class="text-xl rounded-full "></span>
+              </a>
+            </div>
+            <div>
+              <a class="mt-2 underline decoration-gray-400 hover:no-underline inline-block px-2 py-1 leading-none hover:border hover:border-blue-100 hover:text-blue-800 text-gray-600 rounded-full font-semibold tracking-wide" href="{{route('libros.pdf',$libro)}}">Descargar en PDF
+                <span class="text-xl rounded-full "></span>
+              </a>
+            </div>
+
+          </div>
 
            <div class="container mx-auto">
-             <div class="flex flex-wrap -mx-4">
+             <div class="flex flex-wrap -mx-4 justify-center">
 
                
                @include('user.libros._ficha')

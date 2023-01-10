@@ -64,27 +64,27 @@
               </x-nav-link>
             </div>
             <div class="p-2 space-x-8 sm:-my-px sm:flex">
-              <x-nav-link :href="route('libros')" :active="request()->routeIs('libros')">
+              <x-nav-link :href="route('libros')" :active="request()->routeIs('libros*')">
                 {{ __('Libros ') }}
               </x-nav-link>
             </div>
             <div class="p-2 space-x-8 sm:-my-px sm:flex">
-              <x-nav-link :href="route('autores.index')" :active="request()->routeIs('autores.index')">
+              <x-nav-link :href="route('autores.index')" :active="request()->routeIs('autores*')">
                 {{ __('Autores ') }}
               </x-nav-link>
             </div>
             <div class="p-2 space-x-8 sm:-my-px sm:flex">
-              <x-nav-link :href="route('temas.index')" :active="request()->routeIs('temas.index')">
+              <x-nav-link :href="route('temas.index')" :active="request()->routeIs('temas*')">
                 {{ __('Temas ') }}
               </x-nav-link>
             </div>
             <div class="p-2 space-x-8 sm:-my-px sm:flex">
-              <x-nav-link :href="route('edades.index')" :active="request()->routeIs('edades.index')">
+              <x-nav-link :href="route('edades.index')" :active="request()->routeIs('edades*')">
                 {{ __('Edades ') }}
               </x-nav-link>
             </div>
             <div class="p-2 space-x-8 sm:-my-px  sm:flex">
-              <x-nav-link :href="route('librerias.index')" :active="request()->routeIs('librerias.index')">
+              <x-nav-link :href="route('librerias.index')" :active="request()->routeIs('librerias*')">
                 {{ __('Librerias ') }}
               </x-nav-link>
             </div>
