@@ -4,7 +4,7 @@
   <div class="h-full rounded-md border border-blue-200 p-1">
   
   <div class="pb-2 flex justify-end">
-  <a href="{{route('libros.deseos.agregar',$libro)}}" class="rounded-full hover:border hover:border-blue-100 z-50 p-2 text-blue-700">{{-- ✘ --}}
+  <a href="{{route('libros.deseos.agregar',$libro)}}" class="rounded-full hover:border hover:border-blue-100 z-20 p-2 text-blue-700">{{-- ✘ --}}
     &#x2718;
   </a>  
   </div> 
