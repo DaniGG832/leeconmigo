@@ -74,7 +74,7 @@
     </header>
     @endif --}}
     <!-- Page Content -->
-    <main class="fondo">
+    <main class="fondo bg-blue-100">
       <x-session></x-session>
       {{ $slot }}
 
