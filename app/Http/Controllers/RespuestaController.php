@@ -85,12 +85,17 @@ class RespuestaController extends Controller
     {
         //return $request->validated('descripcion');
 
-        $respuesta->descripcion = $request->validated('descripcion');
-
-        $respuesta->save();
-
-        /* TODO: redirigir a foro show  */
-        return redirect()->route('preguntas.show',$pregunta)->with('success', 'Respuesta editada correctamente');
+        if (auth()->user()->id == $respuesta->user_id) {
+            
+            $respuesta->descripcion = $request->validated('descripcion');
+    
+            $respuesta->save();
+    
+            /* TODO: redirigir a foro show  */
+            return redirect()->route('preguntas.show',$pregunta)->with('success', 'Respuesta editada correctamente');
+        }else{
+            return redirect()->back()->with('error', "No tienes permisos para editar la respuesta.");
+        }
 
     }
 
@@ -105,9 +110,17 @@ class RespuestaController extends Controller
         //return $respuesta;
 
         /* borrar comentario usuarios */
+        if (auth()->user()->rol_id!= 1 || auth()->user()->id == $respuesta->user_id) {
+            
+            $respuesta->delete();
+    
+            return Redirect()->back()->with('success','Respuesta borrada correctamente.');
+            
+        }else{
 
-        $respuesta->delete();
+            return redirect()->back()->with('error', "No tienes permisos para borrar la respuesta.");
 
-        return Redirect()->back()->with('success','Respuesta borrada correctamente.');
+        }
+
     }
 }
