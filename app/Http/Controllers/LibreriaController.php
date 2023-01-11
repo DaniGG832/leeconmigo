@@ -23,7 +23,16 @@ class LibreriaController extends Controller
     public function userIndex(Request $request)
     {
 
-        //return $request->provincia;
+
+
+        $provinciaSeleccionada = '';
+        if ($request->provincia) {
+
+            //return $request->provincia;
+            $provinciaSeleccionada = Provincia::find($request->provincia)->nombre;
+        }
+
+        //return $provinciaSeleccionada;
 
         $provincias = Provincia::has('librerias')->get();
 
@@ -33,7 +42,7 @@ class LibreriaController extends Controller
 
         //return $librerias;
         //return $provincias;
-        return view('user.librerias.index', compact('librerias','provincias'));
+        return view('user.librerias.index', compact('librerias', 'provincias', 'provinciaSeleccionada'));
     }
 
 
@@ -118,7 +127,6 @@ class LibreriaController extends Controller
     {
 
         return view('admin.librerias.show', compact('libreria'));
-
     }
 
     /**
@@ -129,7 +137,7 @@ class LibreriaController extends Controller
      */
     public function edit(Libreria $libreria)
     {
-        
+
         $provincias = Provincia::all();
 
         return view(
@@ -169,9 +177,6 @@ class LibreriaController extends Controller
         $libreria->save();
 
         return redirect()->route('admin.librerias.index')->with('success', "Librería $libreria->nombre editada correctamente");
-
-
-
     }
 
     /**
@@ -182,13 +187,13 @@ class LibreriaController extends Controller
      */
     public function destroy(Libreria $libreria)
     {
-        $imagen = public_path().$libreria->img;
+        $imagen = public_path() . $libreria->img;
         //return $mi_imagen;
         if (@getimagesize($imagen)) {
-        
+
             unlink($imagen);
         }
-        
+
         $libreria->delete();
 
         return redirect()->route('admin.librerias.index')->with('success', 'Librería borrada correctamente');
