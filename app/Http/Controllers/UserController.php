@@ -95,7 +95,7 @@ class UserController extends Controller
 
         $roles = Rol::all();
 
-        return view('admin.users.edit', compact('user','roles'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -109,22 +109,26 @@ class UserController extends Controller
     {
         //return $request;
 
-        if ($user->rol_id != 3) {
+        if ($user->rol_id != 3 || Auth::user()->rol_id == 3) {
             $validated =  $request->validate([
                 'comentar' => 'required|boolean',
                 'rol_id' => 'required|exists:roles,id',
             ]);
             //return $validated;
-            $user->comentar = $validated['comentar'];
-            $user->rol_id = $validated['rol_id'];
-            $user->save();
+            if ($validated['rol_id'] == 3 && Auth::user()->rol_id == 2) {
 
-            return redirect()->route('admin.users.index')->with('success', 'Usuario editado Correctamente');
+                return redirect()->back()->with('error', 'Solo el usuario superAdmin puede asignar el rol  superAdmin');
+            } else {
+
+                $user->comentar = $validated['comentar'];
+                $user->rol_id = $validated['rol_id'];
+                $user->save();
+
+                return redirect()->route('admin.users.index')->with('success', 'Usuario editado Correctamente');
+            }
         }
 
-        return redirect()->back()->with('error', 'No se puede bloquear, ni cambiar el rol a un usuario superAdmin');
-
-
+        return redirect()->back()->with('error', 'Solo el superAdmin puede bloquear o cambiar el rol a un usuario superAdmin');
     }
 
 
