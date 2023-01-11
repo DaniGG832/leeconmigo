@@ -34,10 +34,19 @@ class CriticaController extends Controller
      */
     public function create(Libro $libro)
     {
+        //return Auth::user()->criticas->where('libro_id',$libro->id)->count();
+        //return $libro->criticas;
 
-        $critica = new Critica();
-        //return $libro;
-        return view('user.criticas.create', compact('libro','critica'));
+        if (Auth::user()->criticas->where('libro_id',$libro->id)->count()) {
+            
+            return redirect()->back()->with('error', 'Solo se permite una crítica por libro, puede editar la que ya ha escrito.') ;
+
+        }else{
+
+            $critica = new Critica();
+            //return $libro;
+            return view('user.criticas.create', compact('libro','critica'));
+        }
 
     }
 
