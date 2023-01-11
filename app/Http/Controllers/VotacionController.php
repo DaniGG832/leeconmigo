@@ -77,6 +77,7 @@ class VotacionController extends Controller
     public function index()
     {
 
+        /* TODO: select para ordenar mis votaciones */
         $votaciones = auth()->user()->votaciones
         ->sortByDesc('voto');
         //$votaciones = auth()->user()->votaciones;
