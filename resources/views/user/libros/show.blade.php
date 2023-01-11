@@ -22,7 +22,7 @@
              </a>
            </div>
 
-           <div class="p-3 {{-- border border-blue-300 --}} flex flex-row flex-wrap justify-center rounded-lg">
+           <div class="p-3  border border-blue-300 mx-auto bg-blue-100 flex flex-row flex-wrap justify-center rounded-lg">
 
              <div class="flex flex-row flex-wrap text-center ">
                @if (Auth::user())
