@@ -91,8 +91,19 @@
                     </a>
                   </div>
 
-                  <div>
-                    @if (Auth::user() && Auth::user()->rol_id!= 1 )
+                  <div class="flex flex-row">
+                    @if (Auth::user())
+                  
+                    @if (Auth::user()->id == $pregunta->user_id )
+                    <a href="{{route('preguntas.edit', $pregunta)}}" class="p-2">
+                      <svg class="h-6 w-6 text-blue-500 hover:text-blue-800" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                      </svg>
+                    </a>
+                    @endif
+                  
+                    @if ( (Auth::user()->rol_id!= 1 || Auth::user()->id == $pregunta->user_id ))
 
                     <form x-on:submit="enviarFormulario" id="{{$pregunta->id}}" action="{{route('preguntas.destroy', $pregunta)}}" method="post">
                       @csrf
@@ -108,6 +119,7 @@
 
                     </form>
 
+                    @endif
                     @endif
                   </div>
 

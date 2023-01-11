@@ -101,6 +101,12 @@ Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
     Route::put('foro/respuestas/{respuesta}/update/{pregunta}', [RespuestaController::class, 'update'])->name('respuestas.update');
     Route::delete('foro/preguntas/{pregunta}', [PreguntaController::class, 'destroy'])->name('preguntas.destroy');
 
+    /* Editar pregunta */
+
+    Route::get('foro/preguntas/{pregunta}/edit', [PreguntaController::class, 'edit'])->name('preguntas.edit');
+    Route::put('foro/respuestas/{pregunta}/update', [PreguntaController::class, 'update'])->name('preguntas.update');
+
+
     /* borrar respuestas usuarios */
     Route::delete('foro/respuestas/{respuesta}/delete/{pregunta}', [RespuestaController::class, 'destroy'])->name('respuestas.destroy');
 

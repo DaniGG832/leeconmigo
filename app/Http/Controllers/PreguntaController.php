@@ -24,13 +24,13 @@ class PreguntaController extends Controller
         //return $search;
 
         $preguntas = Pregunta::where('titulo', 'ILIKE', '%' . $request->search . '%')
-        ->orwhere('descripcion', 'ILIKE', '%' . $request->search . '%')
-        ->orderByDesc('id')
-        ->paginate(15);
+            ->orwhere('descripcion', 'ILIKE', '%' . $request->search . '%')
+            ->orderByDesc('id')
+            ->paginate(15);
         //return $preguntas[0]->user;
 
 
-        return view('user.preguntas.index', compact('preguntas','search'));
+        return view('user.preguntas.index', compact('preguntas', 'search'));
     }
 
     /**
@@ -60,7 +60,6 @@ class PreguntaController extends Controller
         $pregunta->save();
 
         return redirect()->back()->with('success', "Pregunta creada correctamente.");
-        
     }
 
     /**
@@ -71,7 +70,7 @@ class PreguntaController extends Controller
      */
     public function show(Pregunta $pregunta)
     {
-        return view('user.preguntas.show',compact('pregunta'));
+        return view('user.preguntas.show', compact('pregunta'));
     }
 
     /**
@@ -82,7 +81,7 @@ class PreguntaController extends Controller
      */
     public function edit(Pregunta $pregunta)
     {
-        //
+        return view('user.preguntas.edit', compact('pregunta'));
     }
 
     /**
@@ -94,7 +93,28 @@ class PreguntaController extends Controller
      */
     public function update(UpdatePreguntaRequest $request, Pregunta $pregunta)
     {
-        //
+        //return $request->validated();
+
+        if (auth()->user()->id == $pregunta->user_id) {
+            //return $request->validated();
+
+            $pregunta->titulo = $request->validated('titulo');
+            $pregunta->descripcion = $request->validated('descripcion');
+
+            //return $pregunta;
+            $pregunta->save();
+
+
+            
+            return redirect()->route('preguntas.show',$pregunta)->with('success', 'Respuesta editada correctamente');
+
+        } else {
+            return redirect()->back()->with('error', "No tienes permisos para editar la pregunta.");
+        }
+
+
+
+        
     }
 
     /**
@@ -106,12 +126,18 @@ class PreguntaController extends Controller
     public function destroy(Pregunta $pregunta)
     {
 
+        if (auth()->user()->rol_id != 1 || auth()->user()->id == $pregunta->user_id) {
+
+            $pregunta->respuestas->each->delete();
+
+            $pregunta->delete();
+
+            return redirect()->back()->with('success', "Pregunta borrada correctamente.");
+        } else {
+
+            return redirect()->back()->with('error', "No tienes permisos para borrar la pregunta.");
+        }
         //return $pregunta;
-        $pregunta->respuestas->each->delete();
-
-        $pregunta->delete();
-
-        return redirect()->back()->with('success', "Pregunta borrada correctamente.");
 
     }
 }
