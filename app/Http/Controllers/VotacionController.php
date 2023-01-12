@@ -60,10 +60,13 @@ class VotacionController extends Controller
         }
         
         $media = Libro::find($request->libro)->votaciones->avg('voto');
+        $votos = Libro::find($request->libro)->votaciones->count('voto');
 
-        $media = is_int($media)? number_format( $media): number_format($media, 1); 
+        $mediaFormat = is_int($media)? number_format( $media): number_format($media, 1); 
 
-        return $media;
+    
+
+        return response()->json(['media'=>$mediaFormat,'votos'=>$votos,]);;
 
 
 

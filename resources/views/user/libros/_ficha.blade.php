@@ -40,7 +40,7 @@
                     Votos:
 
                     {{-- muestra el numero de  votos de un libro --}}
-                    <span class="font-bold text-xl" id="media">
+                    <span class="font-bold text-xl" id="votos">
                       {{ number_format($libro->votaciones->count('voto')) }}
 
                     </span>
@@ -265,7 +265,12 @@
         })
         console.log(e.target.value);
 
-        document.getElementById("media").innerHTML = await response.text();
+        console.log(await response);
+        data = await response.json();
+        
+        console.log(data);
+        document.getElementById("media").innerHTML = data.media;
+        document.getElementById("votos").innerHTML = data.votos;
 
         //console.log(this.url);
         //console.log(await response.json());
