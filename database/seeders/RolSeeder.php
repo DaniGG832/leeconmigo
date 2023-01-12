@@ -35,10 +35,10 @@ class RolSeeder extends Seeder
 
         ]);
 
-        Rol::create([
+        /* Rol::create([
 
             "nombre" => "root",
 
-        ]);
+        ]); */
     }
 }

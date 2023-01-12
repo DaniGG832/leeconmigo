@@ -167,9 +167,10 @@ Route::middleware(['auth', 'verified', 'can:solo-admin', /* 'can:bloqueado' */ ]
     Route::prefix('admin')->name('admin.')->group(function () {
 
 
+        Route::get('users', [UserController::class,'index'])->name('users.index');
+        Route::get('users', [UserController::class,'index'])->name('users.index');
 
 
-        Route::resource('users', UserController::class);
 
         Route::resource('libros', LibroController::class);
 
@@ -212,9 +213,11 @@ Route::middleware(['auth', 'verified', 'can:solo-admin', /* 'can:bloqueado' */ ]
 
 Route::middleware(['auth', 'verified','can:solo-superadmin'])->group(function () {
 
-    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::prefix('sadmin')->name('sadmin.')->group(function () {
 
-        Route::delete('users/{user}', [UserController::class,'destroy'])->name('users.destroy');
+        Route::resource('users', UserController::class);
+
+        //Route::delete('users/{user}', [UserController::class,'destroy'])->name('users.destroy');
         
         //Route::resource('users', UserController::class);
 

@@ -257,7 +257,7 @@ Alpine.data("hamburguesa", () => ({
         MenuAdmin.classList.toggle("hidden");
         MenuAdmin.classList.toggle("flex");
         
-        ModoUsuario.classList.toggle("hidden");
+        //ModoUsuario.classList.toggle("hidden");
 
         console.log(MenuAdmin);
 
