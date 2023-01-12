@@ -125,7 +125,7 @@ Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
     Route::delete('criticas/{critica}', [CriticaController::class, 'destroy'])->name('criticas.destroy');
 
     /* votos otros usuarios */
-    Route::get('Votaciones/{user}/{libro}', [VotacionController::class, 'votosUsuario'])->name('votos.usuario');
+    Route::get('votaciones/{user}/{libro}', [VotacionController::class, 'votosUsuario'])->name('votos.usuario');
 
     /* ruta para la votacion (ajax) */
     Route::post('votar', [VotacionController::class, 'votar'])->name('votar');

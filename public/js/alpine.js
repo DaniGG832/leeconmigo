@@ -273,4 +273,21 @@ Alpine.data("hamburguesa", () => ({
 }));
 
 
+
+
+/* hamburguesa */
+Alpine.data("misVotaciones", () => ({
+
+    form: document.querySelector("#ordenarVotaciones"),
+
+        
+    enviarFormulario(e) {
+
+        //alert(this);
+        this.form.submit();
+        //console.log(e);
+    },
+
+}));
+
 });

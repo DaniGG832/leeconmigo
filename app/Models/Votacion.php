@@ -36,4 +36,6 @@ class Votacion extends Model
 
         return $this->where('user_id',auth()->id());
     } */
+
+
 }

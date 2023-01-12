@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateVotacionRequest;
 use App\Models\Libro;
 use App\Models\User;
 use App\Models\Votacion;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Pagination\Paginator;
@@ -74,20 +75,50 @@ class VotacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
+        //return $request->ordenVoto;
+
         /* TODO: select para ordenar mis votaciones */
-        $votaciones = auth()->user()->votaciones
-        ->sortByDesc('voto');
+        $votaciones = auth()->user()->votaciones;
         //$votaciones = auth()->user()->votaciones;
 
-        //$sorted = auth()->user()->votaciones;
+        
+
+            //dd($request->ordenVoto);
+            switch ($request->ordenVoto) {
+                case 1:
+                    /* voto mas alto a mas bajo*/
+                    $votacionesOrdenadas = $votaciones->sortByDesc('voto');
+                    
+                    break;
+                case 2:
+                    /* voto mas bajo a mas alto */
+                    $votacionesOrdenadas =$votaciones->sortBy('voto');
+                    ;
+                    break;
+                case 3:
+                    /* mas recientas */
+                    $votacionesOrdenadas = $votaciones->sortByDesc('updated_at');
+                    //dd(3);
+                    break;
+                case 4:
+                    /* menos recientes */
+                    $votacionesOrdenadas = $votaciones->sortBy('updated_at');
+                    
+                    break;
+                
+                default:
+                $votacionesOrdenadas = $votaciones->sortByDesc('updated_at');
+                
+            }
+        
 
         //return $votaciones->values()->all();
 
         
-        return view('user.profiles.mis-votaciones',compact('votaciones'));
+        return view('user.profiles.mis-votaciones',compact('votacionesOrdenadas'));
     }
 
 
