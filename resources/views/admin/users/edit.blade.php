@@ -33,7 +33,7 @@
                   <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
                     {{-- formulario --}}
 
-                    <form class="p-10" action="{{ route('admin.users.update', $user, true) }}" method="post">
+                    <form class="p-10" action="{{ route('sadmin.users.update', $user, true) }}" method="post">
 
                       @csrf
                       @method('put')

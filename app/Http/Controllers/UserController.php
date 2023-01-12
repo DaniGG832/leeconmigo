@@ -35,12 +35,15 @@ class UserController extends Controller
      */
     public function index()
     {
+        //$userLogadoId = auth()->user()->rol_id;
+        //return $userLogadoId;
+        $isSuperAdmin = auth()->user()->rol_id == 3;
         $users = User::all();
         $totalLibros = Libro::all()->count();
         $totalUsuarios = User::all()->count();
 
         //return $users;
-        return view('admin.users.index', compact(['users', 'totalUsuarios', 'totalLibros']));
+        return view('admin.users.index', compact(['isSuperAdmin','users', 'totalUsuarios', 'totalLibros']));
     }
 
     /**
@@ -75,9 +78,9 @@ class UserController extends Controller
      */
     public function show()
     {
-        $user = User::find(Auth()->id());
+        /* $user = User::find(Auth()->id());
         //return $user;
-        return view('user.profiles.show', compact('user'));
+        return view('user.profiles.show', compact('user')); */
     }
 
 
@@ -93,9 +96,21 @@ class UserController extends Controller
     public function edit(User $user)
     {
 
-        $roles = Rol::all();
+    
 
-        return view('admin.users.edit', compact('user', 'roles'));
+        if ($user->rol_id == 3) {
+
+            return redirect()->back()->with('error', 'no se puede modificar un usuario superAdmin');
+
+        }else{
+
+            $roles2 = Rol::all();
+    
+            $roles = $roles2->except(3);
+
+            return view('admin.users.edit', compact('user', 'roles'));
+
+        }
     }
 
     /**
@@ -109,7 +124,27 @@ class UserController extends Controller
     {
         //return $request;
 
-        if ($user->rol_id != 3 || Auth::user()->rol_id == 3) {
+        if ($user->role_id == 3) {
+
+            return redirect()->back()->with('error', 'no se puede modificar un usuario superAdmin');
+
+        }else{
+
+            $validated =  $request->validate([
+                'comentar' => 'required|boolean',
+                'rol_id' => 'required|exists:roles,id',
+            ]);
+
+
+            $user->comentar = $validated['comentar'];
+            $user->rol_id = $validated['rol_id'];
+            $user->save();
+
+            return redirect()->route('admin.users.index')->with('success', 'Usuario editado Correctamente');
+
+        }
+
+        /* if ($user->rol_id != 3 || Auth::user()->rol_id == 3) {
             $validated =  $request->validate([
                 'comentar' => 'required|boolean',
                 'rol_id' => 'required|exists:roles,id',
@@ -128,7 +163,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->back()->with('error', 'Solo el superAdmin puede bloquear o cambiar el rol a un usuario superAdmin');
+        return redirect()->back()->with('error', 'Solo el superAdmin puede bloquear o cambiar el rol a un usuario superAdmin'); */
     }
 
 
