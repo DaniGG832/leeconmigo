@@ -55,8 +55,10 @@
                       <div class="flex flex-wrap items-center mb-3">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
                           <h3 class="font-semibold text-lg text-white">Librerias
+                            @if ($provinciaSeleccionada)
 
-                            <span>de: Cadiz</span>
+                            <span>de: {{$provinciaSeleccionada}}</span>
+                            @endif
 
                           </h3>
                         </div>
@@ -152,7 +154,7 @@
         init: function() {
 
 
-        
+
 
           /* icono personalizado */
           console.log(this.urlIcono);
@@ -274,7 +276,7 @@
 
           /* obtener el parametro de la url */
           console.log(window.location.search);
-          
+
           //Creamos la instancia
           const urlParams = new URLSearchParams(window.location.search);
 
@@ -282,27 +284,27 @@
           var provincia = urlParams.get('provincia');
 
           console.log(provincia);
-          if(provincia){
+          if (provincia) {
             console.log('si');
-              /* centrar mapa al pasarles los puntos */
-              console.log(...this.librerias.map(point => [point.lat, point.lng]));
+            /* centrar mapa al pasarles los puntos */
+            console.log(...this.librerias.map(point => [point.lat, point.lng]));
 
-              map.fitBounds([
-                ...this.librerias.map(point => [point.lat, point.lng])
-              ]);
+            map.fitBounds([
+              ...this.librerias.map(point => [point.lat, point.lng])
+            ]);
 
 
-          }else{
+          } else {
 
             map.locate({
-            setView: true
-            , maxZoom: 9
-          });
-          
+              setView: true
+              , maxZoom: 9
+            });
+
           }
 
 
-          
+
 
           /*   map.fitBounds([
               [marker.getLatLng().lat, marker.getLatLng().lng]
@@ -312,7 +314,7 @@
 
           /* ubicar el mapa en la localizacion del navegador */
 
-          
+
 
 
 

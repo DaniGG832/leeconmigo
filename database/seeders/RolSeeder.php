@@ -34,5 +34,11 @@ class RolSeeder extends Seeder
             "nombre" => "superadmin",
 
         ]);
+
+        Rol::create([
+
+            "nombre" => "root",
+
+        ]);
     }
 }

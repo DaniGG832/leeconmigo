@@ -25,9 +25,13 @@
 
                     {{-- muestra la nota media --}}
                     <span class="font-bold text-xl" id="media">
-                      {{ is_int($libro->votaciones->avg('voto'))
-                  ? number_format($libro->votaciones->avg('voto'))
-                  : number_format($libro->votaciones->avg('voto'), 1) }}
+                      @if ($libro->votaciones->avg('voto'))
+
+                      {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1) }}
+                      @else
+                      -
+                      @endif
+                      
 
                     </span>
                   </span>
@@ -45,7 +49,7 @@
                 <div class="w-full flex justify-center mt-5">
 
                   @auth
-                  
+
                   @if (Auth::user()->email_verified_at && Auth::user()->comentar)
                   <p class="md:text-xl text-base  text-blue-800  pt-4 px-2 ">Tu voto </p>
                   <div class="w-28 md:w-32 ">

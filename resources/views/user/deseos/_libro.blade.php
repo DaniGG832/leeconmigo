@@ -19,7 +19,13 @@
     <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Nota media: 
       <span class="font-bold text-xl">
         {{-- obtiene la nota media --}}
+        
+        @if ($libro->votaciones->avg('voto'))
         {{is_int($libro->votaciones->avg('voto'))? number_format( $libro->votaciones->avg('voto')): number_format($libro->votaciones->avg('voto'), 1) }} 
+            
+        @else
+          -  
+        @endif
 
       </span>
     </span>

@@ -264,7 +264,7 @@
                               <p>Nota media:
                                 <span class="font-bold text-xl">
                                   {{-- obtiene la nota media --}}
-                                  ${Number(dato.votaciones_avg_voto)}
+                                  ${(Number.parseFloat(dato.votaciones_avg_voto).toFixed(1))}
                                 </span>
                               </p>
                             </div>
