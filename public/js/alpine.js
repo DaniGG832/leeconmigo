@@ -72,6 +72,8 @@ document.addEventListener("alpine:init", () => {
     Alpine.data("newPregunta", () => ({
         show: false,
 
+        formOrdenarRespuestas : document.getElementById("ordenarRespuestas"),
+
         alIniciar(condicion = 0) {
             console.log(condicion);
 
@@ -97,6 +99,12 @@ document.addEventListener("alpine:init", () => {
         abrirModal() {
             this.show = true;
             document.body.scrollIntoView();
+        },
+
+        ordenarRespuestas() {
+
+            this.formOrdenarRespuestas.submit();
+            //console.log(this.formOrdenarRespuestas);
         },
         /* abrirVentana(){
 
