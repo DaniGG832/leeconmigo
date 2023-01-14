@@ -21,7 +21,7 @@
             <div class="">
 
               {{-- {{Request::getQueryString()}} --}}
-              {{-- {{Request::input('sortBy')}} --}}
+              {{--  {{Request::input('ordenar')}}  --}}
               {{-- {{isset($_GET["sortBy"])}} --}}
 
               <form id="ordenarRespuestas" action="{{route('preguntas.show',$pregunta)}}">
@@ -32,8 +32,8 @@
 
                   <option selected disabled value="">Ordenar :</option>
 
-                  <option value="1">Mas recientes</option>
-                  <option value="2">Menos Recientes</option>
+                  <option {{Request::input('ordenar') == 1 ? 'selected' : '' }} value="1">Mas recientes</option>
+                  <option {{Request::input('ordenar') == 2 ? 'selected' : '' }} value="2">Menos Recientes</option>
 
                   {{-- @foreach ($provincias as $provincia)
                 <option {{Request::input('provincia')==$provincia->id ? 'selected' : ''}} value="{{$provincia->id}}">{{$provincia->nombre}}</option>
