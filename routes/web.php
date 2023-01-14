@@ -159,7 +159,7 @@ Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
 
 
 
-Route::middleware(['auth', 'verified', 'can:solo-admin', /* 'can:bloqueado' */ ])->group(function () {
+Route::middleware(['auth', 'verified', 'can:solo-admin', 'can:bloqueado' ])->group(function () {
 
     Route::get('/admin', [RolController::class, 'index'])->name('admin');
 

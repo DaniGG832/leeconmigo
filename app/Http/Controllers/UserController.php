@@ -235,7 +235,7 @@ class UserController extends Controller
             return back()->with('success', 'Usuario borrado correctamente');
         } elseif (Auth::user()->rol_id == 3) {
 
-            return back()->with('error', 'No se puede borrar un usuario administrados.');
+            return back()->with('error', 'No se puede borrar un usuario superdAmin.');
         } else {
 
             return back()->with('error', 'No tienes permisos para borrar usuarios.');

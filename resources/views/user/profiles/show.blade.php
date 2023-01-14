@@ -19,7 +19,7 @@
             <div class="bg-blue-100 border rounded py-16 px-12 flex flex-col items-center justify-center">
 
 
-              <img class="rounded-full h-32 w-32" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt=" user avatar" />
+              <img class="object-cover rounded-full h-32 w-32" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt=" user avatar" />
               <div class="mt-8 mb-4">
                 <div class="mb-4">
 
@@ -53,7 +53,7 @@
                 <div class="flex-col items-center justify-center border">
 
                   <label for="avatar" id="pre">
-                    <img id="imgAvatar" class="rounded-full h-32 w-32 mx-auto" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
+                    <img id="imgAvatar" class="object-cover rounded-full h-32 w-32 mx-auto" src="{{$user->avatar ? asset($user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="user avatar" />
                     <span class=" text-gray-500 px-4">click para cambiar avatar</span>
                   </label>
                   <input @change="cambioAvatar()" x-model="file" name="avatar" id="avatar" type="file" class="hidden" accept="image/*" value="{{old('avatar',$user->avatar)}}">
