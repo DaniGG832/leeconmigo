@@ -10,17 +10,50 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border-2 border-blue-400">
 
         <div x-data="newPregunta" x-init="alIniciar({{$errors->any()}})" class="p-6 bg-white border-b border-gray-200">
+          <div class="flex flex-wrap items-center justify-between">
+            <div class="">
 
-          <a href="{{route('preguntas.index')}}" class="border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
+              <a href="{{route('preguntas.index')}}" class="my-3 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg">
 
-            Volver atras
-          </a>
+                Volver atras
+              </a>
+            </div>
+            <div class="">
 
-          @auth
+              {{-- {{Request::getQueryString()}} --}}
+              {{-- {{Request::input('sortBy')}} --}}
+              {{-- {{isset($_GET["sortBy"])}} --}}
 
-          <button @click="abrirModal" class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
-            Añadir respuesta {{-- {{$errors->any()}} --}}
-          </button>
+              <form id="ordenarRespuestas" action="{{route('preguntas.show',$pregunta)}}">
+
+
+                <select x-on:change="ordenarRespuestas" name="ordenar" id="ordenarRespuestas" class="my-3 px-12 border border-blue-400 text-gray-900 text-sm rounded-lg focus:ring-blue-300 focus:border-blue-300 block  p-2.5 ">
+
+
+                  <option selected disabled value="">Ordenar :</option>
+
+                  <option value="1">Mas recientes</option>
+                  <option value="2">Menos Recientes</option>
+
+                  {{-- @foreach ($provincias as $provincia)
+                <option {{Request::input('provincia')==$provincia->id ? 'selected' : ''}} value="{{$provincia->id}}">{{$provincia->nombre}}</option>
+
+                  @endforeach --}}
+
+                </select>
+
+              </form>
+
+            </div>
+
+            @auth
+            <div>
+
+              <button @click="abrirModal" class=" my-3 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
+                Añadir respuesta {{-- {{$errors->any()}} --}}
+              </button>
+            </div>
+          </div>
 
           @endauth
           <div class="container mx-auto">
@@ -47,19 +80,19 @@
 
               </div>
 
-              
-               @forelse ($pregunta->respuestas as $respuesta)
+
+              @forelse ($respuestas as $respuesta)
 
               @include('user.preguntas._respuestas')
 
               @empty
-              <p class="m-3 text-xl text-gray-700">"no hay ninguna respuesta."</p>  
+              <p class="m-3 text-xl text-gray-700">"no hay ninguna respuesta."</p>
               @endforelse
 
               @auth
               <div class="flex justify-end mt-2">
 
-                <button x-on:click="abrirModal"  class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
+                <button x-on:click="abrirModal" class="ml-4 border border-blue-600 hover:bg-blue-600 p-2  text-blue-600 hover:text-blue-50 rounded-lg" type="button">
                   Añadir respuesta {{-- {{$errors->any()}} --}}
                 </button>
 

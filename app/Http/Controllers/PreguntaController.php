@@ -68,9 +68,22 @@ class PreguntaController extends Controller
      * @param  \App\Models\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function show(Pregunta $pregunta)
+    public function show(Request $request, Pregunta $pregunta)
     {
-        return view('user.preguntas.show', compact('pregunta'));
+        //return $request->ordenar;
+
+        if($request->ordenar == 2){
+
+            $respuestas = $pregunta->respuestas->sortBy('created_at');
+        }else{
+
+            $respuestas = $pregunta->respuestas->sortByDesc('created_at');
+
+        }
+
+
+
+        return view('user.preguntas.show', compact('pregunta','respuestas'));
     }
 
     /**
