@@ -34,5 +34,5 @@ Los usuarios podran buscar por categorias, edad, autores,temas, votar los libros
 
 # Enlaces
 
- * Documentación: https://github.com/DaniGG832/leeconmigo/blob/5-r5-readmemd/Documentacion-leeconmigo-Daniel.pdf
+ - [Documentación](https://github.com/DaniGG832/leeconmigo/blob/master/Documentacion.pdff)
  
