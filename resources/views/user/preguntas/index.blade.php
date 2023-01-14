@@ -80,15 +80,20 @@
                       <img class="rounded-full h-12 w-12  object-cover" src="{{$pregunta->user->avatar ? asset($pregunta->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
 
                     </div>
-
+                    <div class=" flex flex-col">
+                      <div class=" flex">
                     <a href="{{route('preguntas.show',$pregunta)}} ">
 
                       <h3 class="text-gray-900 text-sm md:text-l font-semibold ml-3">
                         {{$pregunta->titulo}}
                         <span class="text-xs text-gray-400 block"> {{$pregunta->descripcion}}</span>
-
                       </h3>
                     </a>
+                    </div>
+                    <div class="mt-2">
+                      <p class="mt-1 text-xs text-gray-400">{{($pregunta->created_at) ? ($pregunta->created_at)->format('d-m-Y H:i:s') : ''}}</p>
+                    </div>
+                    </div>
                   </div>
 
                   <div class="flex flex-row">

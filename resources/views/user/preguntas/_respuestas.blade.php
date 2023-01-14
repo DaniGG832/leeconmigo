@@ -5,7 +5,7 @@
 
       
       
-      <div class="p-1 space-y-6 ">
+      <div class="p-1 ">
         <div class="flex">
 
           <img class="rounded-full h-12 w-12  object-cover mr-2" src="{{$respuesta->user->avatar ? asset($respuesta->user->avatar) : 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}" alt="avatar image">
@@ -13,7 +13,10 @@
           <p class="text-gray-600 text-xs md:text-sm leading-relaxed ">
             {{$respuesta->descripcion}}
           </p>
-          
+        </div>
+        <div class="flex justify-end">
+
+          <p class="mt-1 text-xs text-gray-400">{{($respuesta->created_at)?($respuesta->created_at)->format('d-m-Y H:i:s'): ''}}</p>
         </div>
 
         <div class="flex justify-end">
