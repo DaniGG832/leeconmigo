@@ -27,7 +27,7 @@ class TemaController extends Controller
     {
         Paginator::defaultView('paginate');
 
-        $temas = Tema::paginate(15);
+        $temas = Tema::orderBy('name')->paginate(15);
 
 
         //return $users;

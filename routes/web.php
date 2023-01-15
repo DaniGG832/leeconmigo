@@ -87,8 +87,19 @@ Route::post('contactanos', [ContactanosController::class, 'store'])->name('conta
 
 Route::get('librerias', [LibreriaController::class, 'userIndex'])->name('librerias.index');
 
+/* pOLITICA DE PRIVACIDAD Y QUIENES SOMOS */
 
+Route::get('/politica-de-privacidad', function () {
+    return view('politica-de-privacidad');
+})->name('politica-de-privacidad');
 
+Route::get('/sobre-nosotros', function () {
+    return view('sobre-nosotros');
+})->name('sobre-nosotros');
+
+/* ------------------------------------------------------ */
+
+/* RUTAS PARA USUARIO AUTENTIFICADO, VERIFICADO Y QUE NO ESTEN BLOQUEADO */
 
 Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
     
@@ -158,6 +169,8 @@ Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
 });
 
 
+/* RUTAS PARA USUARIO AUTENTIFICADO, VERIFICADO, ADMIN (TAMBIEN SUPERADMIN) Y QUE NO ESTEN BLOQUEADO */
+
 
 Route::middleware(['auth', 'verified', 'can:solo-admin', 'can:bloqueado' ])->group(function () {
 
@@ -210,8 +223,10 @@ Route::middleware(['auth', 'verified', 'can:solo-admin', 'can:bloqueado' ])->gro
 
 });
 
+/* RUTAS PARA USUARIO AUTENTIFICADO, SUPERADMIN */
 
-Route::middleware(['auth', 'verified','can:solo-superadmin'])->group(function () {
+
+Route::middleware(['auth'/* , 'verified' */,'can:solo-superadmin'])->group(function () {
 
     Route::prefix('sadmin')->name('sadmin.')->group(function () {
 
