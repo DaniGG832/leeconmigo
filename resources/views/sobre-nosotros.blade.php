@@ -17,17 +17,10 @@
 
             <p class="text-gray-900 text-sm md:text-l font-semibold ml-3">
 
+
               
 
             </p>
-
-          
-
-          
-
-
-
-
 
           </div>
 
