@@ -11,13 +11,16 @@
               <a href="{{route('contactanos.index')}}" class="mr-4 hover:underline md:mr-6 ">Contáctanos</a>
           </li>
           <li>
-              <button id="privacidad" x-on:click="privacidad('hola como estas')" class="mr-4 hover:underline md:mr-6">Política de privacidad</button>
+            <a href="{{route('politica-de-privacidad')}}" class="mr-4 hover:underline md:mr-6 ">Política de privacidad</a>
+
+              {{-- <button id="privacidad" x-on:click="privacidad('hola como estas')" class="mr-4 hover:underline md:mr-6">Política de privacidad</button> --}}
           </li>
          {{--  <li>
               <button id="licencia" x-on:click="licencia" class="mr-4 hover:underline md:mr-6 ">Licencia</button>
           </li> --}}
           <li>
-              <button id="nosotros" x-on:click="nosotros" class="hover:underline">Sobre Nosotros</button>
+            <a href="{{route('sobre-nosotros')}}" class="mr-4 hover:underline md:mr-6 ">Sobre Nosotros</a>
+            {{-- <button id="nosotros" x-on:click="nosotros" class="hover:underline">Sobre Nosotros</button> --}}
           </li>
       </ul>
   </div>

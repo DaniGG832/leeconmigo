@@ -11,6 +11,8 @@ use Illuminate\Pagination\Paginator;
 
 class CriticaController extends Controller
 {
+
+    /* Las criticas se ordenan las mas recientes primero */
     /**
      * Display a listing of the resource.
      *
