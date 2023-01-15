@@ -16,7 +16,7 @@
           <div class=" flex flex-col text-gray-700 font-semibold m-5 italic">
 
 
-            <div class="m-4 font-bold">
+            <div class="m-4 font-bold text-lg">
               <p>
                 Información básica sobre protección de datos
               </p>
