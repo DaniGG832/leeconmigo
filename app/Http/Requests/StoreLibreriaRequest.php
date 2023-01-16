@@ -24,7 +24,7 @@ class StoreLibreriaRequest extends FormRequest
     public function rules()
     {
         return [
-            'img'=> 'nullable|image',
+            'img'=> 'required|image',
             'nombre' => 'required',
             'lat' => ['required','numeric','min:-90','max:90'],
             'lng' => ['required','numeric','min:-180','max:180'],

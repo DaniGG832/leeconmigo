@@ -6,7 +6,7 @@
           <img src="{{asset('img/logo/leeconmigo.png')}}" class="mr-3 h-16 bg-blue-50 rounded-lg px-2" alt="LeeConmigo Logo" />
           {{-- <span class="self-center text-2xl font-semibold whitespace-nowrap">LeeConmigo</span> --}}
       </a>
-      <ul x-data="footer" class="flex flex-wrap items-center mb-6 text-sm text-gray-100 sm:mb-0">
+      <ul {{-- x-data="footer" --}} class="flex flex-wrap items-center mb-6 text-sm text-gray-100 sm:mb-0">
           <li>
               <a href="{{route('contactanos.index')}}" class="mr-4 hover:underline md:mr-6 ">Contáctanos</a>
           </li>

@@ -122,9 +122,11 @@ class LibroController extends Controller
 
         //return $user->has('listaDeseos')->find($libro->id);
 
+        /* agrega o quita el libro de la lista de deseos y devuelve {"attached":[4],"detached":[]} dependiendo si esta o no en la tabla intermedia  */
         $toggle = $user->listaDeseos()->toggle($libro->id);
 
-        //return $togge['attached'];
+        //return $toggle;
+
         if ($toggle['attached']) {
 
 

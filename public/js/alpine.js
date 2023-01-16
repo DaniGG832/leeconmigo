@@ -1,5 +1,7 @@
 document.addEventListener("alpine:init", () => {
     /* editar perfil */
+
+
     Alpine.data("avatar", () => ({
         open: true,
 
@@ -18,17 +20,17 @@ document.addEventListener("alpine:init", () => {
             //console.log(1);
         },
 
-        UserAvatar: imgAvatar.src,
-
         pre: document.getElementById("pre"),
-
+        
         imgAvatar: document.getElementById("imgAvatar"),
+        
+        UserAvatar: imgAvatar.src,
 
         inputAvatar: document.getElementById("avatar"),
 
         cambioAvatar() {
-            console.log(mensaje.value);
             let input = document.getElementById("avatar");
+            console.log(input.files);
 
             console.log(input);
             if (input.files && input.files[0]) {
@@ -127,6 +129,7 @@ document.addEventListener("alpine:init", () => {
     }));
 
     /* enviar el formulario al cambiar el select
+    en la vista de libros index
      */
     Alpine.data("ordenar", () => ({
         form: document.querySelector("#ordenar"),
@@ -156,7 +159,7 @@ document.addEventListener("alpine:init", () => {
 
 
     
-    Alpine.data("footer", () => ({
+    /* Alpine.data("footer", () => ({
         privacidad(pp) {
             
             window.open("");
@@ -170,7 +173,10 @@ document.addEventListener("alpine:init", () => {
             console.log(e);
             alert(e);
         }, 
-    }));
+    })); */
+
+    /* comunicacion entre ventanas
+    al hacer click en mas informacion de la libreiria se abre una ventana con los datos */
 
     Alpine.data("libreria", () => ({
         ventanaEmergente(datos,provincia) {

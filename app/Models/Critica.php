@@ -35,6 +35,8 @@ class Critica extends Model
     }
 
 
+
+
     public function votoLibro($libro)
     {
         if ($this->user->votaciones->where('libro_id', $libro->id)->first()) {
