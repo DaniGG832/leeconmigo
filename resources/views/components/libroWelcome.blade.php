@@ -6,7 +6,7 @@
     </a>
   </div>
   <div class="text-center">
-    <h2 class=" my-1 font-bold">¡A dormir! La granja</h2>
+    <h2 class=" my-1 font-bold">{{$libro->titulo}}</h2>
   </div>
   <div class="flex flex-col p-3">
     <div class="text-center inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
