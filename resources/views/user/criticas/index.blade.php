@@ -65,12 +65,15 @@
 
             <div x-data="critica" class="flex flex-col -mx-4  p-5" style="min-height: 20em">
 
-              @foreach ($criticas as $critica)
+              @forelse ($criticas as $critica)
 
               @include('user.criticas._critica')
 
-              @endforeach
+              @empty
+              <p class="m-3 text-xl text-gray-700">"no hay ninguna crítica."</p>
 
+                  
+              @endforelse
 
 
             </div>

@@ -239,6 +239,7 @@
           console.log(datos);
           console.log(datos.length);
 
+          /* Solo se muestra los libros que tienen algun voto, si no tiene votos no se muestra */
 
           libros = `<p class="my-2">Total de resultados: <span>${datos.length}</span></p>`;
           libros += `<div class = "flex flex-wrap">`;

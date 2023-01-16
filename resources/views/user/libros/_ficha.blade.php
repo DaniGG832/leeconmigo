@@ -144,6 +144,8 @@
 
 </div>
 
+@if ($libro->descripcion)
+    
 <div class="mt-4 flex">
   <div>
     <div class="flex items-center h-16 border-l-4 border-blue-500">
@@ -155,6 +157,7 @@
   </div>
 
 </div>
+@endif
 
 <div class="mt-4 flex">
   <div>

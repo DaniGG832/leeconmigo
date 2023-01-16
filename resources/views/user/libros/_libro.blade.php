@@ -2,9 +2,9 @@
   <div class="h-full rounded-md border border-blue-200 p-1">
 
   <a href="{{route('libros.show',$libro)}}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-  <div class="relative pb-56 overflow-hidden">
+  <div class=" overflow-hidden flex justify-center">
     {{-- <div class="rounded-full absolute z-50 bg-red-600">7.5</div> --}}
-    <img class="absolute inset-0 h-56 w-full object-cover" src="{{$libro->img ? asset($libro->img) : asset('img/el-principito.jpg')}}" alt="">
+    <img class="rounded-md w-42 h-52 object-cover hover:scale-110 transition duration-300 ease-in-out" src="{{$libro->img ? asset($libro->img) : asset('img/el-principito.jpg')}}" alt="">
   </div>
 </a>
   <div class="p-4 text-center ">

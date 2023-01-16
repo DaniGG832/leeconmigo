@@ -47,17 +47,12 @@ class EdadSeeder extends Seeder
 
         Edad::create([
 
-            "name" => "+12",
-            "descripcion" => "mas de 12 años",
+            "name" => "13 - 15",
+            "descripcion" => "De 13 a 15 años",
 
         ]);
 
-        Edad::create([
-
-            "name" => "+14",
-            "descripcion" => "mas de 14 años",
-
-        ]);
+        
 
         Edad::create([
 
