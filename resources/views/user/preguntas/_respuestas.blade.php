@@ -1,4 +1,4 @@
-<div class="mb-5 border border-blue-300 rounded-t mt-2">
+<div class="mt-5 border border-blue-300 rounded-t ">
   <div class="flex items-start justify-between p-5 border border-blue-100 rounded-t">
 
     <div class=" w-full">
