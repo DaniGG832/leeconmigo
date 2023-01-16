@@ -82,6 +82,8 @@ Route::get('foro/{pregunta}/show', [PreguntaController::class, 'show'])->name('p
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
+/* votos otros usuarios */
+Route::get('votaciones/{user}/{libro}', [VotacionController::class, 'votosUsuario'])->name('votos.usuario');
 
 /* Librerias */
 
@@ -135,8 +137,7 @@ Route::middleware(['auth', 'verified' ,'can:bloqueado'])->group(function () {
     Route::put('criticas/{critica}/update/{libro}', [CriticaController::class, 'update'])->name('criticas.update');
     Route::delete('criticas/{critica}', [CriticaController::class, 'destroy'])->name('criticas.destroy');
 
-    /* votos otros usuarios */
-    Route::get('votaciones/{user}/{libro}', [VotacionController::class, 'votosUsuario'])->name('votos.usuario');
+    
 
     /* ruta para la votacion (ajax) */
     Route::post('votar', [VotacionController::class, 'votar'])->name('votar');
