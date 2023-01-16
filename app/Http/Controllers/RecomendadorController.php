@@ -50,6 +50,7 @@ class RecomendadorController extends Controller
     public function data(Request $request)
     {
 
+        /* solo se muestran los libro que ya tienen algun voto has('votaciones','>',0)*/
 
         $temaId = $request->tema_id;
 
