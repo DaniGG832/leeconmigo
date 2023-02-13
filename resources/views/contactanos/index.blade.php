@@ -124,10 +124,10 @@
         
         mensaje.reportValidity();
 
-      }else if(mensaje.value.length < 5){
+      //}else if(mensaje.value.length < 5){
 
-        mensaje.setCustomValidity('El mensaje debe tener al menos 5 caracteres');
-        mensaje.reportValidity();
+        //mensaje.setCustomValidity('El mensaje debe tener al menos 5 caracteres');
+        //mensaje.reportValidity();
         
       }else{
         mensaje.setCustomValidity('');
