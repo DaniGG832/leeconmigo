@@ -18,7 +18,7 @@ use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VotacionController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -249,3 +249,5 @@ Route::middleware(['auth'/* , 'verified' */,'can:solo-superadmin'])->group(funct
 
     return view('prueba');
 }); */
+
+URL::forceScheme('https');
